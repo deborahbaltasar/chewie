@@ -1,0 +1,55 @@
+{
+  "name": "gobarberproject",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material/react-drawer": "^0.15.0",
+    "@material/react-list": "^0.15.0",
+    "@material/react-material-icon": "^0.15.0",
+    "@material/react-top-app-bar": "^0.15.0",
+    "@rocketseat/unform": "^1.6.2",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "customize-cra": "^0.9.1",
+    "date-fns": "^2.10.0",
+    "history": "^4.10.1",
+    "particles": "^0.3.1",
+    "polished": "^3.4.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-app-rewired": "^2.1.5",
+    "react-dom": "^16.13.0",
+    "react-icons": "^3.9.0",
+    "react-particles-js": "^2.7.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-sidebar": "^3.0.2",
+    "styled-components": "^5.0.1",
+    "yup": "^0.28.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-root-import": "^6.4.1"
+  }
+}
