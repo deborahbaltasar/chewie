@@ -6,9 +6,11 @@ const Auth = {
   getToken() {
     try {
       const token = JSON.parse(localStorage.getItem(TOKEN));
-      const now = moment();
-      if (now.isAfter(moment(token.validTo))) return '';
-      return token.value;
+      // TODO: need to add validTO in backend....
+      //const now = moment();
+      //if (now.isAfter(moment(token.validTo))) return '';
+      console.log("token", token);
+      return token;
     } catch {
       return '';
     }
