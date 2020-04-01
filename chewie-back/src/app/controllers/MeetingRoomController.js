@@ -1,9 +1,10 @@
-import * as Yup from 'yup';
+
 import MeetingRoom from '../models/MeetingRoom';
 
 class MeetingRoomController {
     
     async store(req, res) {
+        console.log('Data', req.body.name)
         const roomExists = await MeetingRoom.findOne({ where: {name: req.body.name} });
 
         if(roomExists) {

@@ -8,6 +8,7 @@ import FileController from './app/controllers/FileController';
 
 import authMiddleware from './app/middlewares/auth';
 import MeetingRoomController from './app/controllers/MeetingRoomController';
+import MeetingController from './app/controllers/MeetingController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -19,8 +20,10 @@ routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 
+routes.post('/meetings', MeetingController.store)
+
 routes.post('/files', upload.single('file'), FileController.store);
 
-routes.post('/meetingRooms', MeetingRoomController.store);
+routes.post('/meetingRoom', MeetingRoomController.store);
 
 export default routes;
