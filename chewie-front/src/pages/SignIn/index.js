@@ -7,13 +7,16 @@ const AccountService = require('../../services/account');
 
 
 class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   handleSubmit = (data) => {
+    const { history } = this.props;
+    
     AccountService.login(data).then( result => {
-      // TODO:
       if (result.success) {
-        
-        console.log(result)
+        history.push("/dashboard")    
       }else {
         // show error message
         console.log(result)
