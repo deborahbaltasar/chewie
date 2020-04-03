@@ -20,7 +20,7 @@ module.exports = {
         },
         meetingRoom_id: {
           type: Sequelize.INTEGER,
-          references: { model: 'meetingRooms', key: 'id' },
+          references: { model: 'meeting_rooms', key: 'id' },
           onUpdate: 'CASCADE',
           onDelete: 'SET NULL',
           allowNull: true,
