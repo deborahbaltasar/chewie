@@ -2,19 +2,16 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 
+import { toast } from 'react-toastify';
+
 import { Container } from './styles';
 
 import AvatarInput from './AvatarInput';
+import Auth from '../../utils/auth';
 
 export default function Profile() {
   const history = useHistory();
 
-  function handleLogOut() {
-    localStorage.clear();
-
-    history.push('/');
-}
-  
   return (
     <Container>
       <Form>
@@ -31,7 +28,11 @@ export default function Profile() {
         <button type="submit">Atualizar perfil</button>
       </Form>
 
-      <button onClick={handleLogOut} type="button">Sair do Chewie</button>
+      <button onClick={()=>{
+        toast.warn("Bye!!!");
+        Auth.logOut();
+        history.push("/");
+      }} type="button">Sair do Chewie</button>
     </Container>
   );
 }

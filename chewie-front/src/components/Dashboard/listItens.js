@@ -20,6 +20,8 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 //import AssignmentIcon from '@material-ui/icons/Assignment';
 
+import { toast } from 'react-toastify';
+
 import Auth from '../../utils/auth';
 
 
@@ -61,8 +63,9 @@ export const actionListItems = (
     </ListItem>
 
     <ListItem button onClick={() => {
+        toast.warn("Bye!!!");
         Auth.logOut();
-      }} component={Link} to="/profile">
+      }} component={Link} to="/">
       <ListItemIcon>
         <PowerSettingsNewIcon />
       </ListItemIcon>
