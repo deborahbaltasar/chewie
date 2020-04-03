@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -13,7 +14,7 @@ import EventIcon from '@material-ui/icons/Event';
 import DevicesIcon from '@material-ui/icons/Devices';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
-import Link from '@material-ui/core/Link';
+//import Link from '@material-ui/core/Link';
 //import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
@@ -23,13 +24,13 @@ import LayersIcon from '@material-ui/icons/Layers';
 export const mainListItems = (
   
   <div>
-    <ListItem button>
+    <ListItem button component={Link} to="/dashboard">
       <ListItemIcon>
         <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button >
+    <ListItem button component={Link} to="/profile">
       <ListItemIcon>
         <PersonIcon />
       </ListItemIcon>
