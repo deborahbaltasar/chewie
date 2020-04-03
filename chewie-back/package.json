@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "docker-up": "docker run --rm --name postdb -e 'POSTGRES_PASSWORD=docker'  -e 'POSTGRES_DB=chewie' -p 5432:5432 -d postgres"
+    "docker-up": "docker run --rm --name postdb -e 'POSTGRES_PASSWORD=docker'  -e 'POSTGRES_DB=chewie' -p 5432:5432 -d postgres",
+    "init:db": "./node_modules/.bin/sequelize db:migrate && ./node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
