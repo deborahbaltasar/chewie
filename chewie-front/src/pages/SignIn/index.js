@@ -1,21 +1,30 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
+import { toast } from 'react-toastify';
 
 const AccountService = require('../../services/account');
 
 
 
 class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   handleSubmit = (data) => {
+    const { history } = this.props;
+    
     AccountService.login(data).then( result => {
-      // TODO:
       if (result.success) {
-        
-        console.log(result)
+        toast.success('Acesso permitido', {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        history.push("/dashboard")    
       }else {
         // show error message
+        toast.error('Acesso negado', {
+          position: toast.POSITION.TOP_RIGHT
+        });
         console.log(result)
       }
     });
