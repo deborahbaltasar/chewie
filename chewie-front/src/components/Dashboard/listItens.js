@@ -20,6 +20,8 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 //import AssignmentIcon from '@material-ui/icons/Assignment';
 
+import Auth from '../../utils/auth';
+
 
 export const mainListItems = (
   
@@ -58,7 +60,9 @@ export const actionListItems = (
       <ListItemText primary="Agendar Nova Reunião" />
     </ListItem>
 
-    <ListItem button>
+    <ListItem button onClick={() => {
+        Auth.logOut();
+      }} component={Link} to="/profile">
       <ListItemIcon>
         <PowerSettingsNewIcon />
       </ListItemIcon>
