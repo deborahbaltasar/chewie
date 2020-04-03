@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 
 const AccountService = require('../../services/account');
@@ -6,11 +7,12 @@ const AccountService = require('../../services/account');
 
 
 class SignIn extends React.Component {
+
   handleSubmit = (data) => {
     AccountService.login(data).then( result => {
       // TODO:
       if (result.success) {
-        // redirect to new page
+        
         console.log(result)
       }else {
         // show error message
@@ -20,6 +22,8 @@ class SignIn extends React.Component {
   }
 
   render() {
+
+  
     return (
       <Form onSubmit={this.handleSubmit}>
         <p>Chewie</p>

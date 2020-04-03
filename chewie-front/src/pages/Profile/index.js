@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 
 import { Container } from './styles';
@@ -6,6 +7,14 @@ import { Container } from './styles';
 import AvatarInput from './AvatarInput';
 
 export default function Profile() {
+  const history = useHistory();
+
+  function handleLogOut() {
+    localStorage.clear();
+
+    history.push('/');
+}
+  
   return (
     <Container>
       <Form>
@@ -22,7 +31,7 @@ export default function Profile() {
         <button type="submit">Atualizar perfil</button>
       </Form>
 
-      <button type="button">Sair do Chewie</button>
+      <button onClick={handleLogOut} type="button">Sair do Chewie</button>
     </Container>
   );
 }

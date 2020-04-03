@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './styles';
 
-export default function Dashboard({children}) {
+export default function DashBoard({children}) {
   return (
     <Container>
       {children}

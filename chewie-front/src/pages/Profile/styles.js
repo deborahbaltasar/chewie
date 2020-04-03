@@ -49,7 +49,7 @@ export const Container = styled.div`
     }
   }
     
-    > button {
+    button {
       width: 100%;
       margin: 10px 0 0;
       height: 44px;

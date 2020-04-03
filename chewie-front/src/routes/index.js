@@ -4,8 +4,8 @@ import Route from './Route';
 
 import SignIn from '../pages/SignIn';
 
-
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../components/Dashboard';
+import DashBoard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 
 
@@ -13,7 +13,7 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/dashboard"  component={Dashboard} isPrivate />
+      <Route path="/dashboard"  component={DashBoard} isPrivate />
       <Route path="/profile"  component={Profile} isPrivate />
       
 
