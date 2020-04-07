@@ -7,9 +7,7 @@ const AccountService = require('../../services/account');
 
 
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   handleSubmit = (data) => {
     const { history } = this.props;

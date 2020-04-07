@@ -14,7 +14,9 @@ import IconButton from '@material-ui/core/IconButton';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems, secondaryListItems, actionListItems} from './listItens';
+import { secondaryListItems, 
+  actionListItems, list, profileList} from './listItens';
+
 
 
 
@@ -80,37 +82,19 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9),
     },
   },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '100%',
-    overflow: 'auto',
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  fixedHeight: {
-    height: 240,
-  },
+
 }));
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
 
   return (
     <div className={classes.root}>
@@ -143,8 +127,10 @@ export default function Dashboard() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
+        <List>{profileList}</List>
         <Divider />
-        <List>{mainListItems}</List>
+        <Divider />
+        <List>{list}</List>
         <Divider />
         <List>{secondaryListItems}</List>
         <Divider />
@@ -152,7 +138,7 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-       
+        
       </main>
     </div>
   );

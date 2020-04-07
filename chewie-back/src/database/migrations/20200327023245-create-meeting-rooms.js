@@ -13,7 +13,7 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        description: {
+        room: {
           type: Sequelize.STRING,
           allowNull: false,
         },

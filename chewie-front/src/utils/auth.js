@@ -8,7 +8,6 @@ const Auth = {
       // TODO: need to add validTO in backend....
       //const now = moment();
       //if (now.isAfter(moment(token.validTo))) return '';
-      console.log("token", token);
       return token;
       }
       return '';
