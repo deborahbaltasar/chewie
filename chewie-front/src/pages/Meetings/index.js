@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Container } from './styles';
 
 import { 
@@ -14,10 +13,11 @@ import {
 
 
 
-export default function MeetingRooms({children}) {
+export default function Meetings({children}) {
   return (
     <Container>
-            <ScheduleComponent locale='pt'  >
+            <header>Reuniões</header>
+            <ScheduleComponent locale='pt' height='650px'  >
               <ViewsDirective>
                 <ViewDirective 
                   option='Day' 
