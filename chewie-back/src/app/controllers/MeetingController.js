@@ -10,14 +10,15 @@ class MeetingController {
     const schema = Yup.object().shape({
         name: Yup.string().required(),
         meetingRoom_id: Yup.number().required(),
-        date: Yup.date().required(),
+        start: Yup.date().required(),
+        end: Yup.date().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation Fails.' });
     }
 
-    const { name, meetingRoom_id, date} = req.body;
+    const { name, meetingRoom_id, start, end} = req.body;
 
     const roomExists = await MeetingRoom.findOne({ 
       where: { id: meetingRoom_id},
@@ -33,7 +34,8 @@ class MeetingController {
         name,
         user_id: req.userId,
         meetingRoom_id,
-        date,
+        start,
+        end,
     });
 
     return res.json(meeting);

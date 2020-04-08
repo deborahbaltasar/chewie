@@ -3,7 +3,9 @@ import Sequelize, { Model } from 'sequelize';
 class Meeting extends Model {
     static init(sequelize) {
         super.init({
-            date: Sequelize.DATE,
+            name: Sequelize.STRING,
+            start: Sequelize.DATE,
+            end: Sequelize.DATE,
             canceled_at: Sequelize.DATE,
 
         },

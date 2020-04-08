@@ -4,7 +4,7 @@ class MeetingRoom extends Model {
     static init(sequelize) {
         super.init({
             name: Sequelize.STRING,
-            description: Sequelize.STRING,
+            room: Sequelize.STRING,
         },
         {
             sequelize,

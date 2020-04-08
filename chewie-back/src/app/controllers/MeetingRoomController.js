@@ -11,12 +11,12 @@ class MeetingRoomController {
             return res.status(400).json({ error: 'Meeting room already exists.' });
         }
 
-        const {id, name, description } = await MeetingRoom.create(req.body);
+        const {id, name, room } = await MeetingRoom.create(req.body);
 
         return res.json({
             id,
             name,
-            description,
+            room,
             
         });
     }
