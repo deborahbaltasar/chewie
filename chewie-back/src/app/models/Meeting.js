@@ -18,8 +18,8 @@ class Meeting extends Model {
     }
 
     static associate(models) {
-        this.belongsTo(models.User, {foreignKey: 'user_id', as: 'user' });
-        this.belongsTo(models.MeetingRoom, {foreignKey: 'meetingRoom_id', as: 'meetingRoom' });
+        this.belongsTo(models.User, {foreignKey: 'user_id' });
+        this.belongsTo(models.MeetingRoom, {foreignKey: 'meeting_room_id'});
     }
 
 }

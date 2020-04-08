@@ -9,7 +9,7 @@ class MeetingController {
   async store(req, res) {
     const schema = Yup.object().shape({
         name: Yup.string().required(),
-        meetingRoom_id: Yup.number().required(),
+        meeting_room_id: Yup.number().required(),
         start: Yup.date().required(),
         end: Yup.date().required(),
     });
@@ -18,12 +18,13 @@ class MeetingController {
       return res.status(400).json({ error: 'Validation Fails.' });
     }
 
-    const { name, meetingRoom_id, start, end} = req.body;
-
+    const { name, meeting_room_id, start, end} = req.body;
+    
     const roomExists = await MeetingRoom.findOne({ 
-      where: { id: meetingRoom_id},
+      where: { id: meeting_room_id},
     });
 
+    
     if (!roomExists) {
       return res
       .status(401)
@@ -33,7 +34,7 @@ class MeetingController {
     const meeting = await Meeting.create({
         name,
         user_id: req.userId,
-        meetingRoom_id,
+        meeting_room_id,
         start,
         end,
     });
