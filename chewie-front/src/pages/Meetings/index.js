@@ -17,7 +17,7 @@ export default function Meetings({children}) {
   return (
     <Container>
             <header>Reuniões</header>
-            <ScheduleComponent locale='pt' height='650px'  >
+            <ScheduleComponent height='800px' marginRight='10px'>
               <ViewsDirective>
                 <ViewDirective 
                   option='Day' 
