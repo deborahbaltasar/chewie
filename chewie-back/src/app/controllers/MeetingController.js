@@ -1,10 +1,33 @@
 import * as Yup from 'yup';
 
 import MeetingRoom from '../models/MeetingRoom';
+import User from '../models/User';
 import Meeting from '../models/Meeting';
 
 
 class MeetingController {
+  async index(req, res) {
+    const { page = 1 } = req.query;
+
+    const allMeetings = await Meeting.findAll({
+      where: { user_id: req.userId, canceled_at: null},
+      order: ['start'],
+      limit: 20,
+      offset: (page - 1) * 20,
+      attributes: [ 'name', 'start', 'end'],
+      include: [
+        {
+          model: User,
+          attributes: [ 'name'],
+        },
+        {
+          model: MeetingRoom,
+          attributes: ['name', 'room'], 
+        },   
+      ],
+    });
+    return res.json(allMeetings);
+  }
 
   async store(req, res) {
     const schema = Yup.object().shape({

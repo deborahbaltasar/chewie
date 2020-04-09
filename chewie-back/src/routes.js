@@ -21,7 +21,9 @@ routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 
-routes.post('/meetings', MeetingController.store)
+routes.post('/meetings', MeetingController.store);
+
+routes.get('/meetings', MeetingController.index)
 
 routes.post('/files', upload.single('file'), FileController.store);
 
