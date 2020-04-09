@@ -4,10 +4,12 @@ import User from '../app/models/User';
 import File from '../app/models/File';
 import MeetingRoom from '../app/models/MeetingRoom';
 import Meeting from '../app/models/Meeting';
+import Project from '../app/models/Project';
 
 import databaseConfig from '../config/database';
 
-const models = [User, File, MeetingRoom, Meeting];
+
+const models = [User, File, MeetingRoom, Meeting, Project];
 
 class Database {
     constructor() {

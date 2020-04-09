@@ -53,13 +53,14 @@ margin: 50px auto;
 
     textarea {
         max-width: 350px;
+        min-width:350px;
         background: #fff;
         border: 0;
         border-radius: 4px;
         font-size: 16px;
         width: 350px;
-        height: 44px;
-        color: #111;
+        height: 84px;
+        color: #333;
         padding: 0 15px;
         margin: 0 0 10px;
     }
