@@ -1,38 +1,53 @@
-import React from 'react';
-import { Container } from './styles';
 
-export default function MeetingRooms({children}) {
-  return (
-    <Container>
-      <header>Sala de Reuniões</header>
-      <ul>
-        <li>
-          <strong>Iot lab</strong>       
-          <p>Descrição: </p>
-          <p>2 tv's</p>
-          <p>20 cadeiras</p>
-          <p>1 mesa</p>
 
-        </li>
+import React, {useState, useEffect} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 
-        <li>
-          <strong>Iot lab</strong>
-          <p>Descrição: </p>
-          <p className="seconday">1 tv</p>
-          <p className="seconday">15 cadeiras</p>
-          <p className="seconday">2 mesas</p>
-        </li>
-        <li>
-          <strong>Iot lab</strong>
-          <p>Descrição: </p>
-          <p className="seconday">2 tv's</p>
-          <p className="seconday">30 cadeiras</p>
-          <p className="seconday">2 mesa</p>
-        </li>
+import './styles.css';
 
-      </ul>
-    </Container>
+export default function MeetingRoom() {
+    
+    return(
+        <div className="profile-container">
+ 
+            <h1>Sala de reuniões</h1>
+            <Link className="button" to="/newMeetingRoom">Criar nova sala</Link>      
 
-  );
+            <ul>
+              
+              <li>
+                <strong>IOT LAB - M09</strong>
+                <strong>Descrição:</strong>
+                <p>1 tv</p>
+                <p>1 mesa</p>
+                <p>15 cadeiras</p>
+  
+              </li>
+    
+              <li>
+                <strong>LAB - M13</strong>
+                <strong>Descrição:</strong>
+                <p>2 tv's</p>
+                <p>2 mesas</p>
+                <p>30 cadeiras</p>
+              </li>
+
+              <li>
+                <strong> LAB - M02</strong>
+                <strong>Descrição:</strong>
+                <p>1 tv</p>
+                <p>1 mesa</p>
+                <p>15 cadeiras</p>
+              </li>
+              <li>
+                <strong>LAB - M07</strong>
+                <strong>Descrição:</strong>
+                <p>1 tv</p>
+                <p>1 mesa</p>
+                <p>15 cadeiras</p>
+              </li>
+            </ul>
+        </div>
+    );
 }
 
