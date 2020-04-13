@@ -2,7 +2,18 @@
 import MeetingRoom from '../models/MeetingRoom';
 
 class MeetingRoomController {
+    async index(req, res) {
+        const { page = 1 } = req.query;
     
+        const rooms = await MeetingRoom.findAll({
+          limit: 20,
+          offset: (page - 1) * 20,
+          attributes: [ 'name', 'room'],
+
+        });
+        return res.json(rooms);
+      }
+      
     async store(req, res) {
         console.log('Data', req.body.name)
         const roomExists = await MeetingRoom.findOne({ where: {name: req.body.name} });

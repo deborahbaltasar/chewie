@@ -24,11 +24,13 @@ routes.put('/users', UserController.update);
 
 routes.post('/meetings', MeetingController.store);
 
-routes.get('/meetings', MeetingController.index)
+routes.get('/meetings', MeetingController.index);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
 routes.post('/meetingRoom', MeetingRoomController.store);
+
+routes.get('/meetingRoom', MeetingRoomController.index);
 
 routes.post('/roomItens', RoomItemController.store);
 
