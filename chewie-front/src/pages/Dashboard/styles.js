@@ -1,34 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  // max-width: 600px;
-  // margin: 50px auto;
+   max-width: 600px;
+   paddidng: 0 30px;
 
-  // display: flex;
-  // flex-direction: column;
+   h1 {
+     color: #fff;
+     margin-top:80px;
+     margin-left: 50px;
+   }
 
-  // header {
-  //   display: flex;
-  //   align-self: center;
-  //   align-items: center;
 
-  //   button {
-  //     border:0;
-  //     background: none;
-  //   }
-
-  //   strong {
-  //     color: #fff;
-  //     font-size: 24px;
-  //     margin: 0 15px;
-  //   }
-  // }
-
-  // ul {
-  //   display: grid;
-  //   grid-template-columns: repeat(2, 1fr);
-  //   grid-gap: 15px;
-  //   margin-top: 30px;
-  // }
 `;
 

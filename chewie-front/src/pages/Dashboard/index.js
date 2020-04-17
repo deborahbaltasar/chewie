@@ -5,7 +5,7 @@ import { Container } from './styles';
 export default function DashBoard({children}) {
   return (
     <Container>
-      {children}
+      <h1>Dashboard</h1>
     </Container>
   );
 }

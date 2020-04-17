@@ -8,7 +8,7 @@ import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import MeetingRooms from '../pages/MeetingRooms';
 import Meetings from '../pages/Meetings';
-import NewMeetingRoom from '../pages/NewMeetingRoom';
+
 
 
 export default function Routes() {
@@ -18,7 +18,6 @@ export default function Routes() {
       <Route path="/dashboard"  component={Dashboard} isPrivate />
       <Route path="/profile"  component={Profile} isPrivate />
       <Route path="/meetingRooms"  component={MeetingRooms} isPrivate />
-      <Route path="/newMeetingRoom"  component={NewMeetingRoom} isPrivate />
       <Route path="/meetings"  component={Meetings} isPrivate />
       
 
