@@ -8,7 +8,7 @@ import Meeting from '../models/Meeting';
 class MeetingController {
   async index(req, res) {
     const { page = 1 } = req.query;
-
+    console.log("REQ", req.userId)
     const allMeetings = await Meeting.findAll({
       where: { user_id: req.userId, canceled_at: null},
       order: ['start'],

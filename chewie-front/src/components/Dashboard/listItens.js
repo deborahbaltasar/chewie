@@ -23,10 +23,10 @@ import Auth from '../../utils/auth';
 import './styles.css';
 
 export const profileList = (
-  <div classname="container">
     <ListItem button component={Link} to="/profile">
       <ListItemIcon>
       <img
+              alt=""
               src={
                 'https://api.adorable.io/avatars/40/abott@adorable.png'
               }
@@ -35,22 +35,8 @@ export const profileList = (
       </ListItemIcon>
       <ListItemText primary="Administrador" />
     </ListItem>
-
-  </div>
 );
 
-// export const mainListItems = (
-  
-//   <div>
-
-//     <ListItem button component={Link} to="/profile">
-//       <ListItemIcon>
-//         <PersonIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Perfil" />
-//     </ListItem> 
-//   </div>
-// );
 
 export const list = (
   

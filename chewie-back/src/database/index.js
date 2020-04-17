@@ -6,6 +6,7 @@ import MeetingRoom from '../app/models/MeetingRoom';
 import Meeting from '../app/models/Meeting';
 import Project from '../app/models/Project';
 import RoomItem from '../app/models/RoomItem';
+import Partner from '../app/models/Partner';
 
 
 
@@ -19,6 +20,7 @@ const models = [
     Meeting, 
     Project,
     RoomItem,
+    Partner,
 ];
 
 class Database {

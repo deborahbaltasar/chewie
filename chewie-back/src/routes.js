@@ -11,6 +11,7 @@ import MeetingRoomController from './app/controllers/MeetingRoomController';
 import MeetingController from './app/controllers/MeetingController';
 import ProjectController from './app/controllers/ProjectController';
 import RoomItemController from './app/controllers/RoomItemController';
+import PartnerController from './app/controllers/PartnerController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -21,6 +22,8 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
+
+routes.get('/users', UserController.index);
 
 routes.post('/meetings', MeetingController.store);
 
@@ -34,6 +37,12 @@ routes.get('/meetingRoom', MeetingRoomController.index);
 
 routes.post('/roomItens', RoomItemController.store);
 
+routes.get('/roomItens/:id', RoomItemController.store);
+
 routes.post('/projects', ProjectController.store);
+
+routes.post('/partners', PartnerController.store);
+
+routes.put('/partners', PartnerController.update);
 
 export default routes;

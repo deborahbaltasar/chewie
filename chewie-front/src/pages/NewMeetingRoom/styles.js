@@ -17,6 +17,7 @@ margin: 50px auto;
     h1 {
         color: #fff;
         margin-bottom: 50px;
+        margin-right: 30px;
     }
 
     input {
@@ -34,9 +35,30 @@ margin: 50px auto;
         color: #333;
       }
     }
+
+.input-group {
+      display: flex;  
+  }
+
+  .input-group button{
+    background: none;
+    padding: 0;
+    size: 30px;
+    
+    &:hover {
+      background: none;
+    }
+}
+  
+ .input-group input + input {
+       margin-left: 8px; 
+
+
+  }
     
     button {
       margin: 5px 0 0;
+      width: 350px;
       height: 44px;
       background: #e02041;
       font-weight: bold;
@@ -83,4 +105,5 @@ margin: 50px auto;
         opacity: 0.8;
       }
     } 
+
 `;

@@ -7,6 +7,19 @@ import MeetingRoom from '../models/MeetingRoom';
 
 
 class RoomItemController {
+  async index(req, res) {
+    const items = await RoomItem.findByPk(req.params.id, {
+      attributes: ['name', 'quantity'],
+      include: [
+        {
+          model: MeetingRoom,
+          attributes: ['name', 'room'],
+        },
+      ],
+    });
+    return res.json(items);
+  }
+  
   async store(req, res) {
     const schema = Yup.object().shape({
         name: Yup.string().required(),
