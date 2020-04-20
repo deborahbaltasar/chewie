@@ -10,7 +10,7 @@ class MeetingController {
     const { page = 1 } = req.query;
     console.log("REQ", req.userId)
     const allMeetings = await Meeting.findAll({
-      where: { user_id: req.userId, canceled_at: null},
+      where: { canceled_at: null},
       order: ['start'],
       limit: 20,
       offset: (page - 1) * 20,
