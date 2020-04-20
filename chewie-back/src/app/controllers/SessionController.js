@@ -5,6 +5,14 @@ import User from '../models/User';
 import authConfig from '../../config/auth';
 
 class SessionController {
+    async index(req, res) {
+        const user = await User.findOne({ 
+            attributes: [ 'name', 'email'], 
+        });
+        
+        return res.json(user);
+      }
+
     async store(req, res) {
         const schema = Yup.object().shape({
             email: Yup.string().email().required(),

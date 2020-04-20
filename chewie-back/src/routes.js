@@ -24,7 +24,7 @@ routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 
-routes.get('/users', UserController.index);
+routes.get('/sessions', SessionController.index);
 
 routes.post('/meetings', MeetingController.store);
 
