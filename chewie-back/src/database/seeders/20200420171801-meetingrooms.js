@@ -6,13 +6,13 @@ module.exports = {
     await queryInterface.bulkInsert('meeting_rooms', 
       [
         {
-          id: 1, name: 'IoT', room: 'M09', created_at: new Date(), updated_at: new Date()
+          id: 1, name: 'IoT', room: 'M09', description: "IOT LAB ....", created_at: new Date(), updated_at: new Date()
         },
         {
-          id: 2, name: 'Inovacao', room: 'M13', created_at: new Date(), updated_at: new Date()
+          id: 2, name: 'Inovacao', room: 'M13', description: "Only for external costumers or core meetings", created_at: new Date(), updated_at: new Date()
         },
         {
-          id: 3, name: 'BlueLab', room: 'M04', created_at: new Date(), updated_at: new Date()
+          id: 3, name: 'BlueLab', room: 'M04', description: "....", created_at: new Date(), updated_at: new Date()
         }
       ], {});
 
@@ -45,7 +45,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op
     await queryInterface.bulkDelete('room_items', {id: {[Op.in]: [1, 2, 3, 4, 5, 6, 7, 8, 9]}}, {});
-    await queryInterface.bulkDelete('items', {id: {[Op.in]: [1, 2, 3]}}, {});
+    await queryInterface.bulkDelete('items', {id: {[Op.in]: [1, 2, 3, 4]}}, {});
     return queryInterface.bulkDelete('meeting_rooms', {id: {[Op.in]: [1, 2, 3]}}, {});
   }
 };
