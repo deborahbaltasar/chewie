@@ -12,6 +12,10 @@ class MeetingRoom extends Model {
 
         return this;
    }
+
+   static associate(models) {
+    this.hasMany(models.RoomItem, {foreignKey: 'fk_meeting_room', sourceKey: 'id'});
+   }
 }
     
 export default MeetingRoom;

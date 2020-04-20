@@ -3,8 +3,7 @@ import Sequelize, { Model } from 'sequelize';
 class RoomItem extends Model {
     static init(sequelize) {
         super.init({
-            name: Sequelize.STRING,
-            quantity: Sequelize.STRING,
+            quantity: Sequelize.FLOAT,
         },
         {
             sequelize,
@@ -15,7 +14,8 @@ class RoomItem extends Model {
     }
 
     static associate(models) {
-        this.belongsTo(models.MeetingRoom, {foreignKey: 'meeting_room_id'});
+        this.belongsTo(models.MeetingRoom, {foreignKey: 'fk_meeting_room'});
+        this.belongsTo(models.Item, {foreignKey: 'fk_item', as: 'info'});
     }
 
 }

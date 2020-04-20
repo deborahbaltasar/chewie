@@ -22,8 +22,28 @@ class MeetingRoom extends Component {
 
     this.state = {
       show: false,
+      rooms: [],
     }
   }
+
+  componentDidMount() {
+    this.fetchData()
+  }
+
+  fetchData = async (data) => {
+    await API.get('/meetingRoom', {})
+     .then(res => {
+       console.log("DADOS", res)
+       this.setState({
+          rooms: res.data
+       });
+       
+     })
+     .catch(error => {
+       console.log('Error ', error);
+       return { code: 'error', message: 'Cannot get meetings!' };
+   });
+   }
 
   handleClose() {
     this.setState({ show: false});
@@ -32,7 +52,9 @@ class MeetingRoom extends Component {
   handleShow() {
     this.setState({ show: true});
   }
-   render() {
+  
+  render() {
+    const { rooms } = this.state;
     return(
         <div className="profile-container">
             <div className="header">
@@ -64,119 +86,50 @@ class MeetingRoom extends Component {
                 </div>
             </div>    
             <ul>
-              <li>   
-              <Accordion defaultActiveKey="1">
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey="0">
-                <div className="room">
-                  <strong>IOT LAB - M09</strong>
-                  <div>
-                    <button className="button-room" type="button">
-                        <DeleteIcon size={18} />
-                    </button>
-                    <button className="button-room" type="button">
-                        <MoreVertIcon size={18} />  
-                         
-                    </button>
-      
-                    </div>
-                </div>
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body>
-                    <div className="body">
-                      <div>
-                        <h6>Descrição: </h6>
-                        <p>1 tv</p>
-                        <p>20 cadeiras</p>
-                        <p>1 mesa</p>
+            {rooms.map( room => {
+              return(
+                <li key={`room${room.id}`}>   
+                <Accordion defaultActiveKey={room.id}>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="0">
+                  <div className="room">
+                    <strong>{`${room.name} - ${room.room}` }</strong>
+                    <div>
+                      <button className="button-room" type="button">
+                          <DeleteIcon size={18} />
+                      </button>
+                      <button className="button-room" type="button">
+                          <MoreVertIcon size={18} />  
+                      </button>
                       </div>
-                      <div>
-                        <h6>Responsável: </h6>
-                        <p>Fernando</p>
-                      </div>
-                    </div>
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              </Accordion>
-              </li>  
-              
-              <li>  
-              <Accordion defaultActiveKey="1">
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey="0">
-                <div className="room">
-                  <strong>LAB - M13</strong>
-                  <div>
-                    <button className="button-room" type="button">
-                        <DeleteIcon size={18} />
-                    </button>
-                    <button className="button-room" type="button">
-                        <MoreVertIcon size={18} />   
-                    </button>
                   </div>
-                </div>
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body>
-                  <div className="body">
-                      <div>
-                        <h6>Descrição: </h6>
-                        <p>2 tv's</p>
-                        <p>20 cadeiras</p>
-                        <p>1 mesa</p>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      <div className="body">
+                        <div>
+                          <h6>Descrição: </h6>
+                          <p>{room.description}</p>
+                          <br/>
+                          {room.RoomItems.map( item => {
+                            return (<p key={`roomItem${item.info.name}`}>
+                              {`\u2713${item.info.name}: ${item.quantity}`}
+                            </p>)
+                          })}
+                        </div>
+                        <div>
+                          <h6>Responsável: </h6>
+                          <p>{room.admin}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h6>Responsável: </h6>
-                        <p>Fernando</p>
-                      </div>
-                    </div>
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              </Accordion>
-              </li>
-              <li>  
-              <Accordion defaultActiveKey="1">
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey="0">
-                <div className="room">
-                  <strong>LAB - M07</strong>
-                  <div>
-                    <button className="button-room" type="button">
-                        <DeleteIcon size={18} />
-                    </button>
-                    <button className="button-room" type="button">
-                        <MoreVertIcon size={18} />   
-                    </button>
-                  </div>
-                </div>
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body>
-                  <div className="body">
-                      <div>
-                        <h6>Descrição: </h6>
-                        <p>2 tv's</p>
-                        <p>20 cadeiras</p>
-                        <p>1 mesa</p>
-                      </div>
-                      <div>
-                        <h6>Responsável: </h6>
-                        <p>Fernando</p>
-                      </div>
-                    </div>
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              </Accordion>
-              </li>              
-  
-            </ul>
-        
-
-
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                </Accordion>
+                </li>
+              )
+            })}
+               </ul>
         </div>
     );
    }
