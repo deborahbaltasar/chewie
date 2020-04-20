@@ -12,6 +12,7 @@ import MeetingController from './app/controllers/MeetingController';
 import ProjectController from './app/controllers/ProjectController';
 import RoomItemController from './app/controllers/RoomItemController';
 import PartnerController from './app/controllers/PartnerController';
+import PartnerProjectController from './app/controllers/PartnerProjectController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -44,5 +45,9 @@ routes.post('/projects', ProjectController.store);
 routes.post('/partners', PartnerController.store);
 
 routes.put('/partners', PartnerController.update);
+
+routes.post('/partners-projects', PartnerProjectController.store);
+
+routes.get('/partners-projects', PartnerProjectController.index);
 
 export default routes;
