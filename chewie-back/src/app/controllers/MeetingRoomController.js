@@ -11,7 +11,7 @@ class MeetingRoomController {
         const rooms = await MeetingRoom.findAll({
           limit: 20,
           offset: (page - 1) * 20,
-          attributes: [ 'id', 'name', 'room', 'description'],
+          attributes: [ 'id', 'name', 'room', 'description', 'admin'],
           include: [{
               model: RoomItem,
               attributes: [ 'quantity'],

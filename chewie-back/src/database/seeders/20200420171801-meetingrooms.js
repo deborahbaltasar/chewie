@@ -6,13 +6,13 @@ module.exports = {
     await queryInterface.bulkInsert('meeting_rooms', 
       [
         {
-          id: 1, name: 'IoT', room: 'M09', description: "IOT LAB ....", created_at: new Date(), updated_at: new Date()
+          id: 1, name: 'IoT', room: 'M09', description: "IOT LAB ....", admin: 'Fernando Sobreira', created_at: new Date(), updated_at: new Date()
         },
         {
-          id: 2, name: 'Inovacao', room: 'M13', description: "Only for external costumers or core meetings", created_at: new Date(), updated_at: new Date()
+          id: 2, name: 'Inovacao', room: 'M13', description: "Only for external costumers or core meetings", admin: 'Fernando Ferreira', created_at: new Date(), updated_at: new Date()
         },
         {
-          id: 3, name: 'BlueLab', room: 'M04', description: "....", created_at: new Date(), updated_at: new Date()
+          id: 3, name: 'BlueLab', room: 'M04', description: "....", admin: 'Matheus Mafra', created_at: new Date(), updated_at: new Date()
         }
       ], {});
 
