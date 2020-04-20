@@ -9,21 +9,25 @@ module.exports = {
           autoIncrement: true,
           primaryKey: true,
         },
-        name: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        quantity: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        meeting_room_id: {
+        fk_meeting_room: {
           type: Sequelize.INTEGER,
           references: { model: 'meeting_rooms', key: 'id' },
           onUpdate: 'CASCADE',
-          onDelete: 'SET NULL',
-          allowNull: true,
+          onDelete: 'CASCADE',
+          allowNull: false,
         },
+        fk_item: {
+          type: Sequelize.INTEGER,
+          references: { model: 'items', key: 'id' },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE',
+          allowNull: false,
+        },
+        quantity: {
+          type: Sequelize.FLOAT,
+          allowNull: false,
+        },
+        
         created_at: {
           type: Sequelize.DATE,
           allowNull: false, 
