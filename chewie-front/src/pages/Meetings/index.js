@@ -25,20 +25,20 @@ class Meetings extends Component {
     super(props);
     this.state = {
       meetings: [],
+      rooms: [],
     }
-    this.ownerData = [
-      { OwnerText: 'Nancy', Id: 1, OwnerColor: '#ffaa00' },
-      { OwnerText: 'Iot lab', Id: 2, OwnerColor: '#f8a398' },
-      { OwnerText: 'Michael', Id: 3, OwnerColor: '#7499e1' }
-    ];
+    //TODO: add color to DB
+    this.COLORS = ['#ffaa00', '#f8a398', '#7499e1'];
   }
 
   componentDidMount() {
+    console.log("MOUNT")
     this.fetchData({});
+    this.fetchRoom();
   }
 
   fetchData = async (data) => {
-    await API.get('/meetings', {})
+    return API.get('/meetings', data)
       .then(res => {
         console.log("DADOS", res)
         this.setState({
@@ -53,7 +53,6 @@ class Meetings extends Component {
             }
           })
         });
-
       })
       .catch(error => {
         console.log('Error ', error);
@@ -61,39 +60,61 @@ class Meetings extends Component {
       });
   }
 
-  // resourceDataSource = () => {[
-  //   {Name: 'M09', Id: 1, Color: '#ea7a57'},
+  fetchRoom = async () => {
+    await API.get('/meetingRoom', {})
+     .then(res => {
+       this.setState({
+          rooms: res.data.map(room => {
+            return {
+              Id: room.id,
+              Name: `${room.name} - ${room.room}`,
+              Color: this.COLORS[room.id-1],
+            }
+          })
+       });
+       
+     })
+     .catch(error => {
+       console.log('Error ', error);
+       return { code: 'error', message: 'Cannot get meetings!' };
+   });
+  }
 
-  // ]};
-
-
+  onActionComplete(args) {
+    console.log({args})
+    /*args.data 
+      Id: 1
+      Subject: 
+      StartTime: 
+      EndTime: 
+      Location: 1
+      ResourceID: 1
+      IsAllDay: false
+      StartTimezone: null
+      EndTimezone: null
+      Description: undefined
+      RecurrenceRule: null
+    */
+    switch (args.requestType) {
+      case "eventChanged":
+        break
+        case "eventCreated":
+        break
+        case "eventRemoved":
+        break
+    }
+    
+}
 
   render() {
-    const { meetings, resourceData } = this.state
-    console.log(this.ownerData, meetings)
-
-    const data = [];
+    const {  meetings, rooms } = this.state
     return (
       <div className="schedule">
         <ScheduleComponent
-          eventSettings={{ dataSource: data }}
-          //group={{ resources: resourceData }} 
+          ref={schedule => this.scheduleObj = schedule}
+          eventSettings={{ dataSource: meetings }}
+          actionComplete={this.onActionComplete.bind(this)}
           height='800px' >
-          {/* <ResourcesDirective>
-          <ResourceDirective 
-          field='ResourceID'
-          title='Resource Name'
-          name='Resources'
-          textField='Name'
-          idFielD="Id"
-          colorField='Color'
-          >
-
-          </ResourceDirective>
-        </ResourcesDirective> */}
-
-
-
           <ViewsDirective>
             <ViewDirective
               option='Agenda'
@@ -118,14 +139,14 @@ class Meetings extends Component {
 
           <ResourcesDirective>
             <ResourceDirective
-              field='OwnerId'
-              title='Owner'
-              name='Owners'
-              allowMultiple={true}
-              dataSource={this.ownerData}
-              textField='OwnerText'
+              field='Location'
+              title='Sala'
+              name='Location'
+              allowMultiple={false}
+              dataSource={rooms}
+              textField='Name'
               idField='Id'
-              colorField='OwnerColor'>
+              colorField='Color'>
             </ResourceDirective>
           </ResourcesDirective>
 
