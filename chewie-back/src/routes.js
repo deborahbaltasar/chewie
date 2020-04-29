@@ -13,6 +13,7 @@ import ProjectController from './app/controllers/ProjectController';
 import RoomItemController from './app/controllers/RoomItemController';
 import PartnerController from './app/controllers/PartnerController';
 import PartnerProjectController from './app/controllers/PartnerProjectController';
+import ItemController from './app/controllers/ItemController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -35,6 +36,8 @@ routes.post('/files', upload.single('file'), FileController.store);
 routes.post('/meetingRoom', MeetingRoomController.store);
 
 routes.get('/meetingRoom', MeetingRoomController.index);
+
+routes.post('/item', ItemController.store);
 
 routes.post('/roomItens', RoomItemController.store);
 

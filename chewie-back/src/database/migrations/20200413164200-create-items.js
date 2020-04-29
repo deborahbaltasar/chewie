@@ -26,6 +26,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-      return queryInterface.dropTable('room_items');
+      return queryInterface.dropTable('items');
   },
 };
