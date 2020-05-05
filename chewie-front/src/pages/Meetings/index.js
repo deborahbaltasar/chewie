@@ -72,7 +72,7 @@ class Meetings extends Component {
               Subject: meeting.name,
               StartTime: meeting.start,
               EndTime: meeting.end,
-              Location: meeting.MeetingRoom.room,
+              Location: meeting.MeetingRoom.id,
               IsAllDay: meeting.allDay
             }
           })
