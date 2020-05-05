@@ -38,6 +38,30 @@ class Meetings extends Component {
   }
 
   fetchData = async (data) => {
+    /*let debugMeetings = [
+      {
+        id: 1,
+        name: "Reunião 1",
+        allDay: false,
+        start: new Date(Date.UTC(2020, 4, 8, 14, 30, 0, 0)),
+        end: new Date(Date.UTC(2020, 4, 8, 15, 0, 0, 0)),
+        MeetingRoom: {
+          room: 1,
+          id: 1
+        }
+      }, 
+      {
+        id: 2,
+        name: "Reunião 1",
+        allDay: false,
+        start: new Date(Date.UTC(2020, 4, 9, 14, 30, 0, 0)),
+        end: new Date(Date.UTC(2020, 4, 9, 15, 0, 0, 0)),
+        MeetingRoom: {
+          room: 1,
+          id: 1
+        }
+      }
+    ]*/
     return API.get('/meetings', data)
       .then(res => {
         console.log("DADOS", res)
@@ -49,7 +73,7 @@ class Meetings extends Component {
               StartTime: meeting.start,
               EndTime: meeting.end,
               Location: meeting.MeetingRoom.room,
-              ResourceID: meeting.MeetingRoom.id
+              IsAllDay: meeting.allDay
             }
           })
         });
@@ -96,9 +120,23 @@ class Meetings extends Component {
       RecurrenceRule: null
     */
     switch (args.requestType) {
-      case "eventChanged":
+        case "eventChanged":
         break
         case "eventCreated":
+          let data = args.data[0]
+          let req = {
+            name: data.Subject,
+            meeting_room_id: data.Location,
+            start: data.StartTime,
+            end: data.EndTime
+          }
+          API.post('/meetings', req)
+            .then(res => {
+              console.log(res)
+            })
+            .catch(error => {
+              console.log("error", error)
+            })
         break
         case "eventRemoved":
         break
