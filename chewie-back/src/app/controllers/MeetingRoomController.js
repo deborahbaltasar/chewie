@@ -1,5 +1,6 @@
 
 import MeetingRoom from '../models/MeetingRoom';
+import User from '../models/User';
 
 import RoomItem from '../models/RoomItem';
 import Item from '../models/Item';
@@ -42,6 +43,19 @@ class MeetingRoomController {
             
         });
     }
-}
+
+    async delete(req, res) {
+      const checkUserAdmin = await User.findOne({
+        where: {admin: true},
+      });
+
+      if(!checkUserAdmin) {
+        return res.status(401).json({error: "Only admins can delete a meeting room"})
+      }
+
+      return res.json();
+
+    }
+  }
 
 export default new MeetingRoomController();

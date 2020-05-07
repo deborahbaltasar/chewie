@@ -31,11 +31,15 @@ routes.post('/meetings', MeetingController.store);
 
 routes.get('/meetings', MeetingController.index);
 
+routes.delete('/meetings/:id', MeetingController.delete);
+
 routes.post('/files', upload.single('file'), FileController.store);
 
 routes.post('/meetingRoom', MeetingRoomController.store);
 
 routes.get('/meetingRoom', MeetingRoomController.index);
+
+routes.delete('/meetingRoom/:id', MeetingRoomController.delete);
 
 routes.post('/item', ItemController.store);
 

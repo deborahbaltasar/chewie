@@ -64,5 +64,9 @@ class MeetingController {
 
     return res.json(meeting);
   }
+
+  async delete(req, res) {
+    return res.json();
+  }
 }
 export default new MeetingController();
