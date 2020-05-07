@@ -22,7 +22,7 @@ class MeetingController {
         },
         {
           model: MeetingRoom,
-          attributes: ['name', 'room'], 
+          attributes: ['name', 'room', 'id'], 
         },   
       ],
     });
