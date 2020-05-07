@@ -7,6 +7,7 @@ class MeetingRoom extends Model {
             room: Sequelize.STRING,
             description: Sequelize.STRING,
             admin: Sequelize.STRING,
+            deleted_at: Sequelize.DATE,
         },
         {
             sequelize,
