@@ -9,6 +9,11 @@ import API from '../../services/api';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import PersonIcon from '@material-ui/icons/Person';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import DescriptionIcon from '@material-ui/icons/Description';
+
 import {Accordion, Card, Button, Modal} from 'react-bootstrap'
 import './styles.css';
 
@@ -71,11 +76,20 @@ class MeetingRoom extends Component {
                   <Modal.Title>Cadastrar nova sala</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                  <MeetingRoomIcon />
                   <input placeholder="Nome da sala" />
                   <br />
+                  <LocationOnIcon />
                   <input placeholder="Número da sala" />
                   <br />
+                  <PersonIcon />
                   <input placeholder="Responsável pela sala" />
+                  <br />
+                  
+                  <DescriptionIcon />
+                  <input placeholder="Descrição" />
+                  {/* <textarea placeholder="Descrição"></textarea> */}
+                
                 </Modal.Body>
                 <Modal.Footer>
                   <Button onClick={this.handleClose}>
@@ -99,7 +113,10 @@ class MeetingRoom extends Component {
                           <DeleteIcon size={18} />
                       </button>
                       <button className="button-room" type="button">
-                          <MoreVertIcon size={18} />  
+                          
+                          <MoreVertIcon size={18} 
+
+                        />  
                       </button>
                       </div>
                   </div>
