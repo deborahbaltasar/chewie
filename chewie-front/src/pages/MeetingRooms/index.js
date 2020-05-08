@@ -14,7 +14,9 @@ import PersonIcon from '@material-ui/icons/Person';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import DescriptionIcon from '@material-ui/icons/Description';
 
-import {Accordion, Card, Button, Modal} from 'react-bootstrap'
+import { toast } from 'react-toastify';
+
+import {Accordion, Card, Button, Modal, Dropdown, DropdownButton} from 'react-bootstrap'
 import './styles.css';
 
 
@@ -28,27 +30,47 @@ class MeetingRoom extends Component {
     this.state = {
       show: false,
       rooms: [],
+
+
+      
     }
   }
 
   componentDidMount() {
     this.fetchData()
+    
   }
+
+  handleDelete = async id => {
+    await API
+      .delete(`/meetingRoom/${id}`)
+      .then(result => {
+        this.setState({
+          
+        });
+        this.fetchData()
+        toast.success("Sala apagada com sucesso");
+      })
+      .catch(e => {
+        toast.error("Permissão negada");
+        console.log("Error", e);
+      });
+  };
 
   fetchData = async (data) => {
     await API.get('/meetingRoom', {})
      .then(res => {
        console.log("DADOS", res)
        this.setState({
-          rooms: res.data
-       });
-       
+          rooms: res.data,    
+       });         
      })
      .catch(error => {
        console.log('Error ', error);
        return { code: 'error', message: 'Cannot get meetings!' };
    });
    }
+
 
   handleClose() {
     this.setState({ show: false});
@@ -105,22 +127,25 @@ class MeetingRoom extends Component {
                 <li key={`room${room.id}`}>   
                 <Accordion defaultActiveKey={room.id}>
                 <Card>
+                <div className="room">
                   <Accordion.Toggle as={Card.Header} eventKey="0">
-                  <div className="room">
+                  
                     <strong>{`${room.name} - ${room.room}` }</strong>
-                    <div>
-                      <button className="button-room" type="button">
+                  </Accordion.Toggle>
+                  <div>
+                      <button 
+                        onClick={() => this.handleDelete(room.id)}
+                        className="button-room" 
+                        type="button"
+                      >
                           <DeleteIcon size={18} />
+
                       </button>
                       <button className="button-room" type="button">
-                          
-                          <MoreVertIcon size={18} 
-
-                        />  
+                          <MoreVertIcon size={18} /> 
                       </button>
                       </div>
                   </div>
-                  </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       <div className="body">
