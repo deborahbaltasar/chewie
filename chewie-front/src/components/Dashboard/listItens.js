@@ -22,20 +22,25 @@ import Auth from '../../utils/auth';
 
 import './styles.css';
 
-export const profileList = (
-    <ListItem button component={Link} to="/profile">
-      <ListItemIcon>
-      <img
-              alt=""
-              src={
-                'https://api.adorable.io/avatars/40/abott@adorable.png'
-              }
-          
-            />
-      </ListItemIcon>
-      <ListItemText primary="Administrador" />
-    </ListItem>
-);
+ export const ProfileList = () => {
+  const name = localStorage.getItem('userName')
+  return (
+        <ListItem button component={Link} to="/profile">
+        <ListItemIcon>
+          <img
+            alt=""
+            src={
+              'https://api.adorable.io/avatars/40/abott@adorable.png'
+            }
+          />
+        </ListItemIcon>
+      
+        <ListItemText primary={name} />
+    
+      </ListItem>
+  );
+};
+
 
 
 export const list = (

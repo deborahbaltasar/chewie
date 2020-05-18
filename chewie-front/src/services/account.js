@@ -4,11 +4,13 @@ import Auth from '../utils/auth';
 export const login = async (data) => {
     return API.post('/sessions', data)
         .then(response => {
-            console.log("DATA", response, !response.data.token);
+
             if (response.status!==200 || !response.data.token){
                 throw new Error("Invalid result")
             }
             // Store 
+            localStorage.setItem('userName', response.data.user.name)
+            localStorage.setItem('userEmail', response.data.user.email)
             Auth.logIn(response.data.token)
             return { success: true };
         })

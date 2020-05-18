@@ -15,78 +15,77 @@ class Profile extends Component {
     this.state = {
       name: '',
       email: '',
-      profile: [],
-      newName: '',
-      newEmail: '',
       oldPass: '',
       pass: '',
       confirmPass: '',
     }
   }
 
-  componentDidMount() {
-    this.fetchData()
-  }
+  // componentDidMount() {
+  //   this.fetchData()
+  // }
 
-  handleChange = e => {
-    this.setState({
-      newName: e.target.value,
-      newEmail: e.target.value,
-      oldPass: e.target.value,
-      pass: e.target.value,
-      confirmPass: e.target.value,
-    })
-  }
+  // handleChange = e => {
+  //   this.setState({
+  //     newName: e.target.value,
+  //     newEmail: e.target.value,
+  //     oldPass: e.target.value,
+  //     pass: e.target.value,
+  //     confirmPass: e.target.value,
+  //   })
+  // }
 
-  handleSubmit = async (e) => {
-    e.preventDefault();
+  // handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    const updateUser = {
-      name: this.state.newName,
-      email: this.state.newEmail,
-      oldPass: this.state.oldPass,
-      pass: this.state.pass,
-      confirmPass: this.state.confirmPass,
-    }
+  //   const updateUser = {
+  //     name: this.state.newName,
+  //     email: this.state.newEmail,
+  //     oldPass: this.state.oldPass,
+  //     pass: this.state.pass,
+  //     confirmPass: this.state.confirmPass,
+  //   }
 
-    await API.put('/users', { updateUser })
-      .then(res => {
-        console.log("DADOS", res)
-        console.log(res.data)
-      })
-      .catch(error => {
-        console.log('Error ', error);
-        return { code: 'error', message: 'Cannot update!' };
-    });
+  //   await API.put('/users', { updateUser })
+  //     .then(res => {
+  //       console.log("DADOS", res)
+  //       console.log(res.data)
+  //     })
+  //     .catch(error => {
+  //       console.log('Error ', error);
+  //       return { code: 'error', message: 'Cannot update!' };
+  //   });
 
-  }
+  // }
 
-  fetchData = async (data) => {
-    await API.get('/sessions', {})
-      .then(res => {
-        this.setState({
-          name: res.data.name,
-          email: res.data.email,
+  // fetchData = async (data) => {
+  //   await API.get('/sessions', {})
+  //     .then(res => {
+  //       this.setState({
+  //         name: res.data.name,
+  //         email: res.data.email,
 
-        });
+  //       });
 
-      })
-      .catch(error => {
-        console.log('Error ', error);
-        return { code: 'error', message: 'Cannot get user!' };
-      });
-  }
+  //     })
+  //     .catch(error => {
+  //       console.log('Error ', error);
+  //       return { code: 'error', message: 'Cannot get user!' };
+  //     });
+  // }
 
 
   render() {
-    const { name, email } = this.state
+    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
     const { history } = this.props;
+
     return (
       <div className="container">
         <form >
           <AvatarInput name="avatar_id" />
-          <input name="name" placeholder={name} />
-          <input name="name" type="email" placeholder={email} />
+          <input name="name" placeholder={userName} />
+          <input name="name" type="email" placeholder={userEmail} />
 
           <hr />
 

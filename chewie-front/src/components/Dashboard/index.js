@@ -15,7 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { secondaryListItems, 
-  actionListItems, list, profileList} from './listItens';
+  actionListItems, list, ProfileList} from './listItens';
 
 
 
@@ -28,10 +28,12 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     display: 'flex',
     zIndex: 0,
+    
   },
-  // toolbar: {
-  //   paddingRight: 24, // keep right padding when drawer closed
-  // },
+  toolbar: {
+  
+    paddingRight: 24, // keep right padding when drawer closed
+  },
   toolbarIcon: {
     display: 'flex',
     alignItems: 'center',
@@ -40,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
+    
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -47,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   appBarShift: {
+    
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -100,8 +104,8 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
+      <AppBar  position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+        <Toolbar  className={classes.toolbar}>
           <IconButton
             edge="start"
             color="inherit"
@@ -117,6 +121,7 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
       <Drawer
+        
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -128,7 +133,9 @@ export default function Dashboard() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <List>{profileList}</List>
+        <List>
+          <ProfileList />
+        </List>
         <Divider />
         <Divider />
         <List>{list}</List>
