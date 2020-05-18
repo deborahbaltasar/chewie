@@ -30,9 +30,11 @@ class MeetingRoom extends Component {
     this.state = {
       show: false,
       rooms: [],
-
-
-      
+      name: '',
+      room: '',
+      responsable: '',
+      description: '',
+   
     }
   }
 
@@ -71,6 +73,28 @@ class MeetingRoom extends Component {
    });
    }
 
+   handleMeetingRoom = async e => {
+    e.preventDefault();
+
+    const { name, room, description, responsable } = this.state;
+
+    if (!(name || room || description || responsable)) {
+        
+      toast.error("Preencha todos os campos");
+    
+    } else {
+      try {
+        await API.post("/meetingRoom", { name, room, responsable, description });
+        console.log("");
+        toast.success("Sala criada com sucesso");
+      } catch (err) {
+        console.log(err);
+        toast.error("Ocorreu um erro ao registrar sua conta");
+        
+      } 
+    }
+  };
+
 
   handleClose() {
     this.setState({ show: false});
@@ -85,40 +109,43 @@ class MeetingRoom extends Component {
     return(
         <div className="profile-container">
             <div className="header">
-            <h1>Sala de reuniões</h1>
-              <button onClick={this.handleShow} type="button">
-                <AddCircleOutlineIcon />
-              </button>
+            <h1>SALA DE REUNIÕES</h1>
+            <button onClick={this.handleShow} type="button">
+              <AddCircleOutlineIcon />
+            </button>
+            <hr className="title-line" />
               <div className="modal">
-              <Modal 
-                show={this.state.show} 
-                onHide={this.handleClose}
-              >
+              <form onSubmit={this.handleMeetingRoom}>
+                <Modal 
+                  show={this.state.show} 
+                  onHide={this.handleClose}
+                >
                 <Modal.Header closeButton>
                   <Modal.Title>Cadastrar nova sala</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <MeetingRoomIcon />
-                  <input placeholder="Nome da sala" />
-                  <br />
-                  <LocationOnIcon />
-                  <input placeholder="Número da sala" />
-                  <br />
-                  <PersonIcon />
-                  <input placeholder="Responsável pela sala" />
-                  <br />
+                  <MeetingRoomIcon />  
+                  <input placeholder="Nome da sala" onChange={e => this.setState({ name: e.target.value })} />
+                    <br />
+                    <LocationOnIcon />
+                    <input placeholder="Número da sala" onChange={e => this.setState({ room: e.target.value })}/>
+                    <br />
+                    <PersonIcon />
+                    <input placeholder="Responsável pela sala" onChange={e => this.setState({ responsable: e.target.value })} />
+                    <br />
+                    
+                    <DescriptionIcon />
+                    <input placeholder="Descrição" onChange={e => this.setState({ description: e.target.value })}/>
+                    {/* <textarea placeholder="Descrição"></textarea> */}
                   
-                  <DescriptionIcon />
-                  <input placeholder="Descrição" />
-                  {/* <textarea placeholder="Descrição"></textarea> */}
-                
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button onClick={this.handleClose}>
-                    Cadastrar
-                  </Button>
-                </Modal.Footer>
-                </Modal>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <button type="submit" onClick={this.handleClose}>
+                      Cadastrar
+                    </button>
+                  </Modal.Footer>
+                  </Modal>
+                </form>
                 </div>
             </div>    
             <ul>
@@ -153,6 +180,7 @@ class MeetingRoom extends Component {
                           <h6>Descrição: </h6>
                           <p>{room.description}</p>
                           <br/>
+                          <h6>Itens: </h6>
                           {room.RoomItems.map( item => {
                             return (<p key={`roomItem${item.info.name}`}>
                               {`\u2713${item.info.name}: ${item.quantity}`}
