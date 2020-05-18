@@ -31,8 +31,13 @@ class Meetings extends Component {
     this.COLORS = ['#ffaa00', '#f8a398', '#7499e1'];
   }
 
-  componentDidMount() {
-    console.log("MOUNT")
+  // componentDidMount() {
+  //   console.log("MOUNT")
+  //   this.fetchData({});
+  //   this.fetchRoom();
+  // }
+
+  loadInfo(){
     this.fetchData({});
     this.fetchRoom();
   }
@@ -152,6 +157,7 @@ class Meetings extends Component {
           ref={schedule => this.scheduleObj = schedule}
           eventSettings={{ dataSource: meetings }}
           actionComplete={this.onActionComplete.bind(this)}
+          created={this.loadInfo.bind(this)}
           height='800px' >
           <ViewsDirective>
             <ViewDirective
