@@ -2,12 +2,16 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 
-export const Border = styled.div`
+export const Wrapper = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); 
 display: grid;
  padding: 25px;
  height: 100%;
 `
+
+
+
+
 export const Container = styled.div`
 
 border-radius: 50px;
@@ -27,10 +31,24 @@ export const Content = styled.div`
   max-width: 90%;
   text-align: center;
 
+  .about {
+    span {
+      font: 400 40px 'Oswald';
+      color: #fff;
+      margin-top: 5px;
+      background: none;
+      border-bottom:3px solid #4c7bff;
+      
+
+    }
+    
+
+
+
+  }
 
 .grids {
   display: flex;
-  flex-direction: rows;
   justify-content: space-between;
   align-items: center;
 }

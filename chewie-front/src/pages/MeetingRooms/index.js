@@ -16,7 +16,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 
 import { toast } from 'react-toastify';
 
-import {Accordion, Card, Button, Modal, Dropdown, DropdownButton} from 'react-bootstrap'
+import {Accordion, Card, Modal} from 'react-bootstrap'
 import './styles.css';
 
 
@@ -85,7 +85,7 @@ class MeetingRoom extends Component {
     } else {
       try {
         await API.post("/meetingRoom", { name, room, responsable, description });
-        console.log("");
+        this.handleClose();
         toast.success("Sala criada com sucesso");
       } catch (err) {
         console.log(err);

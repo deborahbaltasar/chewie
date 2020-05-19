@@ -16,7 +16,7 @@ export const Border = styled.div`
 
 export const Wrapper = styled.div` 
   height: 100%;
-  border-radius: 15px;
+  border-radius: 50px;
   background: #252a4a;
   display: flex;
   
@@ -25,15 +25,8 @@ export const Wrapper = styled.div`
   h1 {
     font: 400 40px 'Oswald';
     font-weith: bold;
+    border-bottom:3px solid #4c7bff;
   }
 
-  .title-line {
-    border: 0;
-    height: 3px;
-    background: #4c7bff;
-    margin: -10px 0 20px;
-    margin-left: 50px;
-    
-    
-  }
+
   `;
