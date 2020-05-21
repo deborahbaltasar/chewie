@@ -41,6 +41,8 @@ routes.get('/meetingRoom', MeetingRoomController.index);
 
 routes.delete('/meetingRoom/:id', MeetingRoomController.delete);
 
+routes.put('/meetingRoom/:id', MeetingRoomController.update)
+
 routes.post('/item', ItemController.store);
 
 routes.post('/roomItens', RoomItemController.store);

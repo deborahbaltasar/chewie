@@ -71,6 +71,35 @@ class MeetingRoomController {
       return res.json(room);
 
     }
+
+    async update(req, res) {
+      const checkUserAdmin = await User.findOne({
+        where: {admin: true},
+      });
+      // console.log('admin', checkUserAdmin)
+      if(!checkUserAdmin) {
+        return res.status(401).json({error: "Only admins can update a meeting room"})
+      }
+      
+      const { id } = req.params;
+
+      const roomExists = await MeetingRoom.findByPk(id);
+  
+      if (!roomExists) {
+        return res.status(400).json({ error: 'Room does not exist.' });
+      }
+  
+      const room = await MeetingRoom.findByPk(req.params.id);
+
+      room.name = req.body.name;
+      room.description = req.body.description;
+      room.admin = req.body.admin;
+      room.room = req.body.room;
+
+      await room.save();
+      
+      return res.json(room);
+    }
   }
 
 export default new MeetingRoomController();
