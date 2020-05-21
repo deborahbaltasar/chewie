@@ -28,7 +28,14 @@ class MeetingRoomController {
       }
       
     async store(req, res) {
-        console.log('Data', req.body.name)
+      const checkUserAdmin = await User.findOne({
+        where: {id: req.userId, admin: true},
+      });
+    
+      if(!checkUserAdmin) {
+        return res.status(401).json({error: "Only admins can create a meeting room"})
+      }
+
         const roomExists = await MeetingRoom.findOne({ where: {name: req.body.name} });
 
         if(roomExists) {
@@ -47,7 +54,7 @@ class MeetingRoomController {
 
     async delete(req, res) {
       const checkUserAdmin = await User.findOne({
-        where: {admin: true},
+        where: {id: req.userId, admin: true},
       });
       // console.log('admin', checkUserAdmin)
       if(!checkUserAdmin) {

@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 
 import MeetingRoom from '../models/MeetingRoom';
 import Project from '../models/Project';
+import User from '../models/User';
 
 
 class ProjectController {
@@ -26,6 +27,14 @@ class ProjectController {
       return res.status(400).json({ error: 'Validation Fails.' });
     }
 
+    const checkUserAdmin = await User.findOne({
+      where: {id: req.userId, admin: true},
+    });
+    // console.log('admin', checkUserAdmin)
+    if(!checkUserAdmin) {
+      return res.status(401).json({error: "Only admins can create projects"})
+    }
+
     const { 
         name, 
         description,
@@ -41,6 +50,18 @@ class ProjectController {
         } 
     = req.body;
   
+        //Check if prpoject exists 
+        const projectExists = await Project.findOne({ 
+          where: { name },
+        });
+
+        if (projectExists) {
+          return res
+          .status(401)
+          .json({ error: 'Project already exists' });
+        }
+    
+    
     //Check if meetingRoom exists 
     const roomExists = await MeetingRoom.findOne({ 
       where: { id: meeting_room_id},
