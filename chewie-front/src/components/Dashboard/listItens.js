@@ -60,7 +60,7 @@ export const list = (
       <ListItemText primary="Dispositivos" />
     </ListItem>
 
-    <ListItem button>
+    <ListItem button component={Link} to="/projects">
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
@@ -80,7 +80,7 @@ export const secondaryListItems = (
   <div>
     <ListSubheader inset>Gerenciamento</ListSubheader>
 
-    <ListItem button>
+    <ListItem button component={Link} to="/myProjects">
       <ListItemIcon>
         <DeveloperModeIcon />
       </ListItemIcon>
