@@ -46,12 +46,11 @@ module.exports = {
           allowNull: true,
         },
         responsible: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        status: {
-          type: Sequelize.STRING,
-          allowNull: false,
+          type: Sequelize.INTEGER,
+          references: { model: 'users', key: 'id' },
+          onUpdate: 'CASCADE',
+          onDelete: 'SET NULL',
+          allowNull: true,
         },
         comments: {
           type: Sequelize.STRING,

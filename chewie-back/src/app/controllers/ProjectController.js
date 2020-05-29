@@ -17,7 +17,7 @@ class ProjectController {
         end: Yup.date().required(),
         value: Yup.string().required(),
         meeting_room_id: Yup.number().required(),
-        responsible: Yup.string().required(),
+        responsible: Yup.number().required(),
         status: Yup.string().required(),
         comments: Yup.string().required(),
 
@@ -30,9 +30,17 @@ class ProjectController {
     const checkUserAdmin = await User.findOne({
       where: {id: req.userId, admin: true},
     });
-    // console.log('admin', checkUserAdmin)
+    
     if(!checkUserAdmin) {
       return res.status(401).json({error: "Only admins can create projects"})
+    }
+
+    const responsibleExists = await User.findOne({
+      where: {id: req.body.responsible},
+    });
+    
+    if(!responsibleExists) {
+      return res.status(401).json({error: "User does not exists"})
     }
 
     const { 

@@ -10,8 +10,6 @@ class Project extends Model {
             start: Sequelize.DATE,
             end: Sequelize.DATE,
             value: Sequelize.STRING,
-            responsible: Sequelize.STRING,
-            status: Sequelize.STRING,
             comments: Sequelize.STRING,
             canceled_at: Sequelize.DATE,
 
@@ -26,6 +24,7 @@ class Project extends Model {
 
     static associate(models) {
         this.belongsTo(models.MeetingRoom, {foreignKey: 'meeting_room_id'});
+        this.belongsTo(models.User, {foreignKey: 'responsible'});
     }
 
 }
