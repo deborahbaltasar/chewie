@@ -9,6 +9,12 @@ import RoomItem from '../app/models/RoomItem';
 import Item from '../app/models/Item';
 import Partner from '../app/models/Partner';
 import PartnerProject from '../app/models/PartnerProject';
+import Member from '../app/models/Member';
+import Task from '../app/models/Task';
+import TaskMember from '../app/models/TaskMember';
+import Checklist from '../app/models/Checklist';
+import Statu from '../app/models/Statu';
+import ProjectStatu from '../app/models/ProjectStatu';
 
 
 
@@ -25,6 +31,12 @@ const models = [
     Item,
     Partner,
     PartnerProject,
+    Member,
+    Task,
+    TaskMember,
+    Checklist,
+    Statu,
+    ProjectStatu,
 ];
 
 class Database {
