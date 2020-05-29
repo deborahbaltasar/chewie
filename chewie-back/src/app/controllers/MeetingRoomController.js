@@ -81,7 +81,7 @@ class MeetingRoomController {
 
     async update(req, res) {
       const checkUserAdmin = await User.findOne({
-        where: {admin: true},
+        where: {id: req.userId, admin: true},
       });
       // console.log('admin', checkUserAdmin)
       if(!checkUserAdmin) {
