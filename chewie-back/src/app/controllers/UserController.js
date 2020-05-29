@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
+import MeetingRoom from '../models/MeetingRoom';
 
 class UserController {
 
@@ -46,13 +47,14 @@ class UserController {
               .when('password', (password, field) =>
                 password ? field.required().oneOf([Yup.ref('password')]) : field
               ),
+            room: Yup.number(),
           });
       
           if (!(await schema.isValid(req.body))) {
             return res.status(400).json({ error: 'Validation fails' });
           }
       
-          const { email, oldPassword } = req.body;
+          const { email, oldPassword} = req.body;
       
           const user = await User.findByPk(req.userId);
           if (email !== user.email) {
@@ -76,12 +78,17 @@ class UserController {
       
           await user.update(req.body);
       
-          const { id, name, avatar } = await User.findByPk(req.userId, {
+          const { id, name, avatar, room } = await User.findByPk(req.userId, {
             include: [
               {
                 model: File,
                 as: 'avatar',
                 attributes: ['id', 'path', 'url'],
+              },
+              {
+                model: MeetingRoom,
+                as: 'room',
+                attributes: ['id', 'name', 'room'],
               },
             ],
           });
@@ -91,6 +98,7 @@ class UserController {
             name,
             email,
             avatar,
+            room,
           });
         }
 }
