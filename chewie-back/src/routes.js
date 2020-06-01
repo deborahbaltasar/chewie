@@ -60,6 +60,8 @@ routes.post('/roomItens', RoomItemController.store);
 
 routes.post('/projects', ProjectController.store);
 
+routes.get('/projects', ProjectController.index);
+
 routes.post('/partners', PartnerController.store);
 
 routes.put('/partners', PartnerController.update);

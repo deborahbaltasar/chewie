@@ -6,7 +6,39 @@ import User from '../models/User';
 
 
 class ProjectController {
+  async index(req, res) {
+    const { page = 1 } = req.query;
 
+    const projects = await Project.findAll({
+      where: { canceled_at: null },
+      limit: 20,
+      offset: (page - 1) * 20,
+      attributes: [ 
+        'id',
+        'name', 
+        'description', 
+        'client_name', 
+        'type',
+        'start',
+        'end',
+        'value',
+        'comments',
+        
+      ],
+      include: [
+        {
+          model: User,
+          attributes: [ 'name'],
+        },
+       {
+        model: MeetingRoom,
+        attributes: [ 'name', 'room'],
+       },
+      ]
+    });
+    return res.json(projects);
+  }
+  
   async store(req, res) {
     const schema = Yup.object().shape({
         name: Yup.string().required(),
