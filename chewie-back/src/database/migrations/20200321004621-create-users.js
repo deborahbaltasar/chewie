@@ -27,6 +27,13 @@ module.exports = {
           defaultValue: false,
           allowNull: false,
         },
+        
+        fisrt_logged_in: {
+          type: Sequelize.BOOLEAN,
+          defaultValue: true,
+          allowNull: false,
+        },
+
         created_at: {
           type: Sequelize.DATE,
           allowNull: false,
