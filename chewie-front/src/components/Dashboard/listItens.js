@@ -5,16 +5,18 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
+import {
+  HomeRounded,
+  DevicesRounded,
+  LaptopChromebookRounded,
+  MeetingRoomRounded,
+  DeveloperModeRounded,
+  DevicesOtherRounded,
+  AddCircleOutlineRounded,
+  EventRounded,
+  PowerSettingsNew,
 
-import HomeIcon from '@material-ui/icons/Home';
-import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import EventIcon from '@material-ui/icons/Event';
-import DevicesIcon from '@material-ui/icons/Devices';
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import DeveloperModeIcon from '@material-ui/icons/DeveloperMode';
-import DevicesOtherIcon from '@material-ui/icons/DevicesOther';
+} from '@material-ui/icons';
 
 import { toast } from 'react-toastify';
 
@@ -26,7 +28,7 @@ import './styles.css';
   const name = localStorage.getItem('userName')
   return (
         <ListItem button component={Link} to="/profile">
-        <ListItemIcon>
+        <ListItemIcon >
           <img
             alt=""
             src={
@@ -35,7 +37,10 @@ import './styles.css';
           />
         </ListItemIcon>
       
-        <ListItemText primary={name} />
+        <ListItemText 
+          style={{color: '#fff'}} 
+          primary={name} 
+        />
     
       </ListItem>
   );
@@ -48,28 +53,28 @@ export const list = (
   <div>
     <ListItem button component={Link} to="/dashboard">
       <ListItemIcon>
-        <HomeIcon />
+        <HomeRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
 
    <ListItem button>
       <ListItemIcon>
-        <DevicesIcon />
+        <DevicesRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Dispositivos" />
     </ListItem>
 
     <ListItem button component={Link} to="/projects">
       <ListItemIcon>
-        <BarChartIcon />
+        <LaptopChromebookRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Projetos" />
     </ListItem>
 
     <ListItem button component={Link} to="/meetingRooms">
       <ListItemIcon>
-        <MeetingRoomIcon />
+        <MeetingRoomRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Salas de Reuniões" />
     </ListItem>
@@ -78,17 +83,17 @@ export const list = (
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Gerenciamento</ListSubheader>
+    <ListSubheader style={{color: '#fff'}} inset>Gerenciamento</ListSubheader>
 
     <ListItem button component={Link} to="/myProjects">
       <ListItemIcon>
-        <DeveloperModeIcon />
+        <DeveloperModeRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Meus projetos" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <DevicesOtherIcon />
+        <DevicesOtherRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Meus empréstimos" />
     </ListItem>
@@ -101,18 +106,18 @@ export const secondaryListItems = (
 export const actionListItems = (
   
   <div>
-    <ListSubheader inset>Ações</ListSubheader>
+    <ListSubheader style={{color: '#fff'}} inset>Ações</ListSubheader>
     
     <ListItem button>
       <ListItemIcon>
-        <AddCircleOutlineIcon />
+        <AddCircleOutlineRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Novo Empréstimo" />
     </ListItem>
     
     <ListItem button component={Link} to="/meetings">
       <ListItemIcon>
-        <EventIcon />
+        <EventRounded style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Agendar Nova Reunião" />
     </ListItem>
@@ -122,7 +127,7 @@ export const actionListItems = (
         Auth.logOut();
       }} component={Link} to="/">
       <ListItemIcon>
-        <PowerSettingsNewIcon />
+        <PowerSettingsNew style={{color: '#777'}}/>
       </ListItemIcon>
       <ListItemText primary="Encerrar sessão" />
     </ListItem>

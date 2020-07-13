@@ -16,6 +16,7 @@ export const Border = styled.div`
 
 export const Wrapper = styled.div` 
   height: 100%;
+  z-index: 1;
   border-radius: 50px;
   background: #252a4a;
   display: flex;

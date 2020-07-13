@@ -8,14 +8,17 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+
+
 import IconButton from '@material-ui/core/IconButton';
-
-
-
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { secondaryListItems, 
-  actionListItems, list, ProfileList} from './listItens';
+import {
+  secondaryListItems, 
+  actionListItems, 
+  list, 
+  ProfileList
+} from './listItens';
 
 
 
@@ -27,14 +30,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     display: 'flex',
-    zIndex: 0,
-    
+    zIndex: 0,  
   },
   toolbar: {
-  
+    background: '#1b2139', 
     paddingRight: 24, // keep right padding when drawer closed
   },
   toolbarIcon: {
+    color: '#fff',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -42,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
   appBar: {
-    
+
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -50,7 +53,8 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   appBarShift: {
-    
+
+    color: '#fff',
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -66,8 +70,12 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+
   },
   drawerPaper: {
+    color: '#777',
+    border: 0,
+    background: '#1b2139',
     position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
@@ -130,7 +138,7 @@ export default function Dashboard() {
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeftIcon style={{color: '#fff'}}/>
           </IconButton>
         </div>
         <List>
