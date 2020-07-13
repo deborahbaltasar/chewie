@@ -15,10 +15,13 @@ import TaskMember from '../app/models/TaskMember';
 import Checklist from '../app/models/Checklist';
 import Statu from '../app/models/Statu';
 import ProjectStatu from '../app/models/ProjectStatu';
-
-
+import Expense from '../app/models/Expense';
+import Emmiter from '../app/models/Emmiter';
+import Invoice from '../app/models/Invoice';
 
 import databaseConfig from '../config/database';
+
+
 
 
 const models = [
@@ -37,6 +40,9 @@ const models = [
     Checklist,
     Statu,
     ProjectStatu,
+    Expense,
+    Emmiter,
+    Invoice,
 ];
 
 class Database {
