@@ -1,7 +1,7 @@
 
 
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
 
 
 import API from '../../services/api';
@@ -129,7 +129,6 @@ class MeetingRoom extends Component {
   }
 
   handleShowEdit(room){
-    console.log(room)
     this.setState({
       showEdit: true,
       id: room.id,
@@ -147,13 +146,13 @@ class MeetingRoom extends Component {
   render() {
     const { rooms } = this.state;
     return (
-      <div className="profile-container">
-        <div className="header">
+      <div className="meeting-rooms-container">
+        <div className="meeting-room-header">
           <h1>SALA DE REUNIÕES</h1>
           <button onClick={this.handleShowCreate.bind(this)} type="button">
             <AddCircleOutlineIcon />
           </button>
-          <hr className="title-line" />
+        
           <div className="modal">
             <form>
               <Modal
@@ -176,7 +175,6 @@ class MeetingRoom extends Component {
 
                   <DescriptionIcon />
                   <input placeholder="Descrição" onChange={e => this.setState({ description: e.target.value })} />
-                  {/* <textarea placeholder="Descrição"></textarea> */}
 
                 </Modal.Body>
                 <Modal.Footer>
@@ -213,7 +211,7 @@ class MeetingRoom extends Component {
                 <Modal.Footer>
                   <button type="submit" onClick={this.updateMeetingRoom}>
                     Salvar
-                    </button>
+                  </button>
                 </Modal.Footer>
               </Modal>
             </form>

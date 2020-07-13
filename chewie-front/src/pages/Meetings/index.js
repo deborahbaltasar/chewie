@@ -16,8 +16,6 @@ import {
 }
   from '@syncfusion/ej2-react-schedule';
 
-  import { extend, createElement } from '@syncfusion/ej2-base';
-
 import './styles.css';
 
 class Meetings extends Component {
@@ -143,8 +141,10 @@ class Meetings extends Component {
               console.log("error", error)
             })
         break
-        case "eventRemoved":
-        break
+        case "eventRemoved":  
+        break;
+        default:
+          break;
     }
     
 }

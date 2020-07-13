@@ -1,4 +1,4 @@
-.profile-container {
+.meeting-rooms-container {
     width: 100%;
     max-width: 1100px;
     padding: 0 30px;
@@ -6,23 +6,16 @@
     
 }
 
-.header {
+.meeting-room-header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     
 } 
-.title-line {
-    border: 0;
-    height: 3px;
-    background: #4c7bff;
-    margin: -10px 0 20px;
-    margin-left: 50px;
-}
 
-.header button {
-    margin-top: 65px;
-    margin-left: 10px;
+.meeting-room-header button {
+    margin-top: 90px;
+    margin-left: -1px;
     background: none;
     color: #FFF;
     border: 0;
@@ -80,13 +73,13 @@
 .button:hover {
     filter:brightness(90%);
 }
-.profile-container h1 {
+.meeting-rooms-container h1 {
    margin-top: 80px;
    margin-bottom: 24px;
    color: #FFF;   
 }
 
-.profile-container ul {
+.meeting-rooms-container ul {
     display: grid;
     grid-gap: 4px;
     list-style: none;
@@ -107,12 +100,12 @@
   margin-left: 8px;
 }
 
-.profile-container ul li {
+.meeting-rooms-container ul li {
     margin-bottom: 10px;
    
 }
 
-.profile-container ul li p{
+.meeting-rooms-container ul li p{
     margin-bottom: 5px;
 }
 
