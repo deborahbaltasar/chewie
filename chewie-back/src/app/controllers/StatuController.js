@@ -2,6 +2,15 @@ import Status from "../models/Statu";
 
 class StatuController {
 
+    async index(req, res) {
+      
+      const status = await Status.findAll({
+        attributes: [ 'id', 'name'],   
+      });
+
+      return res.json(status);
+    }
+
     async store(req, res) { 
 
       const statusExists = await Status.findOne({ 

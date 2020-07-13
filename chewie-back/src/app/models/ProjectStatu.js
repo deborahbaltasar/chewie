@@ -15,8 +15,7 @@ class ProjectStatu extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Statu, {foreignKey: 'fk_status' });
-    this.belongsTo(models.Project, {foreignKey: 'fk_project'});
+    this.belongsTo(models.Statu, {foreignKey: 'fk_status'});
   }
 }
 export default ProjectStatu;

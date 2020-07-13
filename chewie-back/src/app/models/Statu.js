@@ -13,5 +13,8 @@ class Statu extends Model {
 
     return this;
   }
+  static associate(models) {
+    this.hasMany(models.ProjectStatu, {foreignKey: 'fk_status'});
+  }
 }
 export default Statu;
