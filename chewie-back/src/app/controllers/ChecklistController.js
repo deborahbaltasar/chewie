@@ -5,7 +5,32 @@ import Task from "../models/Task";
 
 class ChecklistController {
 
-    async store(req, res) { 
+  async show(req, res) {
+    const {id} = req.params;
+
+    const taskExists = await Task.findOne({ 
+      where: { id: id},
+    });
+
+    if (!taskExists) {
+      return res
+      .status(401)
+      .json({ error: 'Task does not exists' });
+    }
+
+    const checklist = await Checklist.findAll({
+      where: {  fk_task: id },
+      attributes: [ 
+        'id',
+        'name', 
+        'done',   
+      ],
+    });
+    return res.json(checklist);
+
+  }  
+  
+  async store(req, res) { 
 
       const checklistExists = await Checklist.findOne({ 
         where: { name: req.body.name, fk_task: req.body.fk_task },

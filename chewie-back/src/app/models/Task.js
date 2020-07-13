@@ -22,6 +22,9 @@ class Task extends Model {
 
   static associate(models) {
     this.belongsTo(models.Project, { foreignKey: 'fk_project' });
+    this.hasMany(models.Checklist, { foreignKey: 'fk_task' });
+    this.hasMany(models.TaskMember, { foreignKey: 'fk_task' });
+  
   }
 }
 export default Task;

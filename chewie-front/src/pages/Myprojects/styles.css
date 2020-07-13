@@ -1,8 +1,9 @@
-.profile-container {
+.my-projects-container {
     width: 100%;
     max-width: 1100px;
-    padding: 0 30px;
-    margin-left: 40px;
+    padding: 0 30px;   
+    margin-top:80px;
+    margin-left: 50px;
     
 }
 
@@ -12,3 +13,188 @@
     margin-bottom: 20px;
     
 } 
+
+
+
+.checklist-p {
+    margin-left: 20px;
+}
+
+.my-projects-container ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 24px;
+    list-style: none;
+    
+}
+
+
+
+.my-projects-container ul li {
+   background: #1b2139;
+   color: #fff;
+   padding: 24px;
+   border-radius: 12px; 
+   position: relative;
+}
+
+.my-projects-container ul li h3 {
+    color: #FFF;
+    font-size: 24px;
+    margin-bottom: 10px;
+ }
+
+ .my-projects-container ul li h6 {
+    color: #FFF;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+ }
+
+ .my-projects-container ul li .task-bnt {
+    background: none;
+    color: #FFF;
+    font-size: 15px;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #4c7bff;
+    margin-bottom: 5px;
+ }
+
+ .my-projects-container ul li .task-bnt:hover {
+    background: #4c7bff;
+ }
+
+.new-task-bnt {
+    background: none;
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 400  ;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 5px;
+}
+
+.new-task-bnt:hover {
+    background: rgba(156, 154, 154, 0.438);
+}
+
+
+ .img-project {
+     width: 280px;
+     margin-left: auto;
+     margin-right: auto;
+     height: 200px;
+     border-radius: 10px;
+     padding: 5px;
+     align-self: center;
+ }
+
+.checklist-content input{
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.checklist-content label{ 
+    margin-left: 5px;
+    
+}
+
+#standard-multiline-flexible {
+    width: 230px;
+    margin-bottom: -3px;
+}
+
+.my-projects-container .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.my-projects-container .actions button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    background: #1b2139;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: 8px;
+    margin-top: 5px;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0; 
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .container p {
+    font-size: 20px;
+    margin-left: 220px;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    height: 25px;
+    width: 25px;
+    background-color: #ddd;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 8px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
