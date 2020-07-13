@@ -19,6 +19,9 @@ import TaskMemberController from './app/controllers/TaskMemberController';
 import ChecklistController from './app/controllers/ChecklistController';
 import StatuController from './app/controllers/StatuController';
 import ProjectStatuController from './app/controllers/ProjectStatuController';
+import ExpenseController from './app/controllers/ExpenseController';
+import EmmiterController from './app/controllers/EmmiterController';
+import InvoiceController from './app/controllers/InvoiceController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -60,7 +63,21 @@ routes.post('/roomItens', RoomItemController.store);
 
 routes.post('/projects', ProjectController.store);
 
+routes.delete('/projects/:id', ProjectController.delete);
+
 routes.get('/projects', ProjectController.index);
+
+routes.put('/projects/:id', ProjectController.update);
+
+//STATUS
+
+routes.post('/status', StatuController.store);
+
+routes.get('/status', StatuController.index);
+
+routes.post('/projectStatus', ProjectStatuController.store);
+
+//PARTNERS
 
 routes.post('/partners', PartnerController.store);
 
@@ -70,16 +87,44 @@ routes.post('/partners-projects', PartnerProjectController.store);
 
 routes.get('/partners-projects', PartnerProjectController.index);
 
+//MEMBERS
+
 routes.post('/members', MemberController.store);
+
+routes.get('/members/:id', MemberController.show);
+
+//TASKS
 
 routes.post('/tasks', TaskController.store);
 
+routes.get('/tasks', TaskController.index);
+
+routes.put('/tasks/:id', TaskController.update);
+
+routes.get('/tasks/:id', TaskController.show);
+
 routes.post('/tasksMember', TaskMemberController.store);
+
+//CHECKLISTS
 
 routes.post('/checklist', ChecklistController.store);
 
-routes.post('/status', StatuController.store);
+routes.get('/checklist/:id', ChecklistController.show);
 
-routes.post('/projectStatus', ProjectStatuController.store);
+//EXPENSES
+
+routes.post('/expenses', ExpenseController.store);
+
+routes.get('/expenses/:id', ExpenseController.show);
+
+//EMMITERS
+
+routes.post('/emmiters', EmmiterController.store);
+
+//INVOICES
+
+routes.post('/invoices', InvoiceController.store);
+
+
 
 export default routes;
