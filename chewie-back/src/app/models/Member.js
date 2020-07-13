@@ -16,7 +16,7 @@ class Member extends Model {
 
     static associate(models) {
         this.belongsTo(models.Project, {foreignKey: 'fk_project' });
-        this.belongsTo(models.Partner, {foreignKey: 'fk_user'});
+        this.belongsTo(models.User, {foreignKey: 'fk_user'});
     }
 }
 

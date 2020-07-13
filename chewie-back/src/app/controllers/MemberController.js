@@ -3,7 +3,40 @@ import User from "../models/User";
 import Project from "../models/Project";
 
 class MemberController {
+  async show(req, res) {
+    const {id} = req.params;
 
+    const projectExists = await Project.findOne({ 
+      where: { id: id},
+    });
+
+    if (!projectExists) {
+      return res
+      .status(401)
+      .json({ error: 'Project does not exists' });
+    }
+
+
+    const members = await Member.findAll({
+      where: { fk_project: id },
+      attributes: [ 
+        'id',
+      ],
+      include: [
+        {
+          model: Project,
+          attributes: [ 'id', 'name'],
+        },
+        {
+          model: User,
+          attributes: [ 'id', 'name', 'email', 'avatar_id'],
+        }]
+    });
+    return res.json(members);
+
+    
+    return res.json({point: serializedPoint, items});
+} 
     async store(req, res) { 
       const userExists = await User.findOne({ 
         where: { id: req.body.fk_user},

@@ -25,6 +25,10 @@ class Project extends Model {
     static associate(models) {
         this.belongsTo(models.MeetingRoom, {foreignKey: 'meeting_room_id'});
         this.belongsTo(models.User, {foreignKey: 'responsible'});
+        this.belongsTo(models.Statu, { foreignKey: 'status_id' });
+        this.hasMany(models.ProjectStatu, {foreignKey: 'fk_project' ,sourceKey: 'id'});
+        this.hasMany(models.Task, { foreignKey: 'fk_project' });
+        this.hasMany(models.Member, { foreignKey: 'fk_project' });
     }
 
 }
