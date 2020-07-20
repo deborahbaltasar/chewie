@@ -1,0 +1,393 @@
+  .divSideBar1{
+    height: 100%;
+    display: grid;
+    width: 20%;
+    margin: 10px 0px 0px -20px;
+    justify-content: center;
+  }
+
+  .linhaSideBar{
+    width: 200px;
+    margin: 20px auto;
+    background-color: transparent;
+  }
+
+  .Chewie2{
+    color: #4c7bff;
+    font-size: 70px;
+    font-family: 'Bebas Neue', cursive;
+    margin: 50px 10px 0px 40px;
+  }
+
+  .ImgUsuario{
+    background-color: white;
+    margin: 0px 10px 0px 0px;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    border-radius: 8px;
+  }
+
+  .divNomeUsuario{
+      display: grid;
+      margin-left: 0px;
+  }
+
+  .divNome{
+      display: flex;
+      margin-top: -15px;
+      margin-bottom: 15px;
+  }
+
+  .divNome2{
+    display: flex;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    margin-left: 38px;
+  }
+  
+  .Nome_usuario{
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 35px;
+    width: 100%;
+    margin-bottom: 4px;
+    margin-top: 1px;
+    cursor: pointer;
+  }
+
+  .Abas{
+    display: grid;
+    margin-left: -10px;
+  }
+
+  .Dashboard{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .DashboardIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Dispositivos{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .DispositivosIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Projetos{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .ProjetosIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Salas_reunioes{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .Salas_reunioesIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Meus_projetos{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .Meus_projetosIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Meus_emprestimos{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .Meus_emprestimosIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Novo_emprestimo{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .Novo_emprestimoIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Agendar_reuniao{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .Agendar_reuniaoIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .Sobre_sistema{        
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .botao-sair {
+    margin: 40px 0px 0px 50px;
+    height: 44px;
+    background: none;
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    color: #d83939;
+    border: 0;
+    width: 200px;
+
+  }
+
+  .botao-sair:hover {
+    color: #d83939;
+  }
+
+  .Sobre_sistemaIcon{
+    color: #737bac;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    margin-left: -2px;
+    margin-top: -4px;
+    cursor: pointer;
+  }
+
+  .DashboardTela{
+    display: grid;
+    background-color: #25294a;
+    width: 96%;
+    height: 101.8%;
+    border-radius: 60px;
+    margin: 20px 20px 20px 20px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    opacity: 0.25;
+  }
+
+  .Titulo{
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 50px;
+    text-decoration: underline;
+    text-decoration-color: #4c7bff;
+    margin: 40px 20px 0px 60px;
+    height: 40%;
+  }
+
+  
+
+  .Busca{
+      margin: 0px 10px 20px 0px;
+  }
+
+  .Busca2{
+    margin: 0px 15px 20px 50px;
+  }
+
+  .linha{
+      border: 1px solid #373d5e;
+      margin-left: 0px;
+      margin-top: -20px;
+      width: 105%;
+  }
+
+  .linha3{
+    border: 1px solid #373d5e;
+      margin-left: 44px;
+      margin-top: -20px;
+      width: 30%;
+  }
+
+  .linha2{
+    border: 1px solid #373d5e;
+    margin-left: 0px;
+    margin-top: -40px;
+    width: 105%;
+    margin-bottom: 0px;
+  }
+
+  .linha4{
+    border: 1px solid #373d5e;
+    margin-left: 45px;
+    margin-top: -80px;
+    width: 30%;
+    margin-bottom: 0px;
+  }
+
+  .linha5{
+    border: 1px solid #373d5e;
+    margin-left: 45px;
+    margin-top: -126px;
+    width: 30%;
+    margin-bottom: 0px;
+  }
+
+  .linha6{
+    border: 1px solid #373d5e;
+    margin-left: 45px;
+    margin-top: -170px;
+    width: 30%;
+    margin-bottom: 0px;
+  }
+
+  .Setor{
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+  }
+
+  .divGerenciamento{
+      margin-top: -60px;
+  }
+
+  .divGerenciamento2{
+    margin-top: -150px;
+}
+
+  .divAcoes{
+    margin-top: -60px;
+  }
+
+  .divAcoes2{
+    margin-top: -195px;
+  }
+
+  .divSobre{
+    margin-top: -60px;
+  }
+
+  .divSobre2{
+    margin-top: -225px;
+  }
+
+  .Angulo{
+    color: white;
+    margin: 80px 10px 0px 10px;
+    cursor: pointer;
+  }
+
+  .Angulo2{
+    color: white;
+    margin: 80px 10px 10px 52px;
+    cursor: pointer;
+  }
+
+  .divSideBar2{
+    height: 100%;
+    display: none;
+    align-items: top;
+    width: 2.5%;
+    justify-content: center;
+  }
+  
+  .divSetores{
+    margin-top: -18px;
+  }
+
+
+  .Setas{
+    margin: -2px 6px 0px 6px;
+  }
+
+  .Setas2{
+    margin: 0px 10px 0px 10px;
+  }
+
+  .SetaBack{
+    margin: 0px 10px 0px 10px;
+    color: #2d3154;
+  }
+
+  .user{
+    color: #25294a;
+  }
+
+
+
+
+
+
+
+

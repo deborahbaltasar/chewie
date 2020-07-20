@@ -1,0 +1,378 @@
+.divGeral{
+    width: 100%;
+    height: 100%;
+    margin-left: 0px;
+    
+  }
+
+  .DashboardTela{
+    display: grid;
+    background-color: #25294a;
+    width: 96%;
+    height: 101.8%;
+    border-radius: 60px;
+    margin: 20px 20px 20px 20px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    opacity: 0.25;
+  }
+
+  .Titulo{
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 50px;
+    text-decoration: underline;
+    text-decoration-color: #4c7bff;
+    margin: 40px 20px 0px 60px;
+    height: 40%;
+  }
+  
+  .Espaco1{
+    background-color: #313860;
+    width: 88%;
+    height: 120%;
+    margin: 0px 10px 0px 60px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .Espaco2{
+    background-color: #313860;
+    width: 40%;
+    height: 120%;
+    margin: 0px 10px 0px 60px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .Espaco3{
+    background-color: #313860;
+    width: 40%;
+    height: 75%;
+    margin: 0px 10px 80px 60px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .Espacinho1{
+    background-color: #313860;
+    width: 20%;
+    height: 120%;
+    margin: 0px 40px 0px 60px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .Espacinho2{
+    background-color: #313860;
+    width: 20%;
+    height: 120%;
+    margin: 0px 40px 0px 60px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+.Espacinho3{
+    background-color: #313860;
+    width: 20%;
+    height: 75%;
+    margin: 0px 40px 80px 60px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .Busca{
+      margin: 0px 10px 20px 0px;
+  }
+
+  .Busca2{
+    margin: 0px 15px 20px 50px;
+  }
+
+
+  .CardPrimeiroLogin{
+    z-index: 1;
+    display: grid;
+    background-color: #25294a;
+    width: 90%;
+    height: 101.8%;
+    border-radius: 60px;
+    margin: 20px 0px 20px 40px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .spanBemVindo2{
+    color: #fff;
+    margin: 40px;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  .spanEsqueci2{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    width: 400px;
+    margin: 20px 20px 0px 20px;
+  }
+
+  .spanEsqueci3{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    width: 390px;
+    margin: -20px 20px 20px 20px;
+  }
+  
+
+  .divTutorial{
+    background-color: #1c213a;
+    border-radius: 15px;
+    height: 60px;
+    width: 420px;
+    display: flex;
+    color: #4265ce;
+    font-size: 1.485rem;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Bebas Neue', cursive;
+
+    span{
+      margin: 2px 0px 0px 0px;
+    }
+
+  }
+
+  .Setas{
+    margin: -2px 6px 0px 6px;
+  }
+
+  .Setas2{
+    margin: 0px 10px 0px 10px;
+  }
+
+  .SetaBack{
+    margin: 0px 10px 0px 10px;
+    color: #2d3154;
+  }
+  
+  .botaoPerfil{
+    margin: 80px;
+    height: 44px;
+    background: #4c7bff;
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    color: #FFF;
+    border: 0;
+    border-radius: 8px;
+    width: 330px;
+  }
+
+  .ImgUsuario2{
+    background-color: white;
+    margin: 40px auto 10px auto;
+    height: 100px;
+    width: 100px;
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    border-radius: 20px;
+  }
+
+  .spanNome{
+    color: #4c7bff;
+    font-size: 50px;
+    font-family: 'Bebas Neue', cursive;
+    margin: 0px 10px 50px 40px;
+  }
+
+  .user{
+    color: #25294a;
+  }
+
+  .divTutorial2{
+    background-color: #1c213a;
+    margin: 20px 10px 10px 10px;
+    border-radius: 10px;
+    height: 50px;
+    width: 520px;
+    display: flex;
+    color: white;
+    font-size: 1.485rem;
+    align-items: center;
+    font-family: 'Bebas Neue', cursive;
+
+    span{
+      margin: 2px 0px 0px 30px;
+    }
+
+  }
+
+  .divTutorial3{
+    background-color: #1c213a;
+    margin: 20px 10px 10px 10px;
+    border-radius: 10px;
+    height: 50px;
+    width: 520px;
+    display: flex;
+    color: white;
+    align-items: center;
+    font-family: 'Bebas Neue', cursive;
+
+    .spanPerfil4{
+      margin: 2px 0px 0px 25px;
+      width: 50px;
+      font-size: 1.485rem;
+      color: gray;
+    }
+
+    .spanEditar{
+      margin: 2px 0px 0px 5px;
+      width: 110px;
+      font-size: 1.485rem;
+    }
+
+  }
+
+  .spanProjetos{
+    color: #4c7bff;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+    margin: 0px 10px 0px 40px;
+  }
+
+  .spanPerfil{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    width: 400px;
+    margin: -10px 20px 20px -15px;
+  }
+
+  .spanPerfil2{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    width: 400px;
+    margin: -10px 20px 20px -120px;
+  }
+
+  .spanPerfil3{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    width: 400px;
+    margin: -10px 20px 0px -42px;
+  }
+
+  .botaoEditar{
+    margin: 40px 0px 0px 0px;
+    height: 44px;
+    background: #25294a;
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    color: #FFF;
+    width: 200px;
+    border-right: solid;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-right-color: #666d9e;
+  }
+
+  .botaoSair{
+    margin: 40px 0px 0px 0px;
+    height: 44px;
+    background: #25294a;
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    color: #d83939;
+    border: 0;
+    width: 200px;
+  }
+
+  .ImgUsuario3{
+    background-color: white;
+    margin: 40px 0px 10px 55px;
+    height: 100px;
+    width: 100px;
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    border-radius: 20px;
+  }
+
+  .spanNome2{
+    color: #4c7bff;
+    font-size: 50px;
+    font-family: 'Bebas Neue', cursive;
+    margin: 55px 10px 0px 20px;
+  }
+
+  .Email2{
+    color: #4c7bff;
+    font-size: 35px;
+    font-family: 'Bebas Neue', cursive;
+    margin-bottom: -10px;
+    margin-left: -3px; 
+    text-align: left;
+    margin-left: 55px;
+  }
+
+  .Senha2{
+    color: #4c7bff;
+    font-size: 35px;
+    font-family: 'Bebas Neue', cursive;
+    margin-bottom: -10px; 
+    text-align: left;
+    margin-left: 55px;
+  }
+
+  .email-input2{
+    padding: 0 35px !important;
+    width: 520px !important;
+    margin-left: 55px;
+    margin-bottom: 50px;
+}
+
+.senha-input2{
+    padding: 0 35px !important;
+    width: 520px !important;
+    margin-bottom: 50px;
+    margin-left: 55px;
+}
+
+.span-email3{
+    position: absolute;
+    top: 40px;
+    right: 554px;
+}
+
+.span-senha2{
+    position: absolute;
+    top: 168px;
+    right: 554px;
+}
+
+.botaoLogin2{
+  margin: 60px auto 0px auto;
+  height: 44px;
+  background: #25294a;
+  font-size: 25px;
+  font-family: 'Bebas Neue', cursive;
+  color: #FFF;
+  border: 0;
+  border-radius: 15px;
+  width: 300px;
+}
+
+.span-email4{
+  position: absolute;
+  top: 292px;
+  right: 554px;
+}
+
+.span-email5{
+  position: absolute;
+  top: 418px;
+  right: 554px;
+}

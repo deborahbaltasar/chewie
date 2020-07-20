@@ -1,0 +1,313 @@
+body {
+    background-color: #1b2139;
+    height: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #fff;
+  color: #fff;
+  background: none;
+  width: 400px;
+  height: 44px;
+  padding: 0 15px;  
+  margin: 0 0 15px;
+
+  &::placeholder {
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+  }
+}
+
+// a {
+//   color: #FFF;
+//   margin-top: 15px;
+//   font-size: 16px;
+//   opacity: 0.8;
+
+//   &:hover {
+//     opacity: 0;
+//   }
+// }
+
+.grids {
+    display: flex;
+    align-items: center;
+    background-color: #25294a;
+    width: 96%;
+    height: 101.8%;
+    border-radius: 60px;
+    margin: 20px auto;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+.imagemSobre{
+    margin-right: 0px;
+    color: #4c7bff !important;
+}
+
+// .imagemSenha{
+//     margin-right: 0px;
+//     color: #737bac !important;
+//     width: 49px;
+//     height: 54px;
+// }
+
+.botao-cadeado{
+    width: 69px;
+    height: 74px;
+}
+
+.cadeado{
+    width: 40px !important;
+    height: 40px !important;
+}
+
+// .div_email{
+   
+// }
+
+// .div-senha{
+
+// }
+
+.email-input{
+    padding: 0 35px !important;
+    width: 550px !important;
+}
+
+.senha-input{
+    padding: 0 35px !important;
+    width: 550px !important;
+    margin-bottom: 150px;
+}
+
+.span-email{
+    position: absolute;
+    top: 60px;
+    right: 528px;
+}
+
+.span-senha{
+    position: absolute;
+    top: 165px;
+    right: 530px;
+}
+
+.rowDrawer{
+  margin-left: auto;
+}
+
+.drawer {
+
+  display: grid;
+  justify-content: center;
+  margin-right: 40px;
+    
+    p {
+      font-size: 25px;
+      font-family: 'Bebas Neue', cursive;
+      color: #737bac;
+      margin-top: 5px;
+      background: none;
+    }
+    button {
+      padding: 10px;
+      background: #1b2139;
+      border-radius: 10px;
+      border: 0;
+      color: #737bac;  
+      margin: 10px auto;
+      
+      &:hover {
+        color: transparent;
+      }
+
+    }
+
+  }
+  
+  .rowAbout{
+    margin-right: auto;
+  }
+
+  .about{
+    display: grid;
+    justify-content: center;
+    margin-left: 60px;
+    
+    p {
+      font-size: 25px;
+      font-family: 'Bebas Neue', cursive;
+      color: #737bac;
+      margin-top: 5px;
+      background: none;
+    }
+    
+    button {
+      padding: 10px;
+      background: #1b2139;
+      border-radius: 10px;
+      border: 0;
+      color: #737bac;  
+      margin: 10px auto;
+      
+      &:hover {
+        color: transparent;
+      }
+
+    }
+  }
+      html, body, #root {
+        height: 98%;
+      }
+
+      .spanBemVindo{
+        color: #fff;
+        margin: auto;
+        font-size: 30px;
+        font-family: 'Bebas Neue', cursive;
+      }
+
+      .Chewie{
+        color: #4c7bff;
+        font-size: 90px;
+        font-family: 'Bebas Neue', cursive;
+        margin: -25px auto 0px auto;
+      }
+      
+      .Email{
+        color: #4c7bff;
+        font-size: 50px;
+        font-family: 'Bebas Neue', cursive;
+        margin-bottom: -10px;
+        margin-left: -3px; 
+        text-align: left;
+      }
+
+      .Senha{
+        color: #4c7bff;
+        font-size: 50px;
+        font-family: 'Bebas Neue', cursive;
+        margin-bottom: -10px; 
+        text-align: left;
+      }
+
+      .botaoLogin{
+        margin: 80px 0 0;
+        height: 44px;
+        background: #4c7bff;
+        font-size: 25px;
+        font-family: 'Bebas Neue', cursive;
+        color: #FFF;
+        border: 0;
+        border-radius: 15px;
+      }
+
+      .rowForm{
+        justify-content: center;
+      }
+
+      .divGeral{
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+
+      .divAbout{
+        width: 40%;
+        justify-content: center;
+        display: none;
+        background-color: #25294a;
+        border-radius: 60px;
+        height: 101.8%;
+        margin: 20px 30px 20px 30px;
+        box-shadow: 8px 0px 10px #1a1f37;
+      }
+
+      .About{
+        color: #fff;
+        margin: 35px auto;
+        font-size: 50px;
+        font-family: 'Bebas Neue', cursive;
+        text-decoration: underline;
+        text-decoration-color: #4c7bff;
+      }
+
+      .spanAbout{
+        color: #fff;
+        font-size: 16px;
+        text-align: justify;
+        width: 400px;
+        margin: 20px auto;
+      }
+
+      .Alunos{
+        color: #fff;
+        margin: 35px auto;
+        font-size: 50px;
+        font-family: 'Bebas Neue', cursive;
+        display: flex;
+        justify-content: center;
+      }
+
+      .divAlunos{
+        color: #fff;
+        font-family: 'Bebas Neue', cursive;
+        display: grid;
+        justify-content: center;
+        margin: 40px auto;
+      }
+
+      .divSpanAlunos{
+        display: grid;
+        justify-content: center;
+      }
+
+      .divEsqueci{
+        width: 40%;
+        justify-content: center;
+        display: none;
+        background-color: #25294a;
+        border-radius: 60px;
+        height: 101.8%;
+        margin: 20px 30px 20px 30px;
+        box-shadow: 8px 0px 10px #1a1f37;
+      }
+
+      .spanEsqueci{
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+        width: 420px;
+        margin: 20px;
+      }
+      
+      .email-input2{
+        padding: 0 35px !important;
+        width: 465px !important;
+      }
+      
+      .span-email2{
+        position: absolute;
+        top: 360px;
+      }
+      
+      .botaoAlterar{
+        margin: 80px 0 0;
+        height: 44px;
+        background: #4c7bff;
+        font-size: 25px;
+        font-family: 'Bebas Neue', cursive;
+        color: #FFF;
+        border: 0;
+        border-radius: 15px;
+        width: 330px;
+      }

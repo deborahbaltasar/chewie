@@ -1,0 +1,325 @@
+.geral {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.projects-container {
+    display: grid;
+    background-color: #25294a;
+    width: 98%;
+    height: 95%;
+    border-radius: 60px;
+    margin: 30px 20px 20px 20px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    overflow: hidden;
+  }
+
+
+.projects-container .header {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: -1150px 20px -280px 60px;
+       
+  }
+
+.projects-container .header-left {
+    display:flex;
+    flex-direction: row;
+    align-items: center;   
+  }
+
+.header h1 {
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    text-decoration: underline;
+    text-decoration-color: #4c7bff;
+    height: 40%;
+    width: 100%;  
+  } 
+
+.header .add-project {
+    margin-top: 25px;
+    margin-left: -10px;
+    background: none;
+    color: #FFF;
+    border: 0;
+    
+  } 
+
+.header button {
+    margin-top: -20px;
+    margin-right: 20px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+    color: #FFF;
+    background: #313860;
+    padding: 15px;
+    border: 0;
+    border-radius: 8px;
+    
+  }   
+
+.body {
+    display: none;
+    background: #313860;
+    grid-gap: 8px;
+    margin: -100px 30px 200px 30px;
+    height: 110%;
+    border-radius: 60px;
+    width: 97%;
+}
+
+.body-tittle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .body-status{
+    color: #737bac;
+    margin-top: -200px;
+    height: 90%;
+    font-family: 'Bebas Neue', cursive;
+    margin-left: 150%;
+    font-size: 40px;
+    width: 100%;
+    
+  }
+
+.body-tittle h1{
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    margin: 40px 20px 0px 60px;
+    height: 40%;
+  }
+
+  .description-body{
+    display: grid;
+    background-color: #25294a;
+    margin-top: 150px;
+    margin-left: -97%;
+    width: 90%;
+    height: 38%;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    padding: 5px;
+  }
+
+  .scroll-description::-webkit-scrollbar{
+    width: 7px;
+  }
+
+  .scroll-description::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #25294a;
+    -webkit-box-shadow:  0 0 6px  #25294a; 
+    border-radius: 10px;
+
+}
+
+.scroll-description::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    -webkit-box-shadow: inset 40px 0 6px rgba(0,0,0,0.5); 
+}
+
+
+  .description-body header{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 20px 0px 10px 20px;
+  }
+
+  .description-body p{
+    color: #fff;
+    margin: 5px 0px 20px 30px;
+    overflow-y: auto;
+    height: 85px;
+  }
+
+  .informations-body {
+    background-color: #25294a;
+    margin-top: -140px;
+    margin-left: 3%;
+    width: 90%;
+    height: 120%;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    padding: 5px;
+  }
+  
+  .informations-body header{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 20px 0px 10px 20px;
+  }
+  .span-tittle {
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    margin: 20px 0px 10px 40px;
+  }
+
+  .span-answer {
+    color: #FFF;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 20px 0px 10px 5px;
+  }
+
+  .partners-body {
+    background-color: #25294a;
+    margin-top: -80px;
+    margin-left: 3%;
+    width: 90%;
+    height: 120%;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    padding: 5px;
+  }
+  
+  .partners-body header{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 20px 0px 10px 20px;
+  }
+
+  .steps-body {
+    display: grid;
+    background-color: #25294a;
+    margin-top: -350px;
+    margin-left: 3%;
+    width: 90%;
+    height: 90%;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    padding: 5px;
+  }
+  
+  .steps-body header{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 20px 0px 10px 20px;
+  }
+
+  .value-body {
+    display: grid;
+    background-color: #25294a;
+    margin-top: -340px;
+    margin-left: 3%;
+    width: 90%;
+    height: 150%;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    padding: 5px;
+  }
+  
+  .value-body header{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 20px 0px 10px 20px;
+  }
+
+  .members-body {
+    display: grid;
+    background-color: #25294a;
+    margin-top: -340px;
+    margin-right: 3%;
+    width: 90%;
+    height: 150%;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    padding: 5px;
+  }
+  
+  .members-body header{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 20px 0px 10px 20px;
+  }
+
+
+
+
+
+ #room-native-simple {
+     width: 200px;
+ }
+
+
+.standard-basic input {
+    width: 220px;
+    margin-bottom: -3px;
+}
+
+ .update-project {
+    height: 44px;
+    background: #4c7bff;
+    color: #FFF;
+    border: 0;
+    border-radius: 8px;
+    font-size: 14px;
+ }
+
+ .all-projects{
+    z-index: 1;
+    display: none;
+    background-color: #25294a;
+    width: 20%;
+    height: 95%;
+    border-radius: 60px;
+    margin: 30px 20px 0px 10px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .all-projects-tittle{
+    color: #fff;
+    font-size: 40px;
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  .line {
+    border: 1px solid #373d5e;
+    margin-top: 0px;
+    width: 115%;
+    margin-left: -18px;
+  }
+
+  .projects-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+  }
+
+  .projects-buttons button{
+      margin: 0px 20px 20px 20px;
+      padding: 12px;
+      border: 0;
+      border-radius: 10px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      color: #FFF;
+      background: #313860;
+  }
+
+  .projects-buttons button:hover{
+    color: #4c7bff; 
+}
+
+.search-input {
+    width: 220px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
