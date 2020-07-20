@@ -23,8 +23,6 @@ import {
     
 } from '@material-ui/icons';
 
-import VerticalAlign from '@material-ui/icons/VerticalAlignBottom';
-import VerticalAlignTop from '@material-ui/icons/VerticalAlignTop';
 
 const tableIcons = {
   Add: AddBox,
@@ -46,44 +44,43 @@ const tableIcons = {
   ViewColumn: ViewColumn,
 };
 
-class Members extends Component {
+class Partners extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            projects: [],
+            partners: [],
         };
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchPartners();
     }
 
-    fetchData = async () => {
-        await API.get('/projects', {})
-            .then((res) => {
-                console.log('DADOS PROJS', res.data);
-                this.setState({
-                    projects: res.data,
-                });
-            })
-            .catch((error) => {
-                console.log('Error ', error);
-                return { code: 'error', message: 'Cannot get projects!' };
-            });
-    };
+    fetchPartners = async () => {
+        await API.get('/partners-projects', {})
+         .then(res => {
+           console.log("Parceiros ", res)
+           this.setState({
+              partners: res.data,    
+           });
+         })
+         .catch(error => {
+           console.log('Error ', error);
+           return { code: 'error', message: 'Cannot get partners!' };
+       });
+      };
 
     render() {
-        const { projects } = this.state;
         return (
             <div>       
                 <MaterialTable
                     icons={tableIcons}
                     style={{position: 'relative', zIndex: '0'}}
-                    title="Membros"
+                    title="Parceiros"
                     columns={[
                         { title: 'Nome', editable: 'always'},
                         { title: 'Email'},
-                        { title: 'Sala de desenvolvimento',  editable: 'always'},
+                        { title: 'Número',  editable: 'always'},
                     ]}
                 />
             </div>
@@ -91,4 +88,4 @@ class Members extends Component {
     }
 }
 
-export default Members;
+export default Partners;

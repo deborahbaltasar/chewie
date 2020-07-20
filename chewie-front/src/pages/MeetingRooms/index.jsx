@@ -17,8 +17,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import { toast } from 'react-toastify';
 
 import {Accordion, Card, Modal} from 'react-bootstrap'
-import './styles.css';
-
+import './styles.scss';
 
 class MeetingRoom extends Component {
   constructor(props, context){
@@ -246,7 +245,7 @@ class MeetingRoom extends Component {
                     </div>
                     <Accordion.Collapse eventKey="0">
                       <Card.Body>
-                        <div className="body">
+                        <div className="room-body">
                           <div>
                             <h6>Descrição: </h6>
                             <p>{room.description}</p>

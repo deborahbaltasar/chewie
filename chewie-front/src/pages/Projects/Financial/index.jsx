@@ -21,8 +21,6 @@ import {
     
 } from '@material-ui/icons';
 
-import VerticalAlign from '@material-ui/icons/VerticalAlignBottom';
-import VerticalAlignTop from '@material-ui/icons/VerticalAlignTop';
 
 const tableIcons = {
   Add: AddBox,

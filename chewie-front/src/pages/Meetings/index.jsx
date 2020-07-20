@@ -16,7 +16,7 @@ import {
 }
   from '@syncfusion/ej2-react-schedule';
 
-import './styles.css';
+  import './styles.scss';
 
 class Meetings extends Component {
   constructor(props) {

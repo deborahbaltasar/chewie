@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 
 import { Modal, ProgressBar } from 'react-bootstrap'
 
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
+// import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import CheckCircleOutlineRoundedIcon from '@material-ui/icons/CheckCircleOutlineRounded';
-import DescriptionIcon from '@material-ui/icons/Description';
+// import DescriptionIcon from '@material-ui/icons/Description';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
 import {
     TextField, 
-    Select, 
-    InputLabel, 
-    FormControl, 
-    Paper, 
-    Grid,
-    AppBar,
-    Tab,
-    Tabs,
-    Typography,
-    Box,
+    // Select, 
+    // InputLabel, 
+    // FormControl, 
+    // Paper, 
+    // Grid,
+    // AppBar,
+    // Tab,
+    // Tabs,
+    // Typography,
+    // Box,
   } from '@material-ui/core';
 
 
@@ -27,7 +27,7 @@ import { toast } from 'react-toastify';
 
 import API from '../../services/api';
 
-import './styles.css';
+import './styles.scss';
 
 
 
@@ -297,14 +297,12 @@ class MyProjects extends Component {
               <li key={`project${project.id}`}>
                 <h3>{project.name}</h3>
                 <h6>{`\u2713Tarefas`}</h6>
-                {Tasks.map(task =>  {
-                if(task.Project.name === project.name) {  
-                 return <fieldset key={`Tasks${task.id}`}>
-                      
+                {Tasks.map(task =>  (
+                task.Project.name === project.name ? 
+                <fieldset key={`Tasks${task.id}`}>
                 <button className="task-bnt" onClick={() => this.handleShowView(task)}>{task.title}</button>
-                </fieldset>
-                } else return;
-                })}
+                </fieldset> : ''
+                ))}
                 <button className="new-task-bnt" onClick={this.handleShowCreate.bind(this)}>
                     <AddRoundedIcon />
                     Criar nova tarefa
