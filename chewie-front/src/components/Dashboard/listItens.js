@@ -22,7 +22,7 @@ import { toast } from 'react-toastify';
 
 import Auth from '../../utils/auth';
 
-import './styles.css';
+import './styles.scss';
 
  export const ProfileList = () => {
   const name = localStorage.getItem('userName')
@@ -37,7 +37,8 @@ import './styles.css';
           />
         </ListItemIcon>
       
-        <ListItemText 
+        <ListItemText
+          className="userName" 
           style={{color: '#fff'}} 
           primary={name} 
         />
@@ -53,28 +54,28 @@ export const list = (
   <div>
     <ListItem button component={Link} to="/dashboard">
       <ListItemIcon>
-        <HomeRounded style={{color: '#777'}}/>
+        <HomeRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
 
    <ListItem button>
       <ListItemIcon>
-        <DevicesRounded style={{color: '#777'}}/>
+        <DevicesRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Dispositivos" />
     </ListItem>
 
     <ListItem button component={Link} to="/projects">
       <ListItemIcon>
-        <LaptopChromebookRounded style={{color: '#777'}}/>
+        <LaptopChromebookRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Projetos" />
     </ListItem>
 
     <ListItem button component={Link} to="/meetingRooms">
       <ListItemIcon>
-        <MeetingRoomRounded style={{color: '#777'}}/>
+        <MeetingRoomRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Salas de Reuniões" />
     </ListItem>
@@ -87,13 +88,13 @@ export const secondaryListItems = (
 
     <ListItem button component={Link} to="/myProjects">
       <ListItemIcon>
-        <DeveloperModeRounded style={{color: '#777'}}/>
+        <DeveloperModeRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Meus projetos" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <DevicesOtherRounded style={{color: '#777'}}/>
+        <DevicesOtherRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Meus empréstimos" />
     </ListItem>
@@ -110,14 +111,14 @@ export const actionListItems = (
     
     <ListItem button>
       <ListItemIcon>
-        <AddCircleOutlineRounded style={{color: '#777'}}/>
+        <AddCircleOutlineRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Novo Empréstimo" />
     </ListItem>
     
     <ListItem button component={Link} to="/meetings">
       <ListItemIcon>
-        <EventRounded style={{color: '#777'}}/>
+        <EventRounded style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Agendar Nova Reunião" />
     </ListItem>
@@ -127,7 +128,7 @@ export const actionListItems = (
         Auth.logOut();
       }} component={Link} to="/">
       <ListItemIcon>
-        <PowerSettingsNew style={{color: '#777'}}/>
+        <PowerSettingsNew style={{color: '#737bac'}}/>
       </ListItemIcon>
       <ListItemText primary="Encerrar sessão" />
     </ListItem>
