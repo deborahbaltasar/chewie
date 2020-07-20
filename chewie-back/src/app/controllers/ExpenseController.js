@@ -16,6 +16,8 @@ class ExpenseController {
           .status(401)
           .json({ error: 'Project does not exists' });
         }
+
+
     
         const expenses = await Expense.findAll({
           where: { fk_project: id },
@@ -39,6 +41,16 @@ class ExpenseController {
           // console.log('admin', checkUserAdmin)
           if(!checkUserAdmin) {
             return res.status(401).json({error: "Only admins can create an expense"})
+          }
+
+          const expensesExists = await Expense.findOne({ 
+            where: { reason: req.body.reason, date: req.body.name },
+          }); 
+      
+          if (expensesExists) {
+            return res
+            .status(401)
+            .json({ error: 'Expense already exist' });
           }
 
         const { fk_project } = req.body;
