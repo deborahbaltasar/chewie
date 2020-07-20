@@ -28,6 +28,7 @@ export default function RouteWrapper({
       <Layout>
         <Component {...props} />
       </Layout>
+
     )} />
   );
 }

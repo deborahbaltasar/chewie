@@ -1,21 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper, Border, Container } from './styles';
-import Dashboard from '../../../components/Dashboard';
+import { Container } from './styles';
+import Sidebar from '../../../components/Sidebar';
 
 
 export default function DefaultLayout({ children }) {
   return (
     
     <Container>
-    <Dashboard />
-    <Border>
-      <Wrapper>
-        
-        {children}
-      </Wrapper>
-    </Border>
+    <Sidebar />     
+     {children}
     </Container>
   );
 }
