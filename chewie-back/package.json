@@ -10,7 +10,6 @@
     "init:db": "./node_modules/.bin/sequelize db:migrate && ./node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
-    "@syncfusion/ej2-react-schedule": "^18.1.43",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
