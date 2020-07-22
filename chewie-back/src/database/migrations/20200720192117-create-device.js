@@ -10,7 +10,7 @@ module.exports = {
       },
       fk_device_category: {
         type: Sequelize.INTEGER,
-        references: {model: 'device_categorys', key: 'id'},
+        references: {model: 'device_categories', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         allowNull: false
@@ -28,11 +28,15 @@ module.exports = {
       quantity: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

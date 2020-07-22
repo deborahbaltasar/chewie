@@ -45,8 +45,8 @@ const models = [
     Expense,
     Emmiter,
     Invoice,
-    Device,
-    DeviceCategory
+    DeviceCategory,
+    Device
 ];
 
 class Database {

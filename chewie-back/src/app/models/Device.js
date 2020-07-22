@@ -1,21 +1,21 @@
-'use strict';
-const {Model} = require('sequelize');
+import Sequelize, { Model } from 'sequelize';
 
 
 class Device extends Model {
     static init(sequelize) {
         super.init({
-            name: DataTypes.STRING,
-            quantity: DataTypes.INTEGER
+            name: Sequelize.STRING,
+            quantity: Sequelize.INTEGER
         }, {
             sequelize,
-            modelName: 'device',
+            paranoid: true
         });
+        return this;
     }
 
     static associate(models) {
-        this.belongsTo(models.DeviceCategory, {foreignKey: 'fk_device_category'})
         this.belongsTo(models.MeetingRoom, {foreignKey: 'fk_meeting_room'})
+        this.belongsTo(models.DeviceCategory, {foreignKey: 'fk_device_category'})
     }
 }
 

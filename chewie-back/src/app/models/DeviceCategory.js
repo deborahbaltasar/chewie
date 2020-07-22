@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+import Sequelize, { Model } from 'sequelize';
 
 class DeviceCategory extends Model {
     /**
@@ -8,11 +8,12 @@ class DeviceCategory extends Model {
      */
     static init(sequelize){
         super.init({
-            name: DataTypes.STRING
+            name: Sequelize.STRING
         }, {
             sequelize,
-            modelName: 'device_category',
+            paranoid: true
         });
+        return this;
     }
 
     static associate(models) {
