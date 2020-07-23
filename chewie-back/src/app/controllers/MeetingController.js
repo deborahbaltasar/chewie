@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import MeetingRoom from '../models/MeetingRoom';
 import User from '../models/User';
 import Meeting from '../models/Meeting';
+import Project from '../models/Project';
 
 
 class MeetingController {
@@ -20,6 +21,10 @@ class MeetingController {
           attributes: [ 'name'],
         },
         {
+          model: Project,
+          attributes: [ 'name'],
+        },
+        {
           model: MeetingRoom,
           attributes: ['name', 'room', 'id'], 
         },   
@@ -34,13 +39,14 @@ class MeetingController {
         meeting_room_id: Yup.number().required(),
         start: Yup.date().required(),
         end: Yup.date().required(),
+        project_id: Yup.number(),
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation Fails.' });
     }
 
-    const { name, meeting_room_id, start, end} = req.body;
+    const { name, meeting_room_id, start, end, project_id} = req.body;
     
     const roomExists = await MeetingRoom.findOne({ 
       where: { id: meeting_room_id},
@@ -61,6 +67,7 @@ class MeetingController {
         meeting_room_id,
         start,
         end,
+        fk_project: project_id
     });
 
     return res.json(meeting);
