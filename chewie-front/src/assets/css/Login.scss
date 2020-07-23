@@ -26,23 +26,12 @@ input {
   }
 }
 
-// a {
-//   color: #FFF;
-//   margin-top: 15px;
-//   font-size: 16px;
-//   opacity: 0.8;
-
-//   &:hover {
-//     opacity: 0;
-//   }
-// }
-
 .grids {
     display: flex;
     align-items: center;
     background-color: #25294a;
     width: 96%;
-    height: 101.8%;
+    height: 97%;
     border-radius: 60px;
     margin: 20px auto;
     box-shadow: 8px 0px 10px #1a1f37;
@@ -53,13 +42,6 @@ input {
     color: #4c7bff !important;
 }
 
-// .imagemSenha{
-//     margin-right: 0px;
-//     color: #737bac !important;
-//     width: 49px;
-//     height: 54px;
-// }
-
 .botao-cadeado{
     width: 69px;
     height: 74px;
@@ -69,14 +51,6 @@ input {
     width: 40px !important;
     height: 40px !important;
 }
-
-// .div_email{
-   
-// }
-
-// .div-senha{
-
-// }
 
 .email-input{
     padding: 0 35px !important;
@@ -227,7 +201,7 @@ input {
         display: none;
         background-color: #25294a;
         border-radius: 60px;
-        height: 101.8%;
+        height: 97%;
         margin: 20px 30px 20px 30px;
         box-shadow: 8px 0px 10px #1a1f37;
       }
@@ -277,7 +251,7 @@ input {
         display: none;
         background-color: #25294a;
         border-radius: 60px;
-        height: 101.8%;
+        height: 97%;
         margin: 20px 30px 20px 30px;
         box-shadow: 8px 0px 10px #1a1f37;
       }
