@@ -1,18 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
-
+import { Link } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
-import {Card, Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
 import Menu from './Menu';
+
 
 import API from '../../services/api';
 
 import './styles.scss';
 
 import $ from "jquery";
+
+import { parseISO, formatDistance, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+  
+  
+  const firstDate = parseISO('2018-04-01 16:00:00');
+  const secondDate = parseISO('2018-04-02 16:00:00');
+  
+  const formattedDate = format(
+    firstDate, 
+    "dd'/'MM'/'yy"
+  );
+
+  
+
+
 
 class Projects extends Component {
   constructor(props) {
@@ -166,8 +183,6 @@ class Projects extends Component {
   handleShowView = (project) => {
     $(".project-button").focus(function () {
         $(".body").css({"display" : 'grid'})
-        
-        $(".projects-container .header").css({"marginTop" : '-350px'})
       })
   
     //   $(".project-button").click(function () {
@@ -188,12 +203,15 @@ class Projects extends Component {
       meeting_room_name: project.MeetingRoom.name,
       responsible: project.User.name,
       comments: project.comments,
-      status: project.ProjectStatus[0].Statu.name,
+    //   status: project.ProjectStatus[0].Statu.name,
       showView: true,
-        selected: {
-
-      }
-    }) 
+    })
+    
+    // const formattedDate = format(
+    //     project.start, 
+    //     "dd'/'MM'/'yy"
+    //   );  
+      console.log('aaaa', project.start.format(project.start, "dd'/'MM"))
   };
 
   handleCloseCreate = () => {
@@ -228,30 +246,15 @@ class Projects extends Component {
     $(".bnt-all-projects").focus(function () {
       $(".all-projects").css({"display" : 'initial'})
       $(".bnt-all-projects").css({"color" : '#4c7bff'})
-      $(".grids").css({"margin" : '20px 0px 20px 20px'})
     })
 
     $(".bnt-all-projects").click(function () {
     
       $(".bnt-all-projects").css({"color" : '#FFF'})
-      $(".all-projects").css({"display" : 'none'})
-      $(".grids").css({"margin" : '20px auto'})
-      
+      $(".all-projects").css({"display" : 'none'})    
     })}
 
 
-    handleBody = () => {
-
-        $(".project-button").focus(function () {
-          $(".body").css({"display" : 'grid'})
-          $(".project-button").css({"color" : '#4c7bff'})
-        })
-    
-        $(".project-button").click(function () {
-          $(".project-button").css({"color" : '#FFF'})
-          $(".body").css({"display" : 'none'})
-          
-        })}
 
   render() {
     let filteredProjects = this.state.projects.filter(
@@ -259,7 +262,9 @@ class Projects extends Component {
            return project.name.toLowerCase().indexOf(this.state.search) !== -1;
        }
     );
-    const { projects, allStatus, rooms, selected } = this.state;
+
+    // const date = this.state.start;
+    
 
 
     return (
@@ -328,7 +333,7 @@ class Projects extends Component {
 
                   <TextField 
                     className="standard-basic" 
-                    label="Início do projeto" 
+                    label={formattedDate} 
                     onChange={e => this.setState({ start: e.target.value })}
                   />
                   <br />
@@ -373,7 +378,7 @@ class Projects extends Component {
         <div className="body">         
           <div className="body-tittle">
             <h1>{this.state.name}</h1>
-            <span className="body-status">{this.state.status}</span>
+            <span className="body-status">EM DESENVOVIMENTO</span>
           </div>
           <div className="description-body">
               <header>DESCRIÇÃO</header>
@@ -406,21 +411,61 @@ class Projects extends Component {
           </div>
           <div className="steps-body">
               <header>prazo</header>
+              <div className="start-end-progress">
+                  <span className="start-end-span">Início</span>
+                  <span className="start-end-span">Fim</span>
+              </div>
               <div className="progress">
-                <div className="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                <div 
+                    className="progress-bar" 
+                    role="progressbar" 
+                    aria-valuenow="0" 
+                    aria-valuemin="0" 
+                    aria-valuemax="100"
+                    style={{width: '55%'}}
+                > 
+                </div>
+              </div>
+              <div className="start-end-progress">
+                  <span className="start-end-date">{this.startFormatted}</span>
+                  <span className="start-end-date">30/09/20</span>
               </div>
 
-            
           </div>
-          <div className="partners-body">
-              <header>PARCEIROS</header>
-
-            
+          <div className="meetings-body">
+              <header>Próximas reuniões</header>
+              <span className="span-tittle">28/07: </span>
+              <span className="span-answer">Mostrar tela de 'reuniões'</span>
+              <hr className="line-meetings" /> 
+              <span className="span-tittle">30/07: </span>
+              <span className="span-answer">Mostrar tela de 'dispositivos'</span>
+              <hr className="line-meetings" /> 
+              <span className="span-tittle">12/08: </span>
+              <span className="span-answer">Mostrar tela de 'Meus Projetos'</span>
+              <hr className="line-meetings" />
+              <br />
+              <Link to='/meetings' className="next-meeting">Agendar Próxima reunião</Link>
+              
           </div>
 
           <div className="value-body">
               <header>Valor</header>
-
+              <div className="start-end-progress">
+                  <span className="start-end-span">R$ 0</span>
+                  <span className="start-end-span">{`R$ ${this.state.value}`}</span>
+              </div>
+              <div className="progress">
+                <div 
+                    className="progress-bar" 
+                    role="progressbar" 
+                    aria-valuenow="0" 
+                    aria-valuemin="0" 
+                    aria-valuemax="100"
+                    style={{width: '70%'}}
+                >
+                    R$ 4200
+                </div>
+              </div>
             
           </div>
 
@@ -446,13 +491,24 @@ class Projects extends Component {
                     />
                     <hr className="line" />
                 </div>
-                
+                </div>
                 <div className="projects-buttons">
                 {filteredProjects.map(project => (
                     <button className="project-button" key={project.id} onFocus={() => this.handleShowView(project)}>{project.name}</button>
                 ))}
+                {/* <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                <button className="project-button">Chewie</button>
+                 */}
                 </div>
-            </div>      
+                  
         </div>
       </div>
     );

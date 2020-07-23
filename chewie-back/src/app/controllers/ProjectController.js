@@ -157,8 +157,6 @@ class ProjectController {
       meeting_room_id,
       responsible,
       comments, 
-      status_id: 1,
-
   });
 
 
