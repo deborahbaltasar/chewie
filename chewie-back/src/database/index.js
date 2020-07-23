@@ -18,6 +18,8 @@ import ProjectStatu from '../app/models/ProjectStatu';
 import Expense from '../app/models/Expense';
 import Emmiter from '../app/models/Emmiter';
 import Invoice from '../app/models/Invoice';
+import Device from '../app/models/Device';
+import DeviceCategory from "../app/models/DeviceCategory";
 
 import databaseConfig from '../config/database';
 
@@ -43,6 +45,8 @@ const models = [
     Expense,
     Emmiter,
     Invoice,
+    DeviceCategory,
+    Device
 ];
 
 class Database {
