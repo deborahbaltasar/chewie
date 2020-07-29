@@ -22,6 +22,8 @@ import ProjectStatuController from './app/controllers/ProjectStatuController';
 import ExpenseController from './app/controllers/ExpenseController';
 import EmmiterController from './app/controllers/EmmiterController';
 import InvoiceController from './app/controllers/InvoiceController';
+import DeviceCategoryController from './app/controllers/DeviceCategoryController';
+import DeviceController from './app/controllers/DeviceController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -125,6 +127,21 @@ routes.post('/emmiters', EmmiterController.store);
 
 routes.post('/invoices', InvoiceController.store);
 
+//DEVICE CATEGORIES
+
+routes.post('/deviceCategory', DeviceCategoryController.store)
+
+routes.get('/deviceCategory', DeviceCategoryController.show)
+
+routes.get('/deviceCategory', DeviceCategoryController.delete)
+
+//DEVICES
+
+routes.post('/device', DeviceController.store)
+
+routes.get('/device', DeviceController.show)
+
+routes.delete('/device', DeviceController.delete)
 
 
 export default routes;
