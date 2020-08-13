@@ -1,137 +1,504 @@
+
 .meeting-rooms-container {
-    width: 100%;
-    max-width: 1100px;
-    padding: 0 30px;
-    margin-left: 40px;
+    display: grid;
+    // grid-template-columns: repeat(1, 1fr);
+    background-color: #25294a;
+    width: 98%;
+    height: 95%;
+    border-radius: 60px;
+    margin: 30px 20px 20px 20px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    overflow: hidden;
     
 }
+
+.meeting-room-header-left {
+    display:flex;
+    flex-direction: row;
+    margin: 20px 20px auto 60px;    
+} 
+
+.meeting-room-header-left h1{
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    text-decoration: underline;
+    text-decoration-color: #4c7bff;
+    height: 40%;
+    width: 100%;   
+} 
+
+.meeting-room-header-left button {
+    margin-top: 24px;
+    margin-left: 1px;
+    background: none;
+    color: #FFF;
+    border: 0; 
+} 
 
 .meeting-room-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    
-} 
-
-.meeting-room-header button {
-    margin-top: 90px;
-    margin-left: -1px;
-    background: none;
-    color: #FFF;
-    border: 0;
-    
-} 
-
-.modal {
-    margin-top: 110px;
-    text-align: center;
-    z-index: 1px;
-    color: #000000;
-    
-  
+    justify-content: space-between;
 }
 
+.all-rooms {
+    margin-top: -400px;
+    margin-right: 20px;
+}
+
+.room-bnt {
+    margin-top: -20px;
+    margin-right: 20px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+    color: #FFF;
+    background: #313860;
+    padding: 15px;
+    border: 0;
+    border-radius: 8px;
+
+}
+
+.room-bnt:focus {
+    color: #4c7bff;
+}
+
+
+
+.modal {
+    margin-top: 160px;
+    text-align: center;
+    z-index: 1px;
+    color: #737bac;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    align-self: center;
+    border-top: none;
+}
+
+.modal-title {
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+}
+
+.modal-content {
+    border-radius: 30px;
+    padding: 10px;
+    background-color: #1a1f37;
+}
 .modal input {
     outline: 0;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px;
     border-width: 0 0 1px;
-    border-color: blue;
-    margin-left: 10px;
+    border-color: #737bac;
+    margin-left: 20px;
     width: 250px;
     height: 35px;
     padding: 0 15px;
-    color: #000000;
+    color: #fff;
     margin: 0 0 10px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
  
 }
 
 .modal input:focus {
-    border-color: green;
+    border-color: #4c7bff;
   } 
 
+  .modal input::placeholder {
+    font-size: 24px;
+    color: #737bac;
+  } 
 
-
-
-
-.button {
-    width: 100%;
-    height: 40px;
-    background: #e02041;
-    border: 0;
-    border-radius: 8px;
+  .modal button:not(.cadastro){
+    font-size: 30px;
     color: #FFF;
-    font-weight: 700;
-    margin-bottom: 25px;;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px;
-    line-height: 40px;
-    transition: filter 0.2s;
-}
+  } 
 
-.button:hover {
-    filter:brightness(90%);
-}
-.meeting-rooms-container h1 {
-   margin-top: 80px;
-   margin-bottom: 24px;
-   color: #FFF;   
-}
+  .cadastro {
+    font-size: 28px;
+    font-family: 'Bebas Neue', cursive;
+    color: #FFF;
+    border: 0;
+    background: none;
+  } 
 
-.meeting-rooms-container ul {
-    display: grid;
-    grid-gap: 4px;
-    list-style: none;
-    margin-right: 20px;
-    width: 350px;  
-    
-}
+  .room-cards {
+      display: flex;
+  }
 
 
 .room-body {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: none;
+    grid-template-columns: repeat(1, 1fr);
+    background: #313860;
     grid-gap: 4px;
-    list-style: none; 
-    
+    margin: 0 0 0px 20px;
+    height: 98%;
+    border-radius: 40px;
+    width: 98%;
 }
 
-.room-body p {
-  margin-left: 8px;
-}
-
-.meeting-rooms-container ul li {
-    margin-bottom: 10px;
-   
-}
-
-.meeting-rooms-container ul li p{
-    margin-bottom: 5px;
-}
-
-
-.room {
+.room-header {
     display: flex;
+    flex-direction: row;
+    align-items: flex-end;
     justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    margin-right: 12px;
+    width: 100%;
+    margin-right: auto;
 }
-.room strong {
-    cursor: pointer;
-    text-align: center;
+
+.room-body-tittle h1 {
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    margin: 40px 20px 0px 60px;
+    height: 40%;
+}
+
+
+.room-body-buttons button{  
+    margin-top: -20px;
+    margin-right: 20px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+    color: #737bac;
+    background: #25294a;
+    padding: 15px;
+    border: 0;
+    border-radius: 8px;
+     
+}
+
+.room-body-buttons button:focus{  
+    color: #4c7bff;
+
+}
+ .range-body {
+    height: 700px;
+}
+
+.range-body h2{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 35px;
+    margin-left:60px;
+    margin-top: 20px;
+}
+
+.meetings-of-a-day  {
+    margin-left: 60px;
+    border-left: 4px solid #4c7bff;
+    margin-top: 40px;
+}
+
+.meetings-of-a-day h1 {
+    color: #fff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.meetings-of-a-day p {
+    color: #737bac;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.meetings-of-a-day span {
+    color: #fff;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.meetings-of-a-day-header {
+    display: flex;
+    flex-direction: row;
+}
+.range-body hr {
+    color: #25294a;
+	border-top-width: 3px;
+    margin-left:-89%;
+    margin-top: 50px;
+    width: 178%;
+}
+
+.information-body {
+    display: flex;
+    background: #313860;
+    width: 55%;
+    margin: 0 20px 0 30px;
+    border-radius: 40px;
+    margin-left: 30px;
+    margin-right: 20px;
+    height: 98%;
+}
+
+.information-header h1 {
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    margin: 40px 20px 0px 60px;
+    height: 40%;
+}
+
+.items-body {
+    background: #313860;
+    width: 45%;
+    margin: 0 20px 0 30px;
+    border-radius: 40px;
+    margin-left: 30px;
+    margin-right: 20px;
+    height: 98%;
+}
+
+.items-body-header {
+    display: flex;
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 40px auto -300px auto;
+}
+
+.items-body-header h1{
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    margin: 40px auto -300px auto;
+}
+
+.items-body .items-body-flex{
+    margin-top: 450px;
+    margin-left: 55px;
+
+}
+
+.items-body .items-body-row{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 85%;
+
+}
+
+
+.items-body p {
+    color: #fff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    margin-bottom: 1px;
     
 }
 
-.button-room {
-    color:rgb(59, 56, 56);
-    background: none;
-    border: 0;
-    margin-left: 5px;
-    transition: filter 0.2s;
+.items-body hr{
+    margin-bottom: 20px;
+    margin-top: 8px;
+    width: 90%;
+    border: 0.8px solid #fff;
 }
 
-.button-room:hover {
-    filter:brightness(60%);
+.calendar {
+    display: initial;
+    background: #313860;
+    width: 90%;
+    border-radius: 40px;
+    margin-left: 30px;
+    margin-right: 20px;
+    height: 98%;
 }
+
+.calendar-box {
+    margin: 40px auto 0 auto;
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 45px;
+    background: #313860;
+    padding: 10px;
+    border: 0;
+    border-radius: 18px;
+    width: 98%;
+    height: 80%;
+
+    .react-calendar__navigation {
+        background: #25294a;
+        margin-top: auto;
+        padding: 10px;
+        border-radius: 12px;
+        height: 70px;
+    }
+    
+    .react-calendar__navigation button {
+        min-width: 44px;
+        background: none;
+        color: #FFF;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 45px;
+      }
+    
+    
+    .react-calendar__navigation button:enabled:hover,
+    .react-calendar__navigation button:enabled:focus {
+      color: #4c7bff;
+      background: none;
+    }
+    
+    .react-calendar__year-view .react-calendar__tile,
+    .react-calendar__decade-view .react-calendar__tile,
+    .react-calendar__century-view .react-calendar__tile {
+      padding: 2em 0.5em;
+      color: #FFF;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 30px;
+    }
+    
+    
+    .react-calendar__tile--now {
+      color: #4c7bff;
+      background: #313860;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+    }
+    
+    .react-calendar__tile--now:enabled:hover,
+    .react-calendar__tile--now:enabled:focus {
+      background: #313860;
+    }
+    
+    .react-calendar__tile:enabled:hover,
+    .react-calendar__tile:enabled:focus {
+      background: #25294a;
+      border-radius: 18px;
+    }
+    
+    
+    .react-calendar__month-view__days__day:not(.react-calendar__month-view__days__day--neighboringMonth):not(.react-calendar__tile--now ) {
+        color: #fff;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 32px;
+    }
+    
+    
+    .react-calendar__month-view__days__day--neighboringMonth {
+        color: #737bac;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 32px;
+    }
+    
+    .react-calendar__tile--active {
+        background: #25294a;
+        color: #FFF;
+        border-radius: 18px;
+    }
+    
+    
+    .react-calendar_navigation_prev-button button {
+        font-size: 150px;
+    }
+}
+
+
+
+.create-meetings-body {
+    display: initial;
+    background: #313860;
+    width: 90%;
+    border-radius: 40px;
+    margin-left: 30px;
+    margin-right: 20px;
+    height: 98%;
+}
+
+
+// .button {
+//     width: 100%;
+//     height: 40px;
+//     background: #e02041;
+//     border: 0;
+//     border-radius: 8px;
+//     color: #FFF;
+//     font-weight: 700;
+//     margin-bottom: 25px;;
+//     display: inline-block;
+//     text-align: center;
+//     text-decoration: none;
+//     font-size: 15px;
+//     line-height: 40px;
+//     transition: filter 0.2s;
+// }
+
+// .button:hover {
+//     filter:brightness(90%);
+// }
+// .meeting-rooms-container h1 {
+//    margin-top: 80px;
+//    margin-bottom: 24px;
+//    color: #FFF;   
+// }
+
+// .meeting-rooms-container ul {
+//     display: grid;
+//     grid-gap: 4px;
+//     list-style: none;
+//     margin-right: 20px;
+//     width: 350px;  
+    
+// }
+
+
+// .room-body {
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//     grid-gap: 4px;
+//     list-style: none; 
+    
+// }
+
+// .room-body p {
+//   margin-left: 8px;
+// }
+
+// .meeting-rooms-container ul li {
+//     margin-bottom: 10px;
+   
+// }
+
+// .meeting-rooms-container ul li p{
+//     margin-bottom: 5px;
+// }
+
+
+// .room {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     text-align: center;
+//     margin-right: 12px;
+// }
+// .room strong {
+//     cursor: pointer;
+//     text-align: center;
+    
+// }
+
+// .button-room {
+//     color:rgb(59, 56, 56);
+//     background: none;
+//     border: 0;
+//     margin-left: 5px;
+//     transition: filter 0.2s;
+// }
+
+// .button-room:hover {
+//     filter:brightness(60%);
+// }
