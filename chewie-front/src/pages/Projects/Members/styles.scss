@@ -1,0 +1,115 @@
+.members-component {
+    margin: 40px 25px 0px 0px;
+}
+
+.members-bnts {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.members-bnts button{
+    color: #737bac; 
+    background: #25294a;
+    border: 0;
+    margin-right: 15px;
+    border-radius: 8px;
+    padding: 8px;  
+}
+
+.members-bnts button:hover {
+  color: #4c7bff; 
+}
+
+.responsibles-card {
+    display: flex;
+    flex-direction: column;
+    background: #25294a;
+    margin: 0 5px;
+    margin-left: 20px;
+    margin-top: 30px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    height: 140%;
+}
+
+.responsibles-header {
+    margin: 20px 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.responsibles-header h2{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+}
+
+.pagination-bnts span{
+    margin: 0 10px;
+    background: #313860;
+    padding: 5px;
+    border-radius: 8px;
+    color: #FFF;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px;
+}
+
+.pagination-bnts button{
+    background: #313860;
+    padding: 5px;
+    border: 0;
+    border-radius: 8px;
+    color: #FFF;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+}
+
+.title-bnt{
+    background: none;
+    border: 0;
+    margin: 50px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px;
+    text-align: center;
+}
+
+.title-bnt img{
+    margin-top: -5px;
+}
+
+.title-bnt:hover{
+    opacity: 0.6;
+}
+
+
+.name-members {
+    margin: 20px 50px 0px 50px;
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+}
+
+.name-members img{
+    height: 100px;
+    width: 100px;
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    border-radius: 50%;
+  }
+
+  .name-members span{
+    color: #FFF;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px; 
+    margin:0 10px;
+
+  }
+
+
+
