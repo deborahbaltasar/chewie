@@ -158,7 +158,10 @@ class Meetings extends Component {
           eventSettings={{ dataSource: meetings }}
           actionComplete={this.onActionComplete.bind(this)}
           created={this.loadInfo.bind(this)}
-          height='800px' >
+          height='800px' 
+          width='1500px'
+          borderRadius='10px'
+        >
           <ViewsDirective>
             <ViewDirective
               option='Agenda'

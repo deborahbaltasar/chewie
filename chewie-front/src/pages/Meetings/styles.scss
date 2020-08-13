@@ -3,3 +3,23 @@
     margin-left: 50px;
     margin-top: 70px;
 }
+
+.e-schedule{
+    border-radius: 20px;
+    background: #25294a;
+}
+
+
+
+
+.e-schedule:focus{
+    border-radius: 20px;
+    background: #25294a;
+}
+
+.e-control, .e-css {
+    /* font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif, "-apple-system", "BlinkMacSystemFont"; */
+    font-size: 20px;
+    font-weight: normal;
+//     font-family: "Bebas Neue";
+}

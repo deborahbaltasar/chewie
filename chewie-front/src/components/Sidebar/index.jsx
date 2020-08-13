@@ -172,7 +172,9 @@ class Sidebar extends React.Component {
                   </div>
 
                   <div className = 'Busca'>
-                  <EventRounded className = 'Agendar_reuniaoIcon'></EventRounded><span className = 'Agendar_reuniao'>Agendar reunião</span> 
+                  <EventRounded className = 'Agendar_reuniaoIcon'></EventRounded>
+                  <Link to="/meetings" className = 'Dashboard'>Agendar Reunião</Link>
+
                   </div>
                 </div>
 
