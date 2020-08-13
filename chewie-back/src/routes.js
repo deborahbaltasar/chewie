@@ -45,6 +45,8 @@ routes.post('/meetings', MeetingController.store);
 
 routes.get('/meetings', MeetingController.index);
 
+routes.get('/meetings/:date', MeetingController.show);
+
 routes.delete('/meetings/:id', MeetingController.delete);
 
 //MEETING ROOM
@@ -133,7 +135,7 @@ routes.post('/deviceCategory', DeviceCategoryController.store)
 
 routes.get('/deviceCategory', DeviceCategoryController.show)
 
-routes.get('/deviceCategory', DeviceCategoryController.delete)
+routes.delete('/deviceCategory', DeviceCategoryController.delete)
 
 //DEVICES
 

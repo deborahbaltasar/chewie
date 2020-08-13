@@ -7,6 +7,47 @@ import Project from '../models/Project';
 
 
 class MeetingController {
+  async show(req, res) {
+    const {date} = req.params;
+
+    const meetingExists = await Meeting.findOne({ 
+      where: { start: date},
+    });
+
+    if (!meetingExists) {
+      return res
+      .status(401)
+      .json({ error: 'There is no meentings in this day' });
+    }
+
+    const meetings = await Meeting.findAll({
+      where: {  start: date },
+      attributes: [ 
+        'id',
+        'name', 
+        'start',
+        'end',   
+      ],
+      include: [
+        {
+          model: User,
+          attributes: [ 'name'],
+        },
+        {
+          model: Project,
+          attributes: [ 'name'],
+        },
+        {
+          model: MeetingRoom,
+          attributes: ['name', 'room', 'id'], 
+        },   
+      ],
+    });
+    
+    return res.json(meetings);
+
+  }  
+  
   async index(req, res) {
     const { page = 1 } = req.query;
     const allMeetings = await Meeting.findAll({
