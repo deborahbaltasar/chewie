@@ -1,0 +1,218 @@
+.meeting-name {
+    margin: 60px auto 0 20px;
+}
+
+
+.input-name  {
+    color: #fff;
+    margin-left: 20px;
+    width: 90%;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+    border-color: #737bac;
+}
+
+.meeting-name input::placeholder{
+    font-size: 30px;
+    color: #737bac;
+}
+
+.meeting-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.meeting-day {
+    margin: 40px auto 0 20px;
+}
+
+.meeting-day input{
+    color: #fff;
+    width: 82%;
+    margin-left: 20px;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+    border-color: #737bac;
+}
+
+.meeting-day input::placeholder{
+    font-size: 30px;
+    color: #737bac;
+}
+
+.meeting-hour {
+   margin-top: 70px;
+}
+
+.meeting-hour input{
+    color: #fff;
+    width: 70%;
+    margin-left: 20px;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+    border-color: #737bac;
+}
+
+.meeting-hour input::placeholder{
+    font-size: 30px;
+    color: #737bac;
+}
+
+.calendar-form {
+    margin: -100px 0 0 20px;
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    background: #313860;
+    padding: 10px;
+    border: 0;
+
+   
+    .react-calendar__navigation button {
+        display: none;
+      }
+
+    .react-calendar__tile--now {
+      color: #4c7bff;
+      background: #313860;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 24px;
+      margin-bottom: -15px;
+    }
+    
+    .react-calendar__tile--now:enabled:hover,
+    .react-calendar__tile--now:enabled:focus {
+      background: #313860;
+    }
+    
+    .react-calendar__tile:enabled:hover,
+    .react-calendar__tile:enabled:focus {
+      background: #25294a;
+      border-radius: 18px;
+    }
+    
+    
+    .react-calendar__month-view__days__day:not(.react-calendar__month-view__days__day--neighboringMonth):not(.react-calendar__tile--now ) {
+        color: #fff;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 24px;
+        margin-bottom: -15px;
+    }
+    
+    
+    .react-calendar__month-view__days__day--neighboringMonth {
+        color: #737bac;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 24px;
+        margin-bottom: -15px;
+    }
+    
+    .react-calendar__tile--active {
+        background: #25294a;
+        color: #FFF;
+        border-radius: 18px;
+    }
+    
+    
+    .react-calendar_navigation_prev-button button {
+        font-size: 150px;
+    }
+}
+
+.meeting-project {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.meeting-project-header {
+    margin: 0 auto 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+.meeting-project span {
+    color: #737bac;
+    margin-left: 20px;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+
+}
+
+.project-check {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    
+
+}
+
+.project-checkbox {
+    width: 25px;
+    height: 25px;
+    margin-left: 250px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.project-check p{
+    color: #737bac;
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 22px;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.project-bnt {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    margin-left: 23%;
+    margin-bottom: -40px;
+}
+
+
+.project-arrows-bnt {
+   background: #25294a;
+   border: 0; 
+   padding: 5px;
+   border-radius: 8px;
+
+}
+
+.name-project-bnt {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+    color: #FFF;
+    background: #25294a;
+    padding: 15px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.name-project-bnt {
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.name-project-bnt:focus {
+    color: #4c7bff;
+}
+
+.create-meetings-footer {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.create-meetings-footer button{
+    background: none;
+    font-size: 32px;
+    font-family: 'Bebas Neue', cursive;
+    color: #FFF;
+    border: 0;
+}
