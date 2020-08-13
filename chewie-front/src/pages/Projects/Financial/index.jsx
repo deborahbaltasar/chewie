@@ -1,84 +1,103 @@
 import React, { Component } from 'react';
 
-import MaterialTable from 'material-table';
+import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
+import PaymentRoundedIcon from '@material-ui/icons/PaymentRounded';
 
-import {
-    AddBox,
-    ArrowUpward,
-    Check,
-    ChevronLeft,
-    ChevronRight,
-    Clear,
-    DeleteOutline,
-    Edit,
-    Search,
-    FilterList,
-    FirstPage,
-    LastPage,
-    Remove,
-    SaveAlt,
-    ViewColumn,
-    
-} from '@material-ui/icons';
+import { Progress }  from 'react-sweet-progress';
 
+import $ from "jquery";
 
-const tableIcons = {
-  Add: AddBox,
-  Check: Check,
-  Clear: Clear,
-  Delete: DeleteOutline,
-  DetailPanel: ChevronRight,
-  Edit: Edit,
-  Export: SaveAlt,
-  Filter: FilterList,
-  FirstPage: FirstPage,
-  LastPage: LastPage,
-  NextPage: ChevronRight,
-  PreviousPage: ChevronLeft,
-  ResetSearch: Clear,
-  Search: Search,
-  SortArrow: ArrowUpward,
-  ThirdStateCheck: Remove,
-  ViewColumn: ViewColumn,
-};
+import './styles.scss';
 
 class Financial extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showProgress: true,
+            showInformation: false,
+            showExpenses: false,
             finances: [],
             invoices: [],
         };
     }
 
-    render() {
-        return (
-            <div>       
-                <MaterialTable
-                    icons={tableIcons}
-                    style={{position: 'relative', zIndex: '0'}}
-                    title="Notas Fiscais" 
-                    columns={[
-                        { title: 'Emissor',  editable: 'always'},
-                        { title: 'Valor',  editable: 'always'},
-                        { title: 'Data de solicitação', editable: 'always'},
-                        { title: 'Data de emissão '},
-                        { title: 'Data de pagamento',  editable: 'always'},
-                        { title: 'Status',  editable: 'always'},
+    handleProgress =  () => {
+        const { showProgress } = this.state; 
+        this.setState({
+            showProgress: !showProgress,
+            showInformation: false,
+            showExpenses: false,
+        })
+    }
 
-                    ]}
-                />
-                <br/><br/>
-                <MaterialTable
-                    icons={tableIcons}
-                    style={{position: 'relative', zIndex: '0'}}
-                    title="Gastos" 
-                    columns={[
-                        { title: 'Identificação',  editable: 'always'},
-                        { title: 'Valor',  editable: 'always'},
-                        { title: 'Data', editable: 'always'},
-                    ]}
-                />
+    handleInformation =  () => {
+        const { showInformation } = this.state; 
+        this.setState({
+            showInformation: !showInformation,
+            showProgress: false,
+            showExpenses: false,
+        })
+    }
+
+    render() {
+        const { showProgress, showInformation } = this.state;
+        return (
+            <div className="financer-component">       
+                <div className="financer-bnts">
+                    <button
+                        title="Progresso"
+                        style={showProgress === true ? {color: '#4c7bff'} : {}} 
+                        onClick={this.handleProgress}
+                    >
+                        <TrendingUpRoundedIcon style={{width: '45px', height:'45px'}}/>
+                    </button>
+
+                    <button
+                        title="Informações"
+                        style={showInformation === true ? {color: '#4c7bff'} : {}} 
+                        onClick={this.handleInformation}
+                    >
+                        <InfoRoundedIcon style={{width: '45px', height:'45px'}}/>
+                    </button>
+
+                    <button
+                        title="Gastos"
+                    >
+                        <PaymentRoundedIcon style={{width: '45px', height:'45px'}}/>
+                    </button>
+                </div>
+                {showProgress && 
+                    <div className="financer-progress">
+                        <div className="payment-container">
+                            <h2>Progresso do pagamento</h2>
+
+                            <div className="donut-progress">
+                                <Progress 
+                                    type="circle" 
+                                    width={280} 
+                                    strokeWidth={5}
+                                    percent={80}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="plots-progress">
+                        <br /><h2>Parcelas</h2>
+                            <div className="plots-body">
+                            
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+                {showInformation && 
+                    <div>
+                        Informações
+                    </div>
+                }
+
             </div>
         );
     }

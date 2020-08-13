@@ -1,0 +1,67 @@
+.financer-component {
+    margin: 40px 25px 0px 0px;
+}
+
+.financer-bnts {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.financer-bnts button{
+    color: #737bac; 
+    background: #25294a;
+    border: 0;
+    margin-right: 15px;
+    border-radius: 8px;
+    padding: 8px;  
+}
+
+.financer-bnts button:hover {
+  color: #4c7bff; 
+}
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    background: #25294a;
+    margin: 0 5px;
+    margin-left: 20px;
+    margin-top: 30px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+}
+
+.payment-container h2 {
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px;
+    // margin-top: 20px;
+    // margin-left: 20px;
+    margin: 20px 0 70px 20px;
+}
+
+.donut-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.plots-progress {
+    background-color: #25294a;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 5px;
+    box-shadow: 8px 0px 10px #1a1f37;
+
+}
+
+.plots-progress h2 {
+    margin-left: 20px;
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px; 
+}
+
