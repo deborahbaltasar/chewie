@@ -60,76 +60,115 @@
     border: 0;
     border-radius: 8px;
     
-  }   
+  }
+  
+  .add-project-card {
+    z-index: 1;
+    display: grid;
+    background-color: #25294a;
+    width: 20%;
+    height: 95%;
+    border-radius: 60px;
+    margin: 0px 20px 0px 500px;
+    box-shadow: 8px 0px 10px #1a1f37;
+  }
+
+  .project-card{
+      display: flex;
+ 
+  }
 
 .body {
-    display: none;
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
     background: #313860;
     grid-gap: 4px;
-    margin: auto 30px auto 20px;
-    margin-top: -180px;
-    height: 124%;
+    margin-left: 1.0rem;
+    height: 98%;
     border-radius: 60px;
-    width: 97%;
+    width: 65%;
+    min-width: 850px;
+    
 }
 
 .body-tittle {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
   }
 
-  .body-status{
-    color: #737bac;
-    margin-top: -200px;
-    height: 90%;
-    font-family: 'Bebas Neue', cursive;
-    margin-left: 150%;
-    font-size: 40px;
-    width: 100%;
-    
-  }
-
-.body-tittle h1{
+  .body-tittle h1{
     color: #4c7bff;
     font-family: 'Bebas Neue', cursive;
     font-size: 60px;
-    margin: 40px 20px 0px 60px;
-    height: 40%;
+    margin: 40px 20px 0px 40px;
+
   }
 
-  .description-body{
+  .new-cards{
+    margin: 40px 25px 0 0;  
+  }
+
+  .new-cards button {
+    color: #737bac; 
+    background: #25294a;
+    border: 0;
+    margin-right: 15px;
+    border-radius: 8px;
+    padding: 8px;  
+  }
+
+  .new-cards button:hover {
+    color: #4c7bff; 
+  }
+
+  .scroll-body {
+    margin-right: 20px;
+    overflow: auto;
     display: grid;
-    background-color: #25294a;
-    margin-top: 120px;
-    margin-left: -97%;
-    width: 90%;
-    height: 45%;
-    border-radius: 30px;
-    box-shadow: 8px 0px 10px #1a1f37;
-    padding: 5px;
-  }
+    margin-top: 5px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+        "description description" 
+        "information meeting"
+        "deadline deadline"
+    ;
+    
+}
 
-  .scroll-description::-webkit-scrollbar{
+.scroll-body::-webkit-scrollbar{
     width: 7px;
+
   }
 
-  .scroll-description::-webkit-scrollbar-track {
+  .scroll-body::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #25294a;
     -webkit-box-shadow:  0 0 6px  #25294a; 
     border-radius: 10px;
+    max-height: 100px;
+    height: 100%;
 
 }
 
-.scroll-description::-webkit-scrollbar-thumb {
+.scroll-body::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 20px;
     -webkit-box-shadow: inset 40px 0 6px rgba(0,0,0,0.5); 
+    max-height: 100px;
+    height: 100%;
 }
 
+
+  .description-body{
+    grid-area: description;
+    background-color: #25294a;
+    border-radius: 30px;
+    margin: 0px 40px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    height: 72%;
+  }
 
   .description-body header{
     color: #737bac;
@@ -144,52 +183,74 @@
     margin: 5px 0px 20px 30px;
     overflow-y: auto;
     height: 85px;
+
+
+    
   }
 
-  .informations-body {
+  .scroll-description::-webkit-scrollbar{
+    width: 7px;
+  }
+
+  .scroll-description::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #25294a;
+    -webkit-box-shadow:  0 0 6px  #25294a; 
+    border-radius: 10px;
+
+  }
+
+  .scroll-description::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    -webkit-box-shadow: inset 40px 0 6px rgba(0,0,0,0.5); 
+  }
+
+  .information-body {
+    grid-area: information;
+    display: flex;
+    flex-direction: column;
     background-color: #25294a;
-    margin-top: -65px;
-    margin-left: 3%;
-    width: 90%;
-    height: 120%;
     border-radius: 30px;
+    margin: -50px 0 0 40px;
     box-shadow: 8px 0px 10px #1a1f37;
-    padding: 5px;
+    height: 125%;
+    width: 85%;
   }
   
-  .informations-body header{
+  .information-body header{
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
-    margin: 20px 0px 10px 20px;
+    margin: 20px 0px 30px 20px;
   }
+
   .span-tittle {
+    margin-left: 20px;
     color: #4c7bff;
     font-family: 'Bebas Neue', cursive;
-    font-size: 25px;
-    margin: 20px 0px 10px 40px;
+    font-size: 28px;
   }
 
   .span-answer {
     color: #FFF;
     font-family: 'Bebas Neue', cursive;
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 300;
-    margin: 20px 0px 10px 5px;
   }
 
-  .meetings-body {
+  .meeting-body {
+    grid-area: meeting;
     background-color: #25294a;
-    margin-top: -1%;
-    margin-left: 3%;
-    width: 90%;
-    height: 95%;
     border-radius: 30px;
+    margin: -50px 40px 0 0px;
     box-shadow: 8px 0px 10px #1a1f37;
-    padding: 5px;
+    height: 125%;
+    max-height: 126%;
+    width: 90%;
+    overflow-y: auto;
   }
   
-  .meetings-body header{
+  .meeting-body header{
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
@@ -202,36 +263,36 @@
     width: 90%;
     margin: 5px auto 15px auto;
   }
-  
-  .next-meeting {
+
+  .meeting-body a{
     font-size: 25px;
     font-family: 'Bebas Neue', cursive;
     color: #FFF;
-    margin-left: 30%;
+    margin-left: 40%;
   }
 
   .next-meeting:hover {
     color: #FFF;
   }
 
-  .steps-body {
-    display: grid;
+  .deadline-body {
+    grid-area: deadline;
     background-color: #25294a;
-    margin-top: -258px;
-    margin-left: 3%;
-    width: 90%;
-    height: 112%;
     border-radius: 30px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
     box-shadow: 8px 0px 10px #1a1f37;
-    padding: 5px;
+    height: 75%;
   }
   
-  .steps-body header{
+  .deadline-body header{
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
-    margin: 20px 0px 10px 20px;
+    margin: 20px 0px 15px 20px;
   }
+
   .start-end-progress {
       display: flex;
       justify-content: space-between;
@@ -286,40 +347,16 @@
     font-family: 'Bebas Neue', cursive;
     font-size: 25px;
     margin-bottom: 5%;
-}
-
-  .members-body {
-    display: grid;
-    background-color: #25294a;
-    margin-top: -340px;
-    margin-right: 3%;
-    width: 90%;
-    height: 150%;
-    border-radius: 30px;
-    box-shadow: 8px 0px 10px #1a1f37;
-    padding: 5px;
-  }
-  
-  .members-body header{
-    color: #737bac;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 40px;
-    margin: 20px 0px 10px 20px;
   }
 
-
-
-
-
- #room-native-simple {
+  #room-native-simple {
      width: 200px;
- }
+  }
 
-
-.standard-basic input {
+ .standard-basic input {
     width: 220px;
     margin-bottom: -3px;
-}
+  } 
 
  .update-project {
     height: 44px;
@@ -328,7 +365,7 @@
     border: 0;
     border-radius: 8px;
     font-size: 14px;
- }
+  }
 
  .all-projects{
     z-index: 1;
@@ -339,8 +376,6 @@
     border-radius: 60px;
     margin: 30px 20px 0px 10px;
     box-shadow: 8px 0px 10px #1a1f37;
-
-
   }
 
   .all-projects::-webkit-scrollbar{
@@ -352,13 +387,13 @@
     -webkit-box-shadow:  0 0 6px  #25294a; 
     border-radius: 10px;
 
-}
+  }
 
-.all-projects::-webkit-scrollbar-thumb {
+  .all-projects::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 20px;
     -webkit-box-shadow: inset 40px 0 6px rgba(0,0,0,0.5); 
-}
+  }
 
   .all-projects-tittle{
     color: #fff;
@@ -393,10 +428,44 @@
 
   .projects-buttons button:hover{
     color: #4c7bff; 
-}
+  }
 
 .search-input {
     width: 220px;
     margin-bottom: 20px;
     font-size: 25px;
+  }
+
+.progress-card {
+    display: flex;
+    flex-direction: column;
+    height: 98%;
+    width: 50%;
+    background: #313860;
+    border-radius: 60px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+
+.financer-card {
+    display: flex;
+    flex-direction: column;
+    height: 98%;
+    width: 50%;
+    background: #313860;
+    border-radius: 60px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.members-card {
+    display: flex;
+    flex-direction: column;
+    height: 98%;
+    width: 46%;
+    background: #313860;
+    border-radius: 60px;
+    margin-left: 25px;
+    margin-right: 25px;
 }

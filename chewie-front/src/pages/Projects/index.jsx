@@ -1,35 +1,28 @@
-import React, { Component, useMemo, useState } from 'react';
+import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 import { Modal } from 'react-bootstrap';
+
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
-
-import Menu from './Menu';
-
+import AttachMoneyRoundedIcon from '@material-ui/icons/AttachMoneyRounded';
+import DescriptionRoundedIcon from '@material-ui/icons/DescriptionRounded';
+import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
+import TimelineRoundedIcon from '@material-ui/icons/TimelineRounded';
+import FolderRoundedIcon from '@material-ui/icons/FolderRounded';
 
 import API from '../../services/api';
 
-import './styles.scss';
+import Status from './Status'
+import Financial from './Financial';
+import Members from './Members';
 
 import $ from "jquery";
 
-import { parseISO, formatDistance, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
-  
-  
-  const firstDate = parseISO('2018-04-01 16:00:00');
-  const secondDate = parseISO('2018-04-02 16:00:00');
-  
-  const formattedDate = format(
-    firstDate, 
-    "dd'/'MM'/'yy"
-  );
+import { parseISO, format } from 'date-fns';
 
-  
-
-
+import './styles.scss';
 
 class Projects extends Component {
   constructor(props) {
@@ -40,8 +33,12 @@ class Projects extends Component {
 
     this.state = {
       search: '',
+      showProject: false,
       showCreate: false,
       showView: false,
+      showProgressCard: true,
+      showFinancerCard: false,
+      showMembersCard: false,
       projects: [],
       members: [],
       partners: [],
@@ -181,23 +178,15 @@ class Projects extends Component {
   };
 
   handleShowView = (project) => {
-    $(".project-button").focus(function () {
-        $(".body").css({"display" : 'grid'})
-      })
-  
-    //   $(".project-button").click(function () {
-    //     $(".project-button").css({"color" : '#FFF'})
-    //     $(".body").css({"display" : 'none'})
-        
-    //   })
     this.setState({
+      showProject: true,
       name: project.name,
       id: project.id,
       description: project.description,
       client_name: project.client_name,
       type: project.type,
-      start: project.start,
-      end: project.end,
+      start: format(parseISO(project.start), "dd'/'MM'/'yy"),
+      end: format(parseISO(project.end), "dd'/'MM'/'yy"),
       value: project.value,
       meeting_room_room: project.MeetingRoom.room,
       meeting_room_name: project.MeetingRoom.name,
@@ -207,11 +196,6 @@ class Projects extends Component {
       showView: true,
     })
     
-    // const formattedDate = format(
-    //     project.start, 
-    //     "dd'/'MM'/'yy"
-    //   );  
-      console.log('aaaa', project.start.format(project.start, "dd'/'MM"))
   };
 
   handleCloseCreate = () => {
@@ -240,7 +224,6 @@ class Projects extends Component {
     this.setState({search: e.target.value.substr(0,20)});
   };
 
-
   handleAllProjects = () => {
 
     $(".bnt-all-projects").focus(function () {
@@ -252,20 +235,45 @@ class Projects extends Component {
     
       $(".bnt-all-projects").css({"color" : '#FFF'})
       $(".all-projects").css({"display" : 'none'})    
-    })}
+  })};
+
+  handleProgressCard = () => {
+      const {showProgressCard } = this.state;
+      this.setState({
+          showProgressCard: !showProgressCard,
+          showFinancerCard: false,
+          showMembersCard: false,
+      })
+  }
+
+  handleFinancerCard = () => {
+    const {showFinancerCard } = this.state;
+    this.setState({
+        showFinancerCard: !showFinancerCard,
+        showProgressCard: false,
+        showMembersCard: false,
+    })
+  }
+
+  handleMembersCard = () => {
+    const { showMembersCard } = this.state;
+    this.setState({
+        showMembersCard: !showMembersCard,
+        showProgressCard: false,
+        showFinancerCard: false,
+    })
+  }
 
 
 
   render() {
+    const { showProgressCard, showProject, showFinancerCard, showMembersCard } = this.state;
+
     let filteredProjects = this.state.projects.filter(
        (project) => {
            return project.name.toLowerCase().indexOf(this.state.search) !== -1;
        }
     );
-
-    // const date = this.state.start;
-    
-
 
     return (
     <div className="geral">
@@ -273,8 +281,13 @@ class Projects extends Component {
         <div className="header">
           <div className="header-left">
             <h1>PROJETOS</h1>
-            <button className="add-project" title="Adicionar novo Projeto" onClick={this.handleShowCreate.bind(this)} type="button">
-                <AddCircleOutlineIcon />
+            <button 
+                className="add-project" 
+                title="Adicionar novo Projeto" 
+                onClick={this.handleShowCreate.bind(this)} 
+                type="button"
+            >
+                <AddCircleOutlineIcon style={{width: '25px', height:'25px'}}/>
             </button>
           </div>
           <div>
@@ -333,7 +346,7 @@ class Projects extends Component {
 
                   <TextField 
                     className="standard-basic" 
-                    label={formattedDate} 
+                    label="Início do projeto"
                     onChange={e => this.setState({ start: e.target.value })}
                   />
                   <br />
@@ -375,108 +388,141 @@ class Projects extends Component {
               </Modal>
             </form>
             </div>
-        <div className="body">         
-          <div className="body-tittle">
-            <h1>{this.state.name}</h1>
-            <span className="body-status">EM DESENVOVIMENTO</span>
-          </div>
-          <div className="description-body">
-              <header>DESCRIÇÃO</header>
-              <p className="scroll-description">
-                  {this.state.description} 
-              </p>
-          </div>
-          <div className="informations-body">
-              <header>INFORMAÇÕES</header>
-              <div style={{overflow: 'auto'}}>
-                  <fieldset style={{marginBottom: '15px'}}>
-                  <span className="span-tittle">Cliente: </span>
-                  <span className="span-answer">{this.state.client_name}</span>
+        {showProject && 
+        <div className="project-card">
+            <div className="body">           
+                <div className="body-tittle">
+                    <h1>{this.state.name}</h1>
+                    <div className="new-cards">
+                        <button 
+                            title="Progresso" 
+                            style={showProgressCard === true ? {color: '#4c7bff'} : {}}
+                            onClick={this.handleProgressCard}
+                        >
+                            <TimelineRoundedIcon style={{width: '45px', height:'45px'}}/>
+                        </button>
 
-                  <span className="span-tittle" style={{marginLeft: '103px'}}>Tipo do projeto: </span>
-                  <span className="span-answer">{this.state.type}</span>
-                  </fieldset>
+                        <button 
+                            title="Financeiro"
+                            style={showFinancerCard === true ? {color: '#4c7bff'} : {}} 
+                            onClick={this.handleFinancerCard}
+                        >
+                            <AttachMoneyRoundedIcon style={{width: '45px', height:'45px'}}/>
+                        </button>
 
-                  </div>
-                  <fieldset style={{marginBottom: '15px'}}>
-                  <span className="span-tittle">Laboratório: </span>
-                  <span className="span-answer">{this.state.meeting_room_room}</span>
+                        <button 
+                            title="Arquivos"
+                            // style={showProgressCard === true ? {color: '#4c7bff'} : {}} 
+                        >
+                            <FolderRoundedIcon style={{width: '45px', height:'45px'}}/>
+                        </button>
 
-                  <span className="span-tittle" style={{marginLeft: '55px'}}>Responsável: </span>
-                  <span className="span-answer">{this.state.responsible}</span>
-                  </fieldset>
-                
-              
-            
-          </div>
-          <div className="steps-body">
-              <header>prazo</header>
-              <div className="start-end-progress">
-                  <span className="start-end-span">Início</span>
-                  <span className="start-end-span">Fim</span>
-              </div>
-              <div className="progress">
-                <div 
-                    className="progress-bar" 
-                    role="progressbar" 
-                    aria-valuenow="0" 
-                    aria-valuemin="0" 
-                    aria-valuemax="100"
-                    style={{width: '55%'}}
-                > 
+                        <button 
+                            title="Membros" 
+                            style={showMembersCard === true ? {color: '#4c7bff'} : {}}
+                            onClick={this.handleMembersCard}
+                        >
+                            <PersonRoundedIcon style={{width: '45px', height:'45px'}}/>
+                        </button>
+                    </div>
                 </div>
-              </div>
-              <div className="start-end-progress">
-                  <span className="start-end-date">{this.startFormatted}</span>
-                  <span className="start-end-date">30/09/20</span>
-              </div>
+                <div className="scroll-body">
+                    <div className="description-body">
+                        <header>Descrição</header>
+                        <p className="scroll-description">
+                        {this.state.description} 
+                        </p>
+                    </div>
 
-          </div>
-          <div className="meetings-body">
-              <header>Próximas reuniões</header>
-              <span className="span-tittle">28/07: </span>
-              <span className="span-answer">Mostrar tela de 'reuniões'</span>
-              <hr className="line-meetings" /> 
-              <span className="span-tittle">30/07: </span>
-              <span className="span-answer">Mostrar tela de 'dispositivos'</span>
-              <hr className="line-meetings" /> 
-              <span className="span-tittle">12/08: </span>
-              <span className="span-answer">Mostrar tela de 'Meus Projetos'</span>
-              <hr className="line-meetings" />
-              <br />
-              <Link to='/meetings' className="next-meeting">Agendar Próxima reunião</Link>
-              
-          </div>
+                    <div className="information-body">
+                        <header>Informações</header>
 
-          <div className="value-body">
-              <header>Valor</header>
-              <div className="start-end-progress">
-                  <span className="start-end-span">R$ 0</span>
-                  <span className="start-end-span">{`R$ ${this.state.value}`}</span>
-              </div>
-              <div className="progress">
-                <div 
-                    className="progress-bar" 
-                    role="progressbar" 
-                    aria-valuenow="0" 
-                    aria-valuemin="0" 
-                    aria-valuemax="100"
-                    style={{width: '70%'}}
-                >
-                    R$ 4200
+                        <div>
+                        <span className="span-tittle">Laboratório: </span>
+                        <span className="span-answer">{this.state.meeting_room_room}</span>
+                        <br /><br />
+                        </div>
+
+                        <div>
+                        <span className="span-tittle">Cliente: </span>
+                        <span className="span-answer">{this.state.client_name}</span>
+                        <br /><br />
+                        </div>
+
+                        <div>
+                        <span className="span-tittle">Tipo do projeto: </span>
+                        <span className="span-answer">{this.state.type}</span>
+                        <br /><br />
+                        </div>
+
+                        <div>
+                        <span className="span-tittle">Responsável: </span>
+                        <span className="span-answer">{this.state.responsible}</span>
+                        </div>
+                    </div>
+
+                    <div className="meeting-body">
+                        <header>Próximas reuniões</header>
+                        <span className="span-tittle">28/07: </span>
+                        <span className="span-answer">Mostrar tela de 'reuniões'</span>
+                        <hr className="line-meetings" /> 
+                        <span className="span-tittle">30/07: </span>
+                        <span className="span-answer">Mostrar tela de 'dispositivos'</span>
+                        <hr className="line-meetings" /> 
+                        <span className="span-tittle">12/08: </span>
+                        <span className="span-answer">Mostrar tela de 'Projetos'</span>
+                        <hr className="line-meetings" />
+                        <br />
+                        <Link to='/meetings' className="next-meeting">Agendar Próxima reunião</Link>
+                    </div>
+
+                    <div className="deadline-body">
+                        <header>Prazo</header>
+                        <div className="start-end-progress">
+                            <span className="start-end-span">Início</span>
+                            <span className="start-end-span">Fim</span>
+                        </div>
+                        <div className="progress">
+                            <div 
+                                className="progress-bar" 
+                                role="progressbar" 
+                                aria-valuenow="0" 
+                                aria-valuemin="0" 
+                                aria-valuemax="100"
+                                style={{width: '45%'}}
+                            > 
+                            </div>
+                        </div>
+                        <div className="start-end-progress">
+                            <span className="start-end-date">{this.state.start}</span> 
+                            <span className="start-end-date">{this.state.end}</span>
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
+            {showProgressCard &&
+                <div className="progress-card">
+                    <Status />
+                    
                 </div>
-              </div>
-            
-          </div>
+            }
 
-          {/* <div className="members-body">
-              <header>Membros</header>
+            {showFinancerCard &&
+                <div className="financer-card">
+                    <Financial />
+                </div>
+            }
 
-            
-          </div> */}
+            {showMembersCard &&
+                <div className="members-card">
+                    <Members />
+                </div>
+            }
 
-        </div>
+        </div>}
       </div>
+        
         <div className = 'all-projects'>
             <div style = {{display: 'grid'}}>
                 <div style = {{margin: '40px auto 0px auto'}}>
@@ -496,17 +542,6 @@ class Projects extends Component {
                 {filteredProjects.map(project => (
                     <button className="project-button" key={project.id} onFocus={() => this.handleShowView(project)}>{project.name}</button>
                 ))}
-                {/* <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                <button className="project-button">Chewie</button>
-                 */}
                 </div>
                   
         </div>
