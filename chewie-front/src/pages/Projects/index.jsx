@@ -14,7 +14,7 @@ import FolderRoundedIcon from '@material-ui/icons/FolderRounded';
 
 import API from '../../services/api';
 
-import Status from './Status'
+import Progress from './Progress'
 import Financial from './Financial';
 import Members from './Members';
 
@@ -503,7 +503,7 @@ class Projects extends Component {
             </div>
             {showProgressCard &&
                 <div className="progress-card">
-                    <Status />
+                    <Progress />
                     
                 </div>
             }

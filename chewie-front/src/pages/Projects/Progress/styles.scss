@@ -1,0 +1,81 @@
+.donut-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.progress-title {
+    margin-top: 60px;
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    border-left: 7px solid #f7c305;
+    height: 30px;
+    text-align: center;
+}
+.progress-title h2{
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;  
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.donut-container {
+    background: #25294a;
+    margin: 0 20px;
+    margin-top: 30px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+
+}
+
+.donut-container h2 {
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px;
+    // margin-top: 20px;
+    // margin-left: 20px;
+    margin: 20px 0 70px 20px;
+}
+
+.donut-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.donut-progress .react-sweet-progress-symbol {
+    color: #FFF;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 72px;
+}
+
+.steps-progress {
+    background-color: #25294a;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    height: 31%;
+}
+
+.steps-progress h2 {
+    margin-left: 20px;
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px; 
+}
+
+
+// .donut-progress .react-sweet-progress-symbol path > path{
+//     stroke: #FFF;
+//     stroke-width: 2;
+
+// }
+
+
+
+
+
