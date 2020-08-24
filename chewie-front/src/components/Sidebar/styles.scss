@@ -1,25 +1,25 @@
-  .divSideBar1{
+.divSideBar1{
     height: 100%;
     display: grid;
     width: 20%;
     margin: 10px 0px 0px -20px;
     justify-content: center;
-  }
+}
 
-  .linhaSideBar{
+.linhaSideBar{
     width: 200px;
     margin: 20px auto;
     background-color: transparent;
-  }
+}
 
-  .Chewie2{
+.Chewie2{
     color: #4c7bff;
     font-size: 70px;
     font-family: 'Bebas Neue', cursive;
     margin: 50px 10px 0px 40px;
-  }
+}
 
-  .ImgUsuario{
+.ImgUsuario{
     background-color: white;
     margin: 0px 10px 0px 0px;
     height: 40px;
@@ -28,27 +28,27 @@
     align-items: flex-end;
     display: flex;
     border-radius: 8px;
-  }
+}
 
-  .divNomeUsuario{
-      display: grid;
-      margin-left: 0px;
-  }
+.divNomeUsuario{
+    display: grid;
+    margin-left: 0px;
+}
 
-  .divNome{
-      display: flex;
-      margin-top: -15px;
-      margin-bottom: 15px;
-  }
+.divNome{
+    display: flex;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
 
-  .divNome2{
+.divNome2{
     display: flex;
     margin-top: -15px;
     margin-bottom: 15px;
     margin-left: 38px;
-  }
-  
-  .Nome_usuario{
+}
+
+.Nome_usuario{
     color: white;
     font-family: 'Bebas Neue', cursive;
     font-size: 35px;
@@ -56,158 +56,158 @@
     margin-bottom: 4px;
     margin-top: 1px;
     cursor: pointer;
-  }
+}
 
-  .Abas{
+.Abas{
     display: grid;
     margin-left: -10px;
-  }
+    }
 
-  .Dashboard{
+.Dashboard{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .DashboardIcon{
+.DashboardIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Dispositivos{
+.Dispositivos{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .DispositivosIcon{
+.DispositivosIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Projetos{
+.Projetos{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .ProjetosIcon{
+.ProjetosIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Salas_reunioes{
+.Salas_reunioes{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .Salas_reunioesIcon{
+.Salas_reunioesIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Meus_projetos{
+.Meus_projetos{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .Meus_projetosIcon{
+.Meus_projetosIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Meus_emprestimos{
+.Meus_emprestimos{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .Meus_emprestimosIcon{
+.Meus_emprestimosIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Novo_emprestimo{
+.Novo_emprestimo{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .Novo_emprestimoIcon{
+.Novo_emprestimoIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Agendar_reuniao{
+.Agendar_reuniao{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .Agendar_reuniaoIcon{
+.Agendar_reuniaoIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .Sobre_sistema{        
+.Sobre_sistema{        
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: 20px;
     cursor: pointer;
-  }
+}
 
-  .botao-sair {
+.botao-sair {
     margin: 40px 0px 0px 50px;
     height: 44px;
     background: none;
@@ -217,22 +217,22 @@
     border: 0;
     width: 200px;
 
-  }
+}
 
-  .botao-sair:hover {
+.botao-sair:hover {
     color: #d83939;
-  }
+}
 
-  .Sobre_sistemaIcon{
+.Sobre_sistemaIcon{
     color: #737bac;
     font-family: 'Work Sans', sans-serif;
     font-size: 20px;
     margin-left: -2px;
     margin-top: -4px;
     cursor: pointer;
-  }
+}
 
-  .DashboardTela{
+.DashboardTela{
     display: grid;
     background-color: #25294a;
     width: 96%;
@@ -241,148 +241,136 @@
     margin: 20px 20px 20px 20px;
     box-shadow: 8px 0px 10px #1a1f37;
     opacity: 0.25;
-  }
+}
 
-  .Titulo{
-    color: white;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 50px;
-    text-decoration: underline;
-    text-decoration-color: #4c7bff;
-    margin: 40px 20px 0px 60px;
-    height: 40%;
-  }
+.Busca{
+    margin: 0px 10px 20px 0px;
+}
 
-  
-
-  .Busca{
-      margin: 0px 10px 20px 0px;
-  }
-
-  .Busca2{
+.Busca2{
     margin: 0px 15px 20px 50px;
-  }
+}
 
-  .linha{
-      border: 1px solid #373d5e;
-      margin-left: 0px;
-      margin-top: -20px;
-      width: 105%;
-  }
-
-  .linha3{
+.linha{
     border: 1px solid #373d5e;
-      margin-left: 44px;
-      margin-top: -20px;
-      width: 30%;
-  }
+    margin-left: 0px;
+    margin-top: -20px;
+    width: 105%;
+}
 
-  .linha2{
+.linha3{
+    border: 1px solid #373d5e;
+    margin-left: 44px;
+    margin-top: -20px;
+    width: 30%;
+}
+
+.linha2{
     border: 1px solid #373d5e;
     margin-left: 0px;
     margin-top: -40px;
     width: 105%;
     margin-bottom: 0px;
-  }
+}
 
-  .linha4{
+.linha4{
     border: 1px solid #373d5e;
     margin-left: 45px;
     margin-top: -80px;
     width: 30%;
     margin-bottom: 0px;
-  }
+}
 
-  .linha5{
+.linha5{
     border: 1px solid #373d5e;
     margin-left: 45px;
     margin-top: -126px;
     width: 30%;
     margin-bottom: 0px;
-  }
+}
 
-  .linha6{
+.linha6{
     border: 1px solid #373d5e;
     margin-left: 45px;
     margin-top: -170px;
     width: 30%;
     margin-bottom: 0px;
-  }
+}
 
-  .Setor{
+.Setor{
     color: white;
     font-family: 'Bebas Neue', cursive;
     font-size: 28px;
     width: 100%;
     margin-bottom: 15px;
     margin-top: 5px;
-  }
+}
 
-  .divGerenciamento{
-      margin-top: -60px;
-  }
+.divGerenciamento{
+    margin-top: -60px;
+}
 
-  .divGerenciamento2{
+.divGerenciamento2{
     margin-top: -150px;
 }
 
-  .divAcoes{
+.divAcoes{
     margin-top: -60px;
-  }
+}
 
-  .divAcoes2{
+.divAcoes2{
     margin-top: -195px;
-  }
+}
 
-  .divSobre{
+.divSobre{
     margin-top: -60px;
-  }
+}
 
-  .divSobre2{
+.divSobre2{
     margin-top: -225px;
-  }
+}
 
-  .Angulo{
+.Angulo{
     color: white;
     margin: 80px 10px 0px 10px;
     cursor: pointer;
-  }
+}
 
-  .Angulo2{
+.Angulo2{
     color: white;
     margin: 80px 10px 10px 52px;
     cursor: pointer;
-  }
+}
 
-  .divSideBar2{
+.divSideBar2{
     height: 100%;
     display: none;
     align-items: top;
     width: 2.5%;
     justify-content: center;
-  }
-  
-  .divSetores{
+}
+
+.divSetores{
     margin-top: -18px;
-  }
+}
 
 
-  .Setas{
+.Setas{
     margin: -2px 6px 0px 6px;
-  }
+}
 
-  .Setas2{
+.Setas2{
     margin: 0px 10px 0px 10px;
-  }
+}
 
-  .SetaBack{
+.SetaBack{
     margin: 0px 10px 0px 10px;
     color: #2d3154;
-  }
+}
 
-  .user{
+.user{
     color: #25294a;
-  }
+}
 
 
 
