@@ -35,6 +35,8 @@ routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 
+routes.get('/users', UserController.show);
+
 routes.get('/sessions', SessionController.index);
 
 routes.post('/files', upload.single('file'), FileController.store);
