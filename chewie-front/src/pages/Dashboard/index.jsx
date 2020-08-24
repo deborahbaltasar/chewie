@@ -1,36 +1,44 @@
 import React from 'react';
 
+import { toast } from 'react-toastify';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faAngleLeft, faAngleRight, faAngleDoubleRight, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 
 import '../../assets/css/Dashboard.scss';
 
+import API from '../../services/api';
 
 import $ from "jquery";
 
 library.add(faUser, faAngleLeft, faAngleRight, faAngleDoubleRight, faLongArrowAltLeft);
 
 class Dashboard extends React.Component {
-  constructor(props, context){
-    super(props, context);
+    constructor(props, context){
+        super(props, context);
     
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleSideBar = this.handleSideBar.bind(this);
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleSideBar = this.handleSideBar.bind(this);
 
-    this.state = {
-      show: false,
+        this.state = {
+            show: false,
+            user: '',
+        }
     }
-  }
 
-  handleClose() {
-    this.setState({ show: false});
-  }
+    componentDidMount() {
+        this.fecthUser();
+    }
 
-  handleShow() {
-    this.setState({ show: true});
-  }
+    handleClose() {
+        this.setState({ show: false});
+    }
+
+    handleShow() {
+        this.setState({ show: true});
+    }
 
 
     handleSideBar = () => {
@@ -45,65 +53,86 @@ class Dashboard extends React.Component {
         $(".divSideBar1").css({"display" : 'flex'})
         $(".divSideBar2").css({"display" : 'none'})
         
-      })}
+    })}
 
-      handleWelcome = () => {
+    // handleWelcome = () => {
+    //     $(".CardPrimeiroLogin").load(function () {
+    //       $(".divSideBar").css({"margin" : '10px 10px 10px 30px'})
+    //     })
+    // }
 
-        $(".CardPrimeiroLogin").load(function () {
-          $(".divSideBar").css({"margin" : '10px 10px 10px 30px'})
-        })
-    }
+    fecthUser = async () => {
+        await API.get('/users', {})
+            .then(res => {
+                console.log("DADOS", res)
+                this.setState({
+                    user: res.data,
+                });
+            })
+            .catch(error => {
+                toast.error("Não foi possível carregar dados do usuário");
+                console.log("Error", error);
+            });
+    };
+    
+
+
 
   render() {
     const { history } = this.props;
+    const { user } = this.state
     return (
       
       <React.Fragment>
 
         <div className = 'divGeral'>
 
-          <div className = 'CardPrimeiroLogin'>
+          {user.fisrt_logged_in && 
+            <div className = 'CardPrimeiroLogin'>
 
-          <div style = {{display: 'grid'}}>
+            <div style = {{display: 'grid'}}>
 
-            <div style = {{margin: '100px auto 0px auto'}}>
-              <span className = 'spanBemVindo2'>Bem vindo ao </span>
-              <p className = 'Chewie'>CHEWIE</p>
+                <div style = {{margin: '100px auto 0px auto'}}>
+                <span className = 'spanBemVindo2'>Bem vindo ao </span>
+                <p className = 'Chewie'>CHEWIE</p>
+                </div>
+
+                <div style = {{display: 'flex', justifyContent: 'center'}}>
+                <span className = 'spanEsqueci2'>
+                Antes de começar a viajar pela galáxia do Chewie, é necessário redefinir a senha.
+                </span>
+                </div>
+                
+                <div style = {{display: 'flex', justifyContent: 'center'}}>
+                <span className = 'spanEsqueci3'>
+                Para fazer isso, é necessário seguir o seguinte fluxo:
+                </span>
+                </div>
+
+                <div style = {{"display": 'flex', "justifyContent": 'center'}}>
+                <div className = 'divTutorial'>
+                    <span>PERFIL</span>
+                    <FontAwesomeIcon icon = 'angle-double-right' size = '1x' className = 'Setas' />
+                    <span>EDITAR PERFIL</span>
+                    <FontAwesomeIcon icon = 'angle-double-right' size = '1x' className = 'Setas' />
+                    <span>ATUALIZAR PERFIL</span>
+                </div>
+                </div>
+
+                <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <button className ='botaoPerfil' onClick={() => {history.push("/profile")}}>
+                        Ir para o perfil
+                    </button>
+                </div>
+
+            </div> 
+                
             </div>
-
-            <div style = {{display: 'flex', justifyContent: 'center'}}>
-              <span className = 'spanEsqueci2'>
-              Antes de começar a viajar pela galáxia do Chewie, é necessário redefinir a senha.
-              </span>
-            </div>
-            
-            <div style = {{display: 'flex', justifyContent: 'center'}}>
-              <span className = 'spanEsqueci3'>
-              Para fazer isso, é necessário seguir o seguinte fluxo:
-              </span>
-            </div>
-
-            <div style = {{"display": 'flex', "justifyContent": 'center'}}>
-              <div className = 'divTutorial'>
-                <span>PERFIL</span>
-                <FontAwesomeIcon icon = 'angle-double-right' size = '1x' className = 'Setas' />
-                <span>EDITAR PERFIL</span>
-                <FontAwesomeIcon icon = 'angle-double-right' size = '1x' className = 'Setas' />
-                <span>ATUALIZAR PERFIL</span>
-              </div>
-            </div>
-
-            <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <button className ='botaoPerfil' onClick={() => {history.push("/profile")}}>
-                    Ir para o perfil
-                </button>
-            </div>
-
-          </div> 
-            
-          </div>
-
-          <div className = 'DashboardTela'>
+          }
+          <div 
+            className = 'DashboardTela'
+            style={user.fisrt_logged_in === true ? {opacity: '0.25'} : {}}
+          >
 
             <div style = {{display: 'grid'}}>
 
