@@ -5,7 +5,7 @@ class MeetingRoom extends Model {
         super.init({
             name: Sequelize.STRING,
             room: Sequelize.STRING,
-            description: Sequelize.STRING,
+            description: Sequelize.TEXT,
             admin: Sequelize.STRING,
             deleted_at: Sequelize.DATE,
         },

@@ -4,13 +4,14 @@ class Project extends Model {
     static init(sequelize) {
         super.init({
             name: Sequelize.STRING,
-            description: Sequelize.STRING,
+            description: Sequelize.TEXT,
             client_name: Sequelize.STRING,
             type: Sequelize.STRING,
             start: Sequelize.DATE,
             end: Sequelize.DATE,
-            value: Sequelize.STRING,
-            comments: Sequelize.STRING,
+            plots: Sequelize.REAL,
+            value: Sequelize.BIGINT,
+            comments: Sequelize.TEXT,
             canceled_at: Sequelize.DATE,
 
         },

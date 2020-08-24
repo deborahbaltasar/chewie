@@ -28,6 +28,7 @@ class ProjectController {
         'start',
         'end',
         'value',
+        'plots',
         'comments',
         'status_id',    
       ],
@@ -81,7 +82,8 @@ class ProjectController {
         value: Yup.string().required(),
         meeting_room_id: Yup.number().required(),
         responsible: Yup.number().required(),
-        comments: Yup.string().required(),
+        plots: Yup.number().required(),
+        comments: Yup.string(),
 
     });
 
@@ -108,27 +110,28 @@ class ProjectController {
 
   
         //Check if prpoject exists 
-        const projectExists = await Project.findOne({ 
-          where: { name: req.body.name },
-        });
+    const projectExists = await Project.findOne({ 
+      where: { name: req.body.name },
+    });
 
-        if (projectExists  && canceled_at == null) {
-          return res
-          .status(401)
-          .json({ error: 'Project already exists' });
-        }
+    if (projectExists  && canceled_at == null) {
+      return res
+        .status(401)
+        .json({ error: 'Project already exists' });
+    }
     
-        const { 
-          name, 
-          description,
-          client_name,
-          type,
-          start, 
-          end,
-          value,
-          meeting_room_id,
-          responsible,
-          comments, 
+    const { 
+      name, 
+      description,
+      client_name,
+      type,
+      start, 
+      end,
+      value,
+      plots,
+      meeting_room_id,
+      responsible,
+      comments, 
           } 
       = req.body;
 
@@ -154,6 +157,7 @@ class ProjectController {
       start,
       end,
       value,
+      plots,
       meeting_room_id,
       responsible,
       comments, 
@@ -218,6 +222,7 @@ class ProjectController {
     project.start = req.body.start;
     project.end = req.body.end;
     project.value = req.body.value;
+    project.plots = req.body.value;
     project.meeting_room_id = req.body.meeting_room_id;
     project.responsible = req.body.responsible;
     project.comments = req.body.comments;

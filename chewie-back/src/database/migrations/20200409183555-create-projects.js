@@ -15,7 +15,7 @@ module.exports = {
           unique: true,
         },
         description: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
           allowNull: false,
         },
         client_name: {
@@ -35,7 +35,11 @@ module.exports = {
           allowNull: false,
         },
         value: {
-          type: Sequelize.STRING,
+          type: Sequelize.BIGINT,
+          allowNull: false,
+        },
+        plots: {
+          type: Sequelize.REAL,
           allowNull: false,
         },
         meeting_room_id: {
@@ -53,7 +57,7 @@ module.exports = {
           allowNull: true,
         },
         comments: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
           allowNull: false,
         },
         canceled_at: {
