@@ -1,0 +1,175 @@
+.modal {
+    margin: 50px;
+}
+
+.modal-inputs{
+    margin-top: 50px;
+    header {
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    select {
+        outline: 0;
+        background: none;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 24px;
+        border-width: 0 0 1px;
+        border-color: #737bac;
+        margin-left: 20px;
+        width: 250px;
+        height: 35px;
+        padding: 0 15px;
+        color: #fff;
+        margin: 0 0 10px;
+        margin-bottom: 25px;
+    }
+
+    textarea {
+        padding: 20px;
+        border-color: #737bac;
+        border-radius: 20px;
+        color: #fff;
+        background: none;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 24px;
+        width: 350px;
+        min-height: 160px;
+    }
+
+    textarea::placeholder {
+        font-size: 24px;
+        color: #888;
+    }
+
+    p {
+        color: #fff;
+        font-size: 32px;
+        font-family: 'Bebas Neue', cursive;
+        text-decoration: underline;
+        text-decoration-color: #4c7bff;
+        margin-left: 20px;
+
+    }
+}
+
+.modal input {
+    outline: 0;
+    font-size: 24px;
+    font-family: 'Bebas Neue', cursive;
+    border-width: 0 0 1px;
+    border-color: #737bac;
+    margin-left: 20px;
+    width: 250px;
+    height: 35px;
+    padding: 0 15px;
+    color: #fff;
+    margin: 0 0 10px;
+    margin-bottom: 25px;
+ 
+}
+
+.modal input:focus {
+    border-color: #4c7bff;
+  } 
+
+  .modal input::placeholder {
+    font-size: 24px;
+    color: #888;
+  } 
+
+
+.modal-footer {
+    width: 80%;
+    margin: 0 auto 0 auto;
+
+}
+
+.steps {
+    margin: 0 auto 0 auto;
+    background: #FFF;
+    width: 90%;
+    height: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    p {
+        color: #FFF;
+        margin-top: 10px;
+    }
+    
+    .steps-bar {
+        height: 100%;
+        font-size: 20px;
+        font-weight: bold;
+        background: #4c7bff;
+        border-radius: 12px;
+      }
+    }
+
+.progress-bar {
+  font-size: 20px;
+  font-weight: bold;
+  background: #4c7bff;
+  border-radius: 12px;
+}
+
+.next {
+    font-size: 28px;
+    font-family: 'Bebas Neue', cursive;
+    color: #FFF;
+    border: 0;
+    background: none;
+    margin-left: 380px;   
+}
+
+.submit-project {
+    font-size: 28px;
+    font-family: 'Bebas Neue', cursive;
+    color: #4c7bff;
+    border: 0;
+    background: none;
+    margin-left: 380px;   
+}
+
+.modal-body .steps-body .steps-span {
+    margin-left: -20%;
+
+    span {
+        margin-right: 80px;
+    }
+} 
+
+.triangle-down-steps {
+    width: 0;
+    height: 0;
+    margin-top: 20px;
+    margin-bottom: -30px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid #4c7bff;
+}
+
+.geral-info {
+    display: grid;
+    grid-template-rows: 1fr ;
+    grid-template-columns: 330px 1fr;
+    grid-template-areas: "info description";
+
+    .info-grid {
+        grid-area: info;
+    }
+
+    .description-grid {
+        grid-area: description;
+        margin-left: -20px;
+        
+    }
+}
+
+.deadline-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 45px;
+}
