@@ -57,6 +57,14 @@ input {
     width: 550px !important;
 }
 
+.email-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #25294a inset;
+    // box-shadow: #25294a;
+    -webkit-text-fill-color: #FFF !important;
+}
+
+
+
 .senha-input{
     padding: 0 35px !important;
     width: 550px !important;
