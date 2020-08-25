@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import API from '../../services/api';
-
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import PersonIcon from '@material-ui/icons/Person';
@@ -22,11 +20,9 @@ import { parseISO, format } from 'date-fns';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
-
-
-import $ from "jquery";
-
 import CreateMeetings from '../../components/CreateMeeting';
+
+import API from '../../services/api';
 
 import './styles.scss';
 
@@ -38,6 +34,7 @@ class MeetingRoom extends Component {
 
         this.state = {
             showCreate: false,
+            showBody: false,
             showEdit: false,
             showView: false,
             showItems: false,
@@ -45,6 +42,7 @@ class MeetingRoom extends Component {
             createMeetings: false,
             rooms: [],
             meetings: [],
+            items: [],
             id: 0,
             name: '',
             room: '',
@@ -101,7 +99,7 @@ class MeetingRoom extends Component {
                 this.setState({
                     meetings: res.data,
                     meetingDay: res.data.filter((item) => {
-                        return format(parseISO(item.start), "dd'/'MM'/'yyyy")  == this.state.day;
+                        return format(parseISO(item.start), "dd'/'MM'/'yyyy")  === this.state.day;
                      }).map((item) => {
                         return item;
                     })
@@ -156,7 +154,6 @@ class MeetingRoom extends Component {
                 this.handleCloseCreate();
             });
     };
-
 
     handleCloseCreate() {
         this.setState({ showCreate: false });
@@ -213,30 +210,36 @@ class MeetingRoom extends Component {
     };
 
     handleShowView = (room) => {
-        $(".room-bnt").focus(function () {
-            $(".room-body").css({ "display": 'initial' })
-            $(".all-rooms").css({ "marginTop": '0' })
-        })
+        const { showBody } = this.state;
 
         this.setState({
+            showBody: !showBody,
             id: room.id,
             name: room.name,
             room: room.room,
             responsable: room.admin,
-            description: room.description
+            description: room.description,
+            items: room.RoomItems,
         })
     };
-
 
     handleDay = (date) => {
         this.setState({
             day: format(date, "dd'/'MM'/'yyyy")
-        })
-    }
+        });
+    };
 
     render() {
 
-        const { rooms, showItems, showCalendar, createMeetings,showInformation, meetings } = this.state;
+        const { 
+            rooms, 
+            showItems, 
+            showCalendar, 
+            createMeetings, 
+            meetings, 
+            items, 
+            showBody 
+        } = this.state;
 
         return (
             <div className="meeting-rooms-container">
@@ -247,17 +250,19 @@ class MeetingRoom extends Component {
                             <AddCircleOutlineIcon />
                         </button>
                     </div>
+
                     <div className="all-rooms">
                         {rooms.map(room => (
                             <button
                                 key={`room${room.id}`}
                                 className="room-bnt"
-                                onFocus={() => this.handleShowView(room)}
+                                style={showBody === true ? {color: '#4c7bff'} : {}} 
+                                onClick={() => this.handleShowView(room)}
                             >
                                 {`${room.name} - ${room.room}`}
                             </button>
                         ))}
-                    </div>
+                    </div> 
                 </div>
 
                 <div className="modal">
@@ -279,15 +284,14 @@ class MeetingRoom extends Component {
                                 <PersonIcon />
                                 <input placeholder="Responsável pela sala" onChange={e => this.setState({ responsable: e.target.value })} />
                                 <br />
-
-                                <DescriptionIcon />
-                                <input placeholder="Descrição" onChange={e => this.setState({ description: e.target.value })} />
+                                <textarea placeholder="Descrição" onChange={e => this.setState({ description: e.target.value })} />
+                   
 
                             </Modal.Body>
                             <Modal.Footer>
                                 <button className="cadastro" type="submit" onClick={this.handleMeetingRoom}>
                                     Cadastrar
-                    </button>
+                                </button>
                             </Modal.Footer>
                         </Modal>
                     </form>
@@ -318,109 +322,146 @@ class MeetingRoom extends Component {
                             <Modal.Footer>
                                 <button type="submit" onClick={this.updateMeetingRoom}>
                                     Salvar
-                  </button>
+                                </button>
                             </Modal.Footer>
                         </Modal>
                     </form>
                 </div>
+                {showBody && 
+                    <div className="room-cards">
+                        <div className="room-body">
+                            <div className="room-header">
+                                <div className="room-body-tittle">
+                                    <h1>{`Sala  ${this.state.room}`}</h1>
+                                </div>
+                                {showItems === true || showCalendar === true || createMeetings === true ?
+                                    <div className="room-body-buttons">
+                                        <button 
+                                            className="item-bnt" 
+                                            onClick={this.handleItems}
+                                            style={showItems === true ? {color: '#4c7bff'} : {}} 
+                                        >
+                                            <EventSeatRoundedIcon style={{ width: '40px', height: '40px', padding: '-10px' }} />
+                                        </button>
 
-                <div className="room-cards">
-                    <div className="room-body">
-                        <div className="room-header">
-                            <div className="room-body-tittle">
-                                <h1>{`Sala  ${this.state.room}`}</h1>
-                            </div>
+                                        <button 
+                                            className="calendar-bnt" 
+                                            onClick={this.showCalendar}
+                                            style={showCalendar === true ? {color: '#4c7bff'} : {}} 
+                                        >
+                                            <EventRoundedIcon style={{ width: '40px', height: '40px' }} />
+                                        </button>
 
-                            <div className="room-body-buttons">
-                                <button className="item-bnt" onClick={this.handleItems}>
-                                    <EventSeatRoundedIcon style={{ marginRight: '8px' }} />
-                                    itens de sala
-                                </button>
-                                <button className="calendar-bnt" onClick={this.showCalendar}>
-                                    <EventRoundedIcon style={{ marginRight: '8px' }} />
-                                    calendário
-                                </button>
-                                <button className="meeting-bnt" onClick={this.createMeetings}>
-                                    <AccessTimeRoundedIcon style={{ marginRight: '8px' }} />
-                                    agendar reunião
-                                </button>
+                                        <button 
+                                        className="meeting-bnt" 
+                                        onClick={this.createMeetings}
+                                        style={createMeetings === true ? {color: '#4c7bff'} : {}} 
+                                        >
+                                            <AccessTimeRoundedIcon style={{ width: '40px', height: '40px' }} />
+                                        </button>
+                                    </div>
+
+                                    : 
+
+                                    <div className="room-body-buttons">
+                                        <button 
+                                            className="item-bnt" 
+                                            onClick={this.handleItems}
+                                        >
+                                            <EventSeatRoundedIcon style={{ marginRight: '8px' }} />
+                                            itens de sala
+                                        </button>
+                                        <button 
+                                            className="calendar-bnt" 
+                                            onClick={this.showCalendar}
+                                        >
+                                            <EventRoundedIcon style={{ marginRight: '8px' }} />
+                                            calendário
+                                        </button>
+                                        <button 
+                                            className="meeting-bnt"
+                                            onClick={this.createMeetings}
+                                        >
+                                            <AccessTimeRoundedIcon style={{ marginRight: '8px' }} />
+                                            agendar reunião
+                                        </button>
+                                    </div>
+                                }
                             </div>
-                        </div>
-                        <div className="range-body">
-                            <h2>{this.state.day}</h2>
-                            {meetings.map(meeting => (
-                                format(parseISO(meeting.start), "dd'/'MM'/'yyyy") === this.state.day ?
-                                    meeting.MeetingRoom.id === this.state.id ?
-                                        meeting.Project !== null ?
-                                            <div key={meeting.id} className="meetings-of-a-day">
-                                                <h1>{meeting.name}</h1>
-                                                <p>{`${format(parseISO(meeting.start), "HH':'mm")} - ${format(parseISO(meeting.end), "HH':'mm'h'")}`}</p>
-                                                <span>{`* Reunião referente ao projeto '${meeting.Project.name}'`}</span>
-                                            </div>
+                            {/* <div className="info-room-card">
+                                <header>Informações Gerais</header>
+
+                            </div> */}
+                    
+                            <div className="range-body">
+                                <h2>{this.state.day}</h2>
+                                {meetings.map(meeting => (
+                                    format(parseISO(meeting.start), "dd'/'MM'/'yyyy") === this.state.day ?
+                                        meeting.MeetingRoom.id === this.state.id ?
+                                            meeting.Project !== null ?
+                                                <div key={meeting.id} className="meetings-of-a-day">
+                                                    <h1>{meeting.name}</h1>
+                                                    <p>
+                                                        {`${format(parseISO(meeting.start), "HH':'mm")} - 
+                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}
+                                                    </p>
+                                                    <span>{`* Reunião referente ao projeto '${meeting.Project.name}'`}</span>
+                                                </div>
                                             :
-                                            <div key={meeting.id} className="meetings-of-a-day">
-                                                <h1>{meeting.name}</h1>
-                                                <p>{`${format(parseISO(meeting.start), "HH':'mm")} - ${format(parseISO(meeting.end), "KK':'mm'h'")}`}</p>
-                                            </div>
+                                                <div key={meeting.id} className="meetings-of-a-day">
+                                                    <h1>{meeting.name}</h1>
+                                                    <p>
+                                                        {`${format(parseISO(meeting.start), "HH':'mm")} - 
+                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}      
+                                                    </p>
+                                                </div>
                                         : ''
 
                                     : ''
-                            ))}
+                                ))}
 
+                            </div>
                         </div>
+
+
+                        {showItems &&
+                            <div className="items-body">
+                                <div className="items-body-header">
+                                    <h1>Nome do item</h1>
+                                    <h1>QUantidade</h1>
+                                </div>
+                                <div  className="items-body-flex">
+                                    {items.map(item => (
+                                    <>
+                                            <div key={item.info.name} className="items-body-row">
+                                                <p>{item.info.name}</p>
+                                                <p>{item.quantity}</p>
+                                            </div>
+                                            <hr />
+                                        </>
+                                    ))}
+                                </div>
+                            </div>
+                        }
+
+                        {showCalendar &&
+                            <div className="calendar">
+                                <Calendar
+                                    className="calendar-box"
+                                    onClickDay={this.handleDay}
+                                    onChange={this.onChange}
+                                />
+                            </div>
+                        }
+
+                        {createMeetings &&
+                            <div className="create-meetings-body">
+                                <CreateMeetings />
+                            </div>
+                        }
+
                     </div>
-
-
-                    {showItems &&
-                        <div className="items-body">
-                            <div className="items-body-header">
-                                <h1>Nome do item</h1>
-                                <h1>QUantidade</h1>
-                            </div>
-                            <div className="items-body-flex">
-                                <div className="items-body-row">
-                                    <p>mesas</p>
-                                    <p>2</p>
-                                </div>
-                                <hr />
-                                <div className="items-body-row">
-                                    <p>cadeiras</p>
-                                    <p>10</p>
-                                </div>
-                                <hr />
-
-                                <div className="items-body-row">
-                                    <p>televisões</p>
-                                    <p>2</p>
-                                </div>
-                                <hr />
-                            </div>
-
-
-
-
-
-
-                        </div>
-                    }
-
-                    {showCalendar &&
-                        <div className="calendar">
-                            <Calendar
-                                className="calendar-box"
-                                onClickDay={this.handleDay}
-                                onChange={this.onChange}
-                            />
-                        </div>
-                    }
-
-                    {createMeetings &&
-                        <div className="create-meetings-body">
-                            <CreateMeetings />
-                        </div>
-                    }
-
-                </div>
+                }
             </div>
 
 
