@@ -8,7 +8,7 @@ import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 
 import NameReunionIcon from '../../assets/images/SalaDeReunioes.svg';
 
-import { parseISO, format } from 'date-fns';
+import { format } from 'date-fns';
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -50,7 +50,7 @@ class CreateMeetings extends Component {
         return (
             <div className="create-meetings-body">
                 <div className="meeting-name">
-                <img src={NameReunionIcon} style={{width: '35px', height: '35px'}}/>
+                <img src={NameReunionIcon} style={{width: '35px', height: '35px'}} alt=""/>
                 <input className="input-name" placeholder="Nome da reunião"/>
                 </div>
                 <div className="meeting-date">
