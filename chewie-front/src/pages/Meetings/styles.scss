@@ -1,25 +1,200 @@
 .schedule {
     margin-right: 50px;
-    margin-left: 50px;
-    margin-top: 70px;
+    margin-left: 40px;
+    margin-top: 50px;
+    
+}
+
+
+
+.e-schedule .e-content-wrap::-webkit-scrollbar{
+    width: 19px;
+}
+
+.e-schedule .e-content-wrap::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #25294a;
+    -webkit-box-shadow:  0 0 6px  #25294a; 
+    border-radius: 10px;
+}
+
+.e-schedule .e-content-wrap::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    -webkit-box-shadow: inset 40px 0 6px rgba(0,0,0,0.5); 
 }
 
 .e-schedule{
+    border-color: #25294a;
     border-radius: 20px;
-    background: #25294a;
+    padding-top: 20px;
+    background: #1a1f37;
+
+    .e-content-wrap {
+        overflow: auto;
+    }
+    
+    .e-schedule-toolbar .e-toolbar-items {
+        background: #1a1f37;
+        height: 52px;
+        border-radius: 20px;
+        font-size: 20px;
+        margin-bottom: 10px;
+
+        .e-toolbar-item.e-prev .e-icon-prev, 
+        .e-toolbar-item.e-next .e-icon-next {
+                font-size: 20px;
+                background: #1a1f37;   
+            }
+
+        .e-toolbar-item .e-tbar-btn .e-tbar-btn-text,
+        .e-toolbar-item.e-date-range .e-tbar-btn .e-tbar-btn-text {
+            font-size: 30px;
+            background: #1a1f37;
+            font-family: 'Bebas Neue', cursive;
+            border: 0;
+            
+        }
+        
+        .e-tbar-btn {
+            background: #1a1f37;
+        }
+
+        .e-tbar-btn:hover {
+            background: #1a1f37;
+        }
+        .e-toolbar-items.e-tbar-pos {
+            height: 52px;
+ 
+        }
+    }
+
+    .e-vertical-view {
+        
+        .e-work-hours,
+        .e-work-cells,
+        .e-date-header-wrap table tbody td {
+            background: #25294a;
+        }
+
+        .e-time-cells-wrap table td {
+            background: #1a1f37;
+        }
+
+        .e-left-indent-wrap table tbody td {
+            background: #25294a;
+            height: 68px; 
+        }
+
+        .e-header-cells .e-header-date,
+        .e-header-cells .e-header-day  {
+            font-size: 24px;
+        }
+
+        .e-clone-time-indicator, 
+        .e-current-time {
+            font-size: 18px;
+        }
+
+        .e-time-cells-wrap table td {
+            font-size: 16px;
+        }
+
+        .e-day-wrapper .e-appointment {
+            border-radius: 4%;
+        }
+
+        .e-day-wrapper .e-appointment .e-subject {
+            font-size: 28px;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+
+
+        .e-day-wrapper .e-appointment .e-time, 
+        .e-day-wrapper .e-appointment .e-location {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+
+    .e-month-view {
+        margin-top: 10px;
+        .e-work-days,
+        .e-date-header-wrap table td,
+        .e-work-cells {
+            background: #25294a; 
+            font-size: 26px;
+        }
+
+        .e-date-header {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .e-current-date .e-date-header, 
+        .e-current-date .e-date-header {
+            color: #fff;
+            padding: 10px;
+        }
+    }
+
+    .e-month-agenda-view {
+        .e-work-days,
+        .e-work-cells,
+        .e-date-header-wrap table td {
+            background: #25294a; 
+        }   
+    }
+
+    .e-agenda-view {
+        background-color: #25294a;
+        
+        .e-day-date-header .e-m-date {
+            font-size: 24px;
+        }
+        .e-day-date-header .e-m-day {
+            font-size: 16px;
+        }
+
+        .e-appointment.e-appointment-border, 
+        .e-schedule .e-agenda-view .e-appointment:focus,
+        .e-schedule .e-agenda-view .e-appointment:hover  {
+            background-color: #25294a;
+        }
+
+        .e-subject {
+            font-size: 30px;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        .e-date-time {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    }
 }
 
+.e-quick-popup-wrapper .e-event-popup {
+    .e-popup-content {
+        background: #1a1f37;
+    }
 
-
-
-.e-schedule:focus{
-    border-radius: 20px;
-    background: #25294a;
+    .e-edit-icon::before,
+    .e-delete-icon::before,
+    .e-close-icon::before {
+        font-size: 20px;
+        padding: 8px;
+    }
 }
 
-.e-control, .e-css {
-    /* font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif, "-apple-system", "BlinkMacSystemFont"; */
-    font-size: 20px;
-    font-weight: normal;
-//     font-family: "Bebas Neue";
-}
+// .e-schedule .e-content-wrap, .e-schedule .e-scroll-container {
+//     background: #25294a;
+//     margin-top: 28px;
+// }
+
+
+// .e-schedule .e-agenda-view .e-location {
+//     font-size: 15px;
+// }
+

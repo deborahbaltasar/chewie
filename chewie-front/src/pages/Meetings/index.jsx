@@ -10,7 +10,6 @@ import {
   Month,
   ViewsDirective,
   ViewDirective,
-  Agenda,
   ResourcesDirective,
   ResourceDirective,
 }
@@ -26,7 +25,7 @@ class Meetings extends Component {
       rooms: [],
     }
     //TODO: add color to DB
-    this.COLORS = ['#ffaa00', '#f8a398', '#7499e1'];
+    this.COLORS = ['#3949AB', '#1E88E5', '#039BE5', '#00ACC1', '#546E7A'];
   }
 
   // componentDidMount() {
@@ -158,15 +157,11 @@ class Meetings extends Component {
           eventSettings={{ dataSource: meetings }}
           actionComplete={this.onActionComplete.bind(this)}
           created={this.loadInfo.bind(this)}
-          height='800px' 
-          width='1500px'
+          height='1150px' 
+          width='1800px'
           borderRadius='10px'
         >
           <ViewsDirective>
-            <ViewDirective
-              option='Agenda'
-              displayName='DIA'
-            />
             <ViewDirective
               option='Day'
               displayName='DIA'
@@ -198,7 +193,7 @@ class Meetings extends Component {
           </ResourcesDirective>
 
 
-          <Inject services={[Agenda, Day, Week, Month]} />
+          <Inject services={[Day, Week, Month]} />
         </ScheduleComponent>
       </div>
     );
