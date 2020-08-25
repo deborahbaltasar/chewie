@@ -10,13 +10,13 @@ import './styles.scss';
 const ProgressCard = () => {
     const [progress, setProgress] = useState(45);
 
-    // useEffect(() => {
-    //     API.get('status').then(res => {
-    //         const  total  = res.data;
+    useEffect(() => {
+        API.get('status').then(res => {
+            const  total  = res.data;
 
-    //         console.log(total);
-    //     })
-    // }, [])
+            setProgress(total);
+        })
+    }, [])
     return (
         <div className="progress-component">
             <div className="progress-title">
@@ -30,14 +30,26 @@ const ProgressCard = () => {
                         type="circle" 
                         width={280} 
                         strokeWidth={5}
-                        percent={progress}
+                        percent={45}
                     />
                 </div>
             </div>
             <div className="steps-progress">
                <br /><h2>Etapas do projeto</h2>
                 <div className="steps-body">
-                  
+                    <div className="triangle-down">
+
+                    </div>
+                    <svg height="40" width="90%">
+                        <polyline className="dotted-line" points="20,20, 190,20, 330,20"/>
+                        <marker id="circle-marker" markerWidth="8" markerHeight="8" refX="5" refY="5">
+                            <circle className="foreground" cx="5" cy="5" r="1" />
+                        </marker>
+                    </svg>
+                    <span>Documentação</span>
+                    <span>Telas de baixa</span>
+                    <span>Telas de alta</span>
+                    {/* <span >Desenvolvimento</span> */}
                 </div>
             </div>
         </div>

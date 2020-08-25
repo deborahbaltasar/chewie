@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { TextField } from '@material-ui/core';
-import { Modal } from 'react-bootstrap';
 
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
-import AttachMoneyRoundedIcon from '@material-ui/icons/AttachMoneyRounded';
-import DescriptionRoundedIcon from '@material-ui/icons/DescriptionRounded';
-import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
-import TimelineRoundedIcon from '@material-ui/icons/TimelineRounded';
-import FolderRoundedIcon from '@material-ui/icons/FolderRounded';
+import { 
+    SearchRounded, 
+    AttachMoneyRounded, 
+    ArrowBackRounded, 
+    PersonRounded, 
+    TimelineRounded, 
+    FolderRounded 
+} from '@material-ui/icons';
+
+import edit from '../../assets/images/Editar_Nome.png';
 
 import API from '../../services/api';
 
 import Progress from './Progress'
 import Financial from './Financial';
 import Members from './Members';
-
-import $ from "jquery";
+import Register from './Register';
+import Menu from './Menu';
+import Files from './File'
 
 import { parseISO, format } from 'date-fns';
 
@@ -28,17 +30,17 @@ class Projects extends Component {
   constructor(props) {
     super(props);
     this.handleSelectedChange = this.handleSelectedChange.bind(this);
-    this.handleShow = this.handleShowCreate.bind(this);
-    this.handleClose = this.handleCloseCreate.bind(this);
+
 
     this.state = {
       search: '',
       showProject: false,
-      showCreate: false,
+      showAllProjects: false,
       showView: false,
       showProgressCard: true,
       showFinancerCard: false,
       showMembersCard: false,
+      showFilesCard: false,
       projects: [],
       members: [],
       partners: [],
@@ -120,7 +122,18 @@ class Projects extends Component {
   handleProject = async e => {
     e.preventDefault();
 
-    const { name, description, client_name, type, start, end, value, meeting_room_id, responsible, comments} = this.state;
+    const { 
+        name, 
+        description, 
+        client_name, 
+        type, 
+        start, 
+        end, 
+        value, 
+        meeting_room_id, 
+        responsible, 
+        comments
+    } = this.state;
         
     await API.post("/projects", { name, description, client_name, type, start, end, value, meeting_room_id, responsible, comments })
       .then(async _ => {
@@ -198,14 +211,6 @@ class Projects extends Component {
     
   };
 
-  handleCloseCreate = () => {
-    this.setState({ showCreate: false});
-  };
-
-  handleShowCreate = () => {
-    this.setState({ showCreate: true});
-  };
-
   handleCloseView = () => {
     this.setState({showView: false})
   };
@@ -225,17 +230,10 @@ class Projects extends Component {
   };
 
   handleAllProjects = () => {
+    const { showAllProjects } = this.state;
 
-    $(".bnt-all-projects").focus(function () {
-      $(".all-projects").css({"display" : 'initial'})
-      $(".bnt-all-projects").css({"color" : '#4c7bff'})
-    })
-
-    $(".bnt-all-projects").click(function () {
-    
-      $(".bnt-all-projects").css({"color" : '#FFF'})
-      $(".all-projects").css({"display" : 'none'})    
-  })};
+    this.setState({showAllProjects: !showAllProjects})
+  };
 
   handleProgressCard = () => {
       const {showProgressCard } = this.state;
@@ -243,8 +241,9 @@ class Projects extends Component {
           showProgressCard: !showProgressCard,
           showFinancerCard: false,
           showMembersCard: false,
+          showFilesCard: false,
       })
-  }
+  };
 
   handleFinancerCard = () => {
     const {showFinancerCard } = this.state;
@@ -252,8 +251,9 @@ class Projects extends Component {
         showFinancerCard: !showFinancerCard,
         showProgressCard: false,
         showMembersCard: false,
+        showFilesCard: false,
     })
-  }
+  };
 
   handleMembersCard = () => {
     const { showMembersCard } = this.state;
@@ -261,13 +261,33 @@ class Projects extends Component {
         showMembersCard: !showMembersCard,
         showProgressCard: false,
         showFinancerCard: false,
+        showFilesCard: false,
     })
-  }
+  };
 
+  handleFilesCard = () => {
+    const { showFilesCard } = this.state;
+    this.setState({
+        showFilesCard: !showFilesCard,
+        showProgressCard: false,
+        showFinancerCard: false,
+        showMembersCard: false,
+    })
+  };
 
+  backToMenu = () => {
+      this.setState({showProject: false});
+  };
 
   render() {
-    const { showProgressCard, showProject, showFinancerCard, showMembersCard } = this.state;
+    const { 
+        showProgressCard,
+        showProject, 
+        showAllProjects, 
+        showFinancerCard, 
+        showMembersCard,
+        showFilesCard, 
+    } = this.state;
 
     let filteredProjects = this.state.projects.filter(
        (project) => {
@@ -276,276 +296,204 @@ class Projects extends Component {
     );
 
     return (
-    <div className="geral">
-      <div className="projects-container">      
-        <div className="header">
-          <div className="header-left">
-            <h1>PROJETOS</h1>
-            <button 
-                className="add-project" 
-                title="Adicionar novo Projeto" 
-                onClick={this.handleShowCreate.bind(this)} 
-                type="button"
-            >
-                <AddCircleOutlineIcon style={{width: '25px', height:'25px'}}/>
-            </button>
-          </div>
-          <div>
-            <button className="bnt-all-projects" onFocus={this.handleAllProjects} type="button">
-                Ver todos os projetos
-            </button>
-          </div>
-        </div>
-        <div className="modal">
-            <form>
-              <Modal
-                
-                show={this.state.showCreate}
-                onHide={this.handleCloseCreate.bind(this)}
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title>Cadastrar novo projeto</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Nome do projeto" 
-                    onChange={e => this.setState({ name: e.target.value })}
-                  />
-          
-                  <br />
-                 
-                  <TextField 
-                    className="standard-basic" 
-                    label="Descrição" 
-                    onChange={e => this.setState({ description: e.target.value })}
-                  />
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Cliente"
-                    onChange={e => this.setState({ client_name: e.target.value })}
-                  />
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Tipo" 
-                    onChange={e => this.setState({ type: e.target.value })}
-                  />
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Valor" 
-                    onChange={e => this.setState({ value: e.target.value })}
-                  />
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Início do projeto"
-                    onChange={e => this.setState({ start: e.target.value })}
-                  />
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Fim do projeto" 
-                    onChange={e => this.setState({ end: e.target.value })}
-                  />             
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Sala de desenvolvimento" 
-                    onChange={e => this.setState({ meeting_room_id: e.target.value })}
-                  />
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Responsável" 
-                    onChange={e => this.setState({ responsible: e.target.value })}
-                  />
-                  <br />
-
-                  <TextField 
-                    className="standard-basic" 
-                    label="Comentários" 
-                    onChange={e => this.setState({ comments: e.target.value })}
-                  />
-                  <br />
-
-                </Modal.Body>
-                <Modal.Footer>
-                  <button type="submit" className="update-project" onClick={this.handleProject}>
-                    Cadastrar
-                    </button>
-                </Modal.Footer>
-              </Modal>
-            </form>
+        <div className="geral">
+        <div className="projects-container">      
+            <div className="header">
+            <div className="header-left">
+                <h1>PROJETOS</h1>
+                <Register /> 
             </div>
-        {showProject && 
-        <div className="project-card">
-            <div className="body">           
-                <div className="body-tittle">
-                    <h1>{this.state.name}</h1>
-                    <div className="new-cards">
-                        <button 
-                            title="Progresso" 
-                            style={showProgressCard === true ? {color: '#4c7bff'} : {}}
-                            onClick={this.handleProgressCard}
-                        >
-                            <TimelineRoundedIcon style={{width: '45px', height:'45px'}}/>
+            <div>
+                {showProject && 
+                    <>
+                        <button className="bnt-all-projects" onClick={this.backToMenu} type="button">
+                            <ArrowBackRounded style={{marginRight: '10px'}}/>
+                            Voltar para Menu
                         </button>
 
                         <button 
-                            title="Financeiro"
-                            style={showFinancerCard === true ? {color: '#4c7bff'} : {}} 
-                            onClick={this.handleFinancerCard}
+                            className="bnt-all-projects" 
+                            onClick={this.handleAllProjects} 
+                            type="button"
+                            style={showAllProjects === true ? {color: '#4c7bff'} : {}} 
                         >
-                            <AttachMoneyRoundedIcon style={{width: '45px', height:'45px'}}/>
+                            Ver todos os projetos
                         </button>
+                    </>
+                }
 
-                        <button 
-                            title="Arquivos"
-                            // style={showProgressCard === true ? {color: '#4c7bff'} : {}} 
-                        >
-                            <FolderRoundedIcon style={{width: '45px', height:'45px'}}/>
-                        </button>
+            </div>
+            </div>
 
-                        <button 
-                            title="Membros" 
-                            style={showMembersCard === true ? {color: '#4c7bff'} : {}}
-                            onClick={this.handleMembersCard}
-                        >
-                            <PersonRoundedIcon style={{width: '45px', height:'45px'}}/>
-                        </button>
-                    </div>
-                </div>
-                <div className="scroll-body">
-                    <div className="description-body">
-                        <header>Descrição</header>
-                        <p className="scroll-description">
-                        {this.state.description} 
-                        </p>
-                    </div>
+            
+            {showProject === true ? 
+            <div className="project-card">
+                <div className="body">           
+                    <div className="body-tittle">
+                        <h1>{this.state.name}</h1>
+                        <div className="new-cards">
+                            <button 
+                                title="Progresso" 
+                                style={showProgressCard === true ? {color: '#4c7bff'} : {}}
+                                onClick={this.handleProgressCard}
+                            >
+                                <TimelineRounded style={{width: '45px', height:'45px'}}/>
+                            </button>
 
-                    <div className="information-body">
-                        <header>Informações</header>
+                            <button 
+                                title="Financeiro"
+                                style={showFinancerCard === true ? {color: '#4c7bff'} : {}} 
+                                onClick={this.handleFinancerCard}
+                            >
+                                <AttachMoneyRounded style={{width: '45px', height:'45px'}}/>
+                            </button>
 
-                        <div>
-                        <span className="span-tittle">Laboratório: </span>
-                        <span className="span-answer">{this.state.meeting_room_room}</span>
-                        <br /><br />
-                        </div>
+                            <button 
+                                title="Arquivos"
+                                style={showFilesCard === true ? {color: '#4c7bff'} : {}}
+                                onClick={this.handleFilesCard} 
+                            >
+                                <FolderRounded style={{width: '45px', height:'45px'}}/>
+                            </button>
 
-                        <div>
-                        <span className="span-tittle">Cliente: </span>
-                        <span className="span-answer">{this.state.client_name}</span>
-                        <br /><br />
-                        </div>
-
-                        <div>
-                        <span className="span-tittle">Tipo do projeto: </span>
-                        <span className="span-answer">{this.state.type}</span>
-                        <br /><br />
-                        </div>
-
-                        <div>
-                        <span className="span-tittle">Responsável: </span>
-                        <span className="span-answer">{this.state.responsible}</span>
+                            <button 
+                                title="Membros" 
+                                style={showMembersCard === true ? {color: '#4c7bff'} : {}}
+                                onClick={this.handleMembersCard}
+                            >
+                                <PersonRounded style={{width: '45px', height:'45px'}}/>
+                            </button>
                         </div>
                     </div>
-
-                    <div className="meeting-body">
-                        <header>Próximas reuniões</header>
-                        <span className="span-tittle">28/07: </span>
-                        <span className="span-answer">Mostrar tela de 'reuniões'</span>
-                        <hr className="line-meetings" /> 
-                        <span className="span-tittle">30/07: </span>
-                        <span className="span-answer">Mostrar tela de 'dispositivos'</span>
-                        <hr className="line-meetings" /> 
-                        <span className="span-tittle">12/08: </span>
-                        <span className="span-answer">Mostrar tela de 'Projetos'</span>
-                        <hr className="line-meetings" />
-                        <br />
-                        <Link to='/meetings' className="next-meeting">Agendar Próxima reunião</Link>
-                    </div>
-
-                    <div className="deadline-body">
-                        <header>Prazo</header>
-                        <div className="start-end-progress">
-                            <span className="start-end-span">Início</span>
-                            <span className="start-end-span">Fim</span>
+                    
+                    <div className="scroll-body">
+                        <div className="description-body">
+                            <header>Descrição</header>
+                            <p className="scroll-description">
+                            {this.state.description} 
+                            </p>
                         </div>
-                        <div className="progress">
-                            <div 
-                                className="progress-bar" 
-                                role="progressbar" 
-                                aria-valuenow="0" 
-                                aria-valuemin="0" 
-                                aria-valuemax="100"
-                                style={{width: '45%'}}
-                            > 
+
+                        <div className="information-body">
+                            <button className="edit-cards-bnt">
+                                Informações 
+                                <img src={edit} style={{color: '#fff'}}alt=""/>  
+                            </button>
+
+                            <div>
+                            <span className="span-tittle">Laboratório: </span>
+                            <span className="span-answer">{this.state.meeting_room_room}</span>
+                            <br /><br />
+                            </div>
+
+                            <div>
+                            <span className="span-tittle">Cliente: </span>
+                            <span className="span-answer">{this.state.client_name}</span>
+                            <br /><br />
+                            </div>
+
+                            <div>
+                            <span className="span-tittle">Tipo do projeto: </span>
+                            <span className="span-answer">{this.state.type}</span>
+                            <br /><br />
+                            </div>
+
+                            <div>
+                            <span className="span-tittle">Responsável: </span>
+                            <span className="span-answer">{this.state.responsible}</span>
                             </div>
                         </div>
-                        <div className="start-end-progress">
-                            <span className="start-end-date">{this.state.start}</span> 
-                            <span className="start-end-date">{this.state.end}</span>
+
+                        <div className="meeting-body">
+                            <header>Próximas reuniões</header>
+                            <span className="span-tittle">28/07: </span>
+                            <span className="span-answer">Mostrar tela de 'reuniões'</span>
+                            <hr className="line-meetings" /> 
+                            <span className="span-tittle">30/07: </span>
+                            <span className="span-answer">Mostrar tela de 'dispositivos'</span>
+                            <hr className="line-meetings" /> 
+                            <span className="span-tittle">12/08: </span>
+                            <span className="span-answer">Mostrar tela de 'Projetos'</span>
+                            <hr className="line-meetings" />
+                            <br />
+                            <Link to='/meetings' className="next-meeting">Agendar Próxima reunião</Link>
                         </div>
+
+                        <div className="deadline-body">
+                            <header>Prazo</header>
+                            <div className="start-end-progress">
+                                <span className="start-end-span">Início</span>
+                                <span className="start-end-span">Fim</span>
+                            </div>
+                            <div className="progress">
+                                <div 
+                                    className="progress-bar"
+                                    style={{width: '45%'}}
+                                > 
+                                </div>
+                            </div>
+                            <div className="start-end-progress">
+                                <span className="start-end-date">{this.state.start}</span> 
+                                <span className="start-end-date">{this.state.end}</span>
+                            </div>
+                        </div>
+
+                    </div> 
+                </div>
+                {showProgressCard &&
+                    <div className="progress-card">
+                        <Progress />
+                        
                     </div>
+                }
 
-                </div> 
-            </div>
-            {showProgressCard &&
-                <div className="progress-card">
-                    <Progress />
-                    
-                </div>
-            }
+                {showFinancerCard &&
+                    <div className="financer-card">
+                        <Financial />
+                    </div>
+                }
 
-            {showFinancerCard &&
-                <div className="financer-card">
-                    <Financial />
-                </div>
-            }
+                {showMembersCard &&
+                    <div className="members-card">
+                        <Members />
+                    </div>
+                }
 
-            {showMembersCard &&
-                <div className="members-card">
-                    <Members />
-                </div>
-            }
+                {showFilesCard &&
+                    <div className="files-card">
+                        <Files />
+                    </div>
+                }
 
-        </div>}
-      </div>
-        
-        <div className = 'all-projects'>
-            <div style = {{display: 'grid'}}>
-                <div style = {{margin: '40px auto 0px auto'}}>
-                    <span className = 'all-projects-tittle'>Todos os projetos </span> 
-                    <hr className="line" /> 
-                    <SearchRoundedIcon style={{color: '#FFF'}}/>
-                    <input 
-                        className="search-input" 
-                        placeholder="Procure um projeto aqui." 
-                        value={this.state.search} 
-                        onChange={this.updateSearch.bind(this)}
-                    />
-                    <hr className="line" />
-                </div>
-                </div>
-                <div className="projects-buttons">
-                {filteredProjects.map(project => (
-                    <button className="project-button" key={project.id} onFocus={() => this.handleShowView(project)}>{project.name}</button>
-                ))}
-                </div>
-                  
+            </div> : <Menu handleProjects={this.handleAllProjects} hoverProject={this.state.showAllProjects}/>}
         </div>
-      </div>
+            {showAllProjects && 
+            <div className = 'all-projects'>
+                <div style = {{display: 'grid'}}>
+                    <div style = {{margin: '40px auto 0px auto'}}>
+                        <span className = 'all-projects-tittle'>Todos os projetos </span> 
+                        <hr className="line" /> 
+                        <SearchRounded style={{color: '#FFF'}}/>
+                        <input 
+                            className="search-input" 
+                            placeholder="Procure um projeto aqui." 
+                            value={this.state.search} 
+                            onChange={this.updateSearch.bind(this)}
+                        />
+                        <hr className="line" />
+                    </div>
+                    </div>
+                    <div className="projects-buttons">
+                    {filteredProjects.map(project => (
+                        <button className="project-button" key={project.id} onFocus={() => this.handleShowView(project)}>{project.name}</button>
+                    ))}
+                    </div>
+                    
+            </div>       
+            
+            }
+
+        </div>
     );
   }
 }

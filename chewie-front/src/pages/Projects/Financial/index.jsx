@@ -4,9 +4,9 @@ import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import PaymentRoundedIcon from '@material-ui/icons/PaymentRounded';
 
-import { Progress }  from 'react-sweet-progress';
+import edit from '../../../assets/images/Editar_Nome.png';
 
-import $ from "jquery";
+import { Progress }  from 'react-sweet-progress';
 
 import './styles.scss';
 
@@ -77,7 +77,7 @@ class Financial extends Component {
                                     type="circle" 
                                     width={280} 
                                     strokeWidth={5}
-                                    percent={80}
+                                    percent={86}
                                 />
                             </div>
                         </div>
@@ -85,6 +85,24 @@ class Financial extends Component {
                         <div className="plots-progress">
                         <br /><h2>Parcelas</h2>
                             <div className="plots-body">
+                            <div className="triangle-down-plots">
+
+                            </div>
+                            <svg height="40" width="100%">
+                                <polyline className="dotted-line" points="30,20, 90,20, 150,20, 220,20, 280,20, 340,20, 410,20"/>
+                                <marker id="circle-marker" markerWidth="8" markerHeight="8" refX="5" refY="5">
+                                    <circle className="foreground" cx="5" cy="5" r="1" />
+                                </marker>
+                            </svg>
+                            <span>1ª</span>
+                            <span>2ª</span>
+                            <span>3ª</span>
+                            <span>4ª</span>
+                            <span>5ª</span>
+                            <span>6ª</span>
+                            <span>7ª</span>
+                            {/* <span>8ª</span>
+                            <span>9ª</span> */}
                             
                             </div>
                         </div>
@@ -93,8 +111,70 @@ class Financial extends Component {
                 }
 
                 {showInformation && 
-                    <div>
-                        Informações
+                <div className="info-component">
+                    <div className="information-card">
+                        <button className="info-title-bnt">
+                            Informações de pagamento
+                            <img src={edit} style={{color: '#fff'}}alt=""/>  
+                        </button>
+                        <div className="info-card-body">
+                        <span className="span-tittle">Valor total do projeto: </span>
+                        <span className="span-answer">R$ 7.000</span>
+                        </div>
+                        <br />
+                        <div className="info-card-body">
+                        <span className="span-tittle">Valor pago: </span>
+                        <span className="span-answer">R$ 6.000</span>
+                        </div>
+                        <br />
+                        <div className="info-card-body">
+                        <span className="span-tittle">Valor da parcela: </span>
+                        <span className="span-answer">R$ 1.000</span>
+                        </div>
+                        <br />
+                        <div className="info-card-body">
+                        <span className="span-tittle">Valor restante: </span>
+                        <span className="span-answer">R$ 1.000</span>
+                        </div>
+                        <br />
+                        <div className="info-card-body">
+                        <span className="span-tittle">Quantidade de parcelas: </span>
+                        <span className="span-answer">7</span>
+                        </div>
+                        <br />
+                        <div className="info-card-body">
+                        <span className="span-tittle">Parcelas pagas: </span>
+                        <span className="span-answer">6</span>
+                        </div>                        
+                        <br />
+                        <div className="info-card-body">
+                        <span className="span-tittle">Parcelas restantes: </span>
+                        <span className="span-answer">2</span>
+                        </div>
+                        </div>
+                        <div className="plots-progress">
+                            <br /><h2>Parcelas</h2>
+                            <div className="plots-body">
+                                <div className="triangle-down-plots">
+
+                            </div>
+                                <svg height="40" width="100%">
+                                    <polyline className="dotted-line" points="30,20, 90,20, 150,20, 220,20, 280,20, 340,20, 410,20"/>
+                                    <marker id="circle-marker" markerWidth="8" markerHeight="8" refX="5" refY="5">
+                                        <circle className="foreground" cx="5" cy="5" r="1" />
+                                    </marker>
+                                </svg>
+                                <span>1ª</span>
+                                <span>2ª</span>
+                                <span>3ª</span>
+                                <span>4ª</span>
+                                <span>5ª</span>
+                                <span>6ª</span>
+                                <span>7ª</span>
+                                {/* <span>8ª</span>
+                                <span>9ª</span> */}
+                            </div>
+                        </div>
                     </div>
                 }
 

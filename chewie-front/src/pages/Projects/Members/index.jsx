@@ -4,9 +4,6 @@ import PaletteRoundedIcon from '@material-ui/icons/PaletteRounded';
 import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
 import LaptopRoundedIcon from '@material-ui/icons/LaptopRounded';
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
-import EditRoundedIcon from '@material-ui/icons/EditRounded';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import setaEsquerda from '../../../assets/images/Seta_Esquerda.svg';
 import setaDireita from '../../../assets/images/Seta_Direita.svg';
@@ -55,7 +52,7 @@ class Members extends Component {
             showDevs: false,
             showPartners: false,
         })
-    }
+    };
 
     handleDesigners =  () => {
         const { showDesigners } = this.state; 
@@ -65,7 +62,7 @@ class Members extends Component {
             showDevs: false,
             showPartners: false,
         })
-    }
+    };
 
     handleDevs =  () => {
         const { showDevs } = this.state; 
@@ -75,7 +72,17 @@ class Members extends Component {
             showDesigners: false,
             showPartners: false,
         })
-    }
+    };
+
+    handlePartners =  () => {
+        const { showPartners } = this.state; 
+        this.setState({
+            showPartners: !showPartners,
+            showResponsibles: false,
+            showDesigners: false,
+            showDevs: false,
+        })
+    };
 
     render() {
         const { showResponsibles, showDesigners, showDevs, showPartners } = this.state;
@@ -134,7 +141,7 @@ class Members extends Component {
                         </button>
                         <div className="name-members">
                             <img src={avatar} alt=""/>
-                            <span>Deborah Baltasar</span>
+                            <span>Fernando Sobreira</span>
                         </div>
                     </div>
                 }
@@ -159,10 +166,7 @@ class Members extends Component {
                         </button>
                         <div className="name-members">
                             <img src={avatar} alt=""/>
-                            <span>Deborah Baltasar</span>
-
-                            <img src={avatar} alt=""/>
-                            <span>Filipe Oliveira</span>
+                            <span>Lucas Frota</span>
 
                         </div>
        
@@ -192,7 +196,7 @@ class Members extends Component {
                             <span>Deborah Baltasar</span>
 
                             <img src={avatar} alt=""/>
-                            <span>Filipe Oliveira</span>
+                            <span>Davi Pereira</span>
 
                         </div>
        

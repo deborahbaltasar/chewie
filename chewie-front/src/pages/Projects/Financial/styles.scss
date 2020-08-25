@@ -55,7 +55,7 @@
     margin-left: 20px;
     margin-right: 5px;
     box-shadow: 8px 0px 10px #1a1f37;
-
+    height: 180px;
 }
 
 .plots-progress h2 {
@@ -64,4 +64,72 @@
     font-family: 'Bebas Neue', cursive;
     font-size: 36px; 
 }
+
+.information-card {
+    display: flex;
+    flex-direction: column;
+    background: #25294a;
+    margin: 0 5px;
+    margin-left: 20px;
+    margin-top: 30px;
+    border-radius: 30px;
+    box-shadow: 8px 0px 10px #1a1f37;
+    height: 500PX;
+}
+
+.information-card h2{
+    margin: 20px 0 20px 20px;
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px; 
+}
+
+.info-card-body {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.info-title-bnt{
+    background: none;
+    border: 0;
+    margin: 30px 20px 30px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 36px;
+    text-align: center;
+}
+
+.info-title-bnt img{
+    margin-top: -5px;
+}
+
+.info-title-bnt:hover{
+    opacity: 0.6;
+}
+
+.plots-body span {
+    color: #737bac;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.triangle-down-plots {
+    width: 0;
+    height: 0;
+    margin-top: 20px;
+    margin-left: 330px;
+    margin-bottom: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid #4c7bff;
+}
+
+
+
 

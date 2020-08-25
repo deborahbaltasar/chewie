@@ -1,6 +1,6 @@
 .geral {
     display: flex;
-    width: 100%;
+    width: 105%;
     height: 100%;
 }
 
@@ -13,7 +13,7 @@
     margin: 30px 20px 20px 20px;
     box-shadow: 8px 0px 10px #1a1f37;
     overflow: hidden;
-  }
+}
 
 
 .projects-container .header {
@@ -22,13 +22,13 @@
     justify-content: space-between;
     margin: 30px 20px auto 60px;
        
-  }
+}
 
 .projects-container .header-left {
     display:flex;
     flex-direction: row;
     align-items: center;   
-  }
+}
 
 .header h1 {
     color: white;
@@ -38,7 +38,7 @@
     text-decoration-color: #4c7bff;
     height: 40%;
     width: 100%;  
-  } 
+} 
 
 .header .add-project {
     margin-top: 25px;
@@ -47,7 +47,7 @@
     color: #FFF;
     border: 0;
     
-  } 
+} 
 
 .header button {
     margin-top: -20px;
@@ -60,9 +60,9 @@
     border: 0;
     border-radius: 8px;
     
-  }
+}
   
-  .add-project-card {
+.add-project-card {
     z-index: 1;
     display: grid;
     background-color: #25294a;
@@ -71,21 +71,20 @@
     border-radius: 60px;
     margin: 0px 20px 0px 500px;
     box-shadow: 8px 0px 10px #1a1f37;
-  }
+}
 
-  .project-card{
+.project-card{
       display: flex;
- 
-  }
+}
 
 .body {
     display: grid;
     background: #313860;
     grid-gap: 4px;
     margin-left: 1.0rem;
-    height: 98%;
+    height: 875px;
     border-radius: 60px;
-    width: 65%;
+    width: 60%;
     min-width: 850px;
     
 }
@@ -96,34 +95,33 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-  }
+}
 
-  .body-tittle h1{
+.body-tittle h1{
     color: #4c7bff;
     font-family: 'Bebas Neue', cursive;
     font-size: 60px;
     margin: 40px 20px 0px 40px;
+}
 
-  }
-
-  .new-cards{
+.new-cards{
     margin: 40px 25px 0 0;  
-  }
+}
 
-  .new-cards button {
+.new-cards button {
     color: #737bac; 
     background: #25294a;
     border: 0;
     margin-right: 15px;
     border-radius: 8px;
     padding: 8px;  
-  }
+}
 
-  .new-cards button:hover {
+.new-cards button:hover {
     color: #4c7bff; 
-  }
+}
 
-  .scroll-body {
+.scroll-body {
     margin-right: 20px;
     overflow: auto;
     display: grid;
@@ -141,9 +139,9 @@
 .scroll-body::-webkit-scrollbar{
     width: 7px;
 
-  }
+}
 
-  .scroll-body::-webkit-scrollbar-track {
+.scroll-body::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #25294a;
     -webkit-box-shadow:  0 0 6px  #25294a; 
     border-radius: 10px;
@@ -161,51 +159,47 @@
 }
 
 
-  .description-body{
+.description-body{
     grid-area: description;
     background-color: #25294a;
     border-radius: 30px;
     margin: 0px 40px;
     box-shadow: 8px 0px 10px #1a1f37;
     height: 72%;
-  }
+}
 
-  .description-body header{
+.description-body header{
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
     margin: 20px 0px 10px 20px;
-  }
+}
 
-  .description-body p{
+.description-body p{
     color: #fff;
     font-size: 20px;
     margin: 5px 0px 20px 30px;
     overflow-y: auto;
-    height: 85px;
+    height: 85px;   
+}
 
-
-    
-  }
-
-  .scroll-description::-webkit-scrollbar{
+.scroll-description::-webkit-scrollbar{
     width: 7px;
-  }
+}
 
-  .scroll-description::-webkit-scrollbar-track {
+.scroll-description::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #25294a;
     -webkit-box-shadow:  0 0 6px  #25294a; 
     border-radius: 10px;
+}
 
-  }
-
-  .scroll-description::-webkit-scrollbar-thumb {
+.scroll-description::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 20px;
     -webkit-box-shadow: inset 40px 0 6px rgba(0,0,0,0.5); 
-  }
+}
 
-  .information-body {
+.information-body {
     grid-area: information;
     display: flex;
     flex-direction: column;
@@ -215,30 +209,44 @@
     box-shadow: 8px 0px 10px #1a1f37;
     height: 125%;
     width: 85%;
-  }
-  
-  .information-body header{
+}
+
+.edit-cards-bnt{
+    background: none;
+    border: 0;
+    margin: 20px 20px 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
-    margin: 20px 0px 30px 20px;
-  }
+    text-align: center;
+}
 
-  .span-tittle {
+.edit-cards-bnt img{
+    margin-top: -5px;
+}
+
+.edit-cards-bnt:hover{
+    opacity: 0.6;
+}
+  
+.span-tittle {
     margin-left: 20px;
     color: #4c7bff;
     font-family: 'Bebas Neue', cursive;
     font-size: 28px;
-  }
+}
 
-  .span-answer {
+.span-answer {
     color: #FFF;
     font-family: 'Bebas Neue', cursive;
     font-size: 28px;
     font-weight: 300;
-  }
+}
 
-  .meeting-body {
+.meeting-body {
     grid-area: meeting;
     background-color: #25294a;
     border-radius: 30px;
@@ -248,34 +256,34 @@
     max-height: 126%;
     width: 90%;
     overflow-y: auto;
-  }
+}
   
-  .meeting-body header{
+.meeting-body header{
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
     margin: 20px 0px 15px 20px;
-  }
+}
 
-  .line-meetings {
+.line-meetings {
     border: 1px solid #373d5e;
     margin-top: 0px;
     width: 90%;
     margin: 5px auto 15px auto;
-  }
+}
 
-  .meeting-body a{
+.meeting-body a{
     font-size: 25px;
     font-family: 'Bebas Neue', cursive;
     color: #FFF;
     margin-left: 40%;
-  }
+}
 
-  .next-meeting:hover {
+.next-meeting:hover {
     color: #FFF;
-  }
+}
 
-  .deadline-body {
+.deadline-body {
     grid-area: deadline;
     background-color: #25294a;
     border-radius: 30px;
@@ -284,45 +292,45 @@
     margin-right: 40px;
     box-shadow: 8px 0px 10px #1a1f37;
     height: 75%;
-  }
+}
   
-  .deadline-body header{
+.deadline-body header{
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
     margin: 20px 0px 15px 20px;
-  }
-
-  .start-end-progress {
-      display: flex;
-      justify-content: space-between;
-      margin-left: 5%;
-      margin-right: 7%;
-  } 
-
-  .start-end-span {
-      color: #FFF;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 25px;
-  }
-
-  .progress {
-      margin: 0 auto 0 auto;
-      background: #1a1f37;
-      width: 90%;
-      height: 32px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-  }
-
-  .progress-bar {
-    font-size: 20px;
-    font-weight: bold;
-    background: #4c7bff;
-    border-radius: 12px;
 }
 
-  .value-body {
+.start-end-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+     margin-right: 7%;
+} 
+
+.start-end-span {
+    color: #FFF;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+}
+
+.progress {
+    margin: 0 auto 0 auto;
+    background: #1a1f37;
+    width: 90%;
+    height: 32px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    .progress-bar {
+        font-size: 20px;
+        font-weight: bold;
+        background: #4c7bff;
+        border-radius: 12px;
+    }
+}
+
+.value-body {
     display: grid;
     padding: 20px;
     background-color: #25294a;
@@ -333,113 +341,107 @@
     border-radius: 30px;
     box-shadow: 8px 0px 10px #1a1f37;
     padding: 5px;
-  }
+}
   
-  .value-body header{
+.value-body header{
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 36px;
     margin: 20px 0px 10px 20px;
-  }
+}
 
-  .start-end-date {
+.start-end-date {
     color: #737bac;
     font-family: 'Bebas Neue', cursive;
     font-size: 25px;
     margin-bottom: 5%;
-  }
+}
 
-  #room-native-simple {
-     width: 200px;
-  }
-
- .standard-basic input {
+.standard-basic input {
     width: 220px;
     margin-bottom: -3px;
-  } 
+} 
 
- .update-project {
+.update-project {
     height: 44px;
     background: #4c7bff;
     color: #FFF;
     border: 0;
     border-radius: 8px;
     font-size: 14px;
-  }
+}
 
- .all-projects{
+.all-projects{
     z-index: 1;
-    display: none;
+    display: initial;
     background-color: #25294a;
     width: 20%;
     height: 95%;
     border-radius: 60px;
     margin: 30px 20px 0px 10px;
     box-shadow: 8px 0px 10px #1a1f37;
-  }
+}
 
-  .all-projects::-webkit-scrollbar{
+.all-projects::-webkit-scrollbar{
     width: 7px;
-  }
+}
 
-  .all-projects::-webkit-scrollbar-track {
+.all-projects::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #25294a;
     -webkit-box-shadow:  0 0 6px  #25294a; 
     border-radius: 10px;
+}
 
-  }
-
-  .all-projects::-webkit-scrollbar-thumb {
+.all-projects::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 20px;
     -webkit-box-shadow: inset 40px 0 6px rgba(0,0,0,0.5); 
-  }
+}
 
-  .all-projects-tittle{
+.all-projects-tittle{
     color: #fff;
     font-size: 40px;
     font-family: 'Bebas Neue', cursive;
-  }
+}
 
-  .line {
+.line {
     border: 1px solid #373d5e;
     margin-top: 0px;
     width: 100%;
-  }
+}
   
-
-  .projects-buttons {
+.projects-buttons {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       overflow: auto;
-  }
+}
 
-  .projects-buttons button{
-      margin: 0px 20px 20px 20px;
-      padding: 12px;
-      border: 0;
-      border-radius: 10px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 28px;
-      color: #FFF;
-      background: #313860;
-  }
+.projects-buttons button{
+    margin: 0px 20px 20px 20px;
+    padding: 12px;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    color: #FFF;
+    background: #313860;
+}
 
-  .projects-buttons button:hover{
+.projects-buttons button:hover{
     color: #4c7bff; 
-  }
+}
 
 .search-input {
     width: 220px;
     margin-bottom: 20px;
     font-size: 25px;
-  }
+}
 
 .progress-card {
     display: flex;
     flex-direction: column;
-    height: 98%;
+    height: 865px;
     width: 50%;
     background: #313860;
     border-radius: 60px;
@@ -447,12 +449,11 @@
     margin-right: 25px;
 }
 
-
 .financer-card {
     display: flex;
     flex-direction: column;
-    height: 98%;
-    width: 50%;
+    height: 875px;
+    width: 46%;
     background: #313860;
     border-radius: 60px;
     margin-left: 25px;
@@ -462,10 +463,21 @@
 .members-card {
     display: flex;
     flex-direction: column;
-    height: 98%;
+    height: 875px;
     width: 46%;
     background: #313860;
     border-radius: 60px;
     margin-left: 25px;
-    margin-right: 25px;
+    margin-right: 25px;    
+}
+
+.files-card {
+    display: flex;
+    flex-direction: column;
+    height: 875px;
+    width: 46%;
+    background: #313860;
+    border-radius: 60px;
+    margin-left: 25px;
+    margin-right: 25px;    
 }
