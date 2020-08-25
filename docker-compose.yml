@@ -1,16 +1,5 @@
 version: "3"
 services:
-  app:
-    container_name: app
-    image: node
-    ports:
-      - "${PORT}:${PORT}"
-    depends_on:
-      - postgres
-    volumes:
-      - ./chewie-back:/chewie-back
-    working_dir: /chewie-back
-    command: bash -c "yarn && yarn sequelize db:migrate && yarn dev"
   postgres:
     container_name: postgres
     image: postgres
@@ -23,15 +12,28 @@ services:
       POSTGRES_USER: "${DB_USERNAME}"
       POSTGRES_PASSWORD: "${DB_PASSWORD}"
       POSTGRES_HOST: "${DB_HOSTNAME}"
-
-  front:
-    container_name: front
-    image: node
+    restart: always
+      
+  app:
+    container_name: app
+    build: ./chewie-back
     ports:
-        - "${FRONT_PORT}:${FRONT_PORT}"
+      - "${PORT}:${PORT}"
     depends_on:
-        - app
+      - postgres
     volumes:
-        - ./chewie-front:/chewie-front
-    working_dir: /chewie-front
-    command: bash -c "yarn && yarn start"
+      - ./chewie-back:/chewie-back
+    env_file: .env
+    working_dir: /chewie-back
+
+  # front:
+  #   container_name: front
+  #   image: node
+  #   ports:
+  #       - "${FRONT_PORT}:${FRONT_PORT}"
+  #   depends_on:
+  #       - app
+  #   volumes:
+  #       - ./chewie-front:/chewie-front
+  #   working_dir: /chewie-front
+  #   command: bash -c "yarn && yarn start"

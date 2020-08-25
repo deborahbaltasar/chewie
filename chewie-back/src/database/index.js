@@ -23,9 +23,6 @@ import DeviceCategory from "../app/models/DeviceCategory";
 
 import databaseConfig from '../config/database';
 
-
-
-
 const models = [
     User, 
     File, 
@@ -54,7 +51,16 @@ class Database {
         this.init();
     }
     init() {
-        this.connection = new Sequelize(databaseConfig)
+        this.connection = new Sequelize(databaseConfig);
+
+        this.connection
+            .authenticate()
+            .then(() => {
+                console.log('Connection has been established successfully.');
+            })
+            .catch(err => {
+                console.error('Unable to connect to the database:', err);
+            });
 
         models.map(model => model.init(this.connection));
         models.map(model => model.associate && model.associate(this.connection.models));
