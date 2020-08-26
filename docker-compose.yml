@@ -24,16 +24,20 @@ services:
     volumes:
       - ./chewie-back:/chewie-back
     env_file: .env
+    links:
+      - postgres
     working_dir: /chewie-back
 
-  # front:
-  #   container_name: front
-  #   image: node
-  #   ports:
-  #       - "${FRONT_PORT}:${FRONT_PORT}"
-  #   depends_on:
-  #       - app
-  #   volumes:
-  #       - ./chewie-front:/chewie-front
-  #   working_dir: /chewie-front
-  #   command: bash -c "yarn && yarn start"
+  front:
+    container_name: front
+    image: node
+    ports:
+        - "${FRONT_PORT}:${FRONT_PORT}"
+    depends_on:
+        - app
+    volumes:
+        - ./chewie-front:/chewie-front
+    links:
+      - app
+    working_dir: /chewie-front
+    command: bash -c "yarn && yarn start"
