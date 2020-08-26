@@ -3,5 +3,4 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn
-CMD yarn sequelize db:migrate && yarn dev
+CMD yarn && yarn sequelize db:migrate && yarn dev
