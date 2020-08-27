@@ -72,9 +72,9 @@ class Sidebar extends React.Component {
     }
 
   render() {
-      
     const userName = localStorage.getItem('userName'); 
-  
+    const { pathSideBar } = this.props;
+
     return (
       
       <React.Fragment>
@@ -103,7 +103,7 @@ class Sidebar extends React.Component {
                     <div className = 'ImgUsuario'>
                     <FontAwesomeIcon icon = 'user' size = '2x' className = 'user' />
                     </div>
-                    <Link to="/profile" className = 'Nome_usuario'>{userName}</Link>
+                    <Link to="/profile" className={pathSideBar === '/profile' ? 'Nome_usuario link-active' : 'Nome_usuario'}>{userName}</Link>
               
 
 
