@@ -99,10 +99,6 @@
             font-size: 16px;
         }
 
-        .e-day-wrapper .e-appointment {
-            border-radius: 4%;
-        }
-
         .e-day-wrapper .e-appointment .e-subject {
             font-size: 28px;
             font-family: 'Bebas Neue', cursive;
@@ -125,6 +121,14 @@
         .e-work-cells {
             background: #25294a; 
             font-size: 26px;
+        }
+
+        .e-appointment .e-appointment-details .e-time {
+            font-size: 14px;
+        }
+
+        .e-appointment .e-appointment-details .e-subject {
+            font-size: 16px;
         }
 
         .e-date-header {
@@ -175,6 +179,16 @@
     }
 }
 
+.e-quick-popup-wrapper {
+    .e-cell-popup .e-popup-content {
+        background: #1a1f37;
+    }
+
+    .e-popup-footer {
+        background: #1a1f37;
+    }
+}
+
 .e-quick-popup-wrapper .e-event-popup {
     .e-popup-content {
         background: #1a1f37;
@@ -188,13 +202,37 @@
     }
 }
 
-// .e-schedule .e-content-wrap, .e-schedule .e-scroll-container {
-//     background: #25294a;
-//     margin-top: 28px;
-// }
+.e-dialog .e-dlg-header-content + .e-dlg-content {
+    background: #1a1f37;
+}
+
+.e-schedule-dialog .e-dlg-header-content {
+    background: #1a1f37;
+}
+
+.e-schedule-dialog .e-footer-content {
+    background: #1a1f37;
+}
 
 
-// .e-schedule .e-agenda-view .e-location {
-//     font-size: 15px;
-// }
+.e-calendar .e-content table, 
+.e-bigger.e-small .e-calendar .e-content table {
+    background: #1a1f37;
+}
 
+.e-calendar .e-footer-container, 
+.e-bigger.e-small .e-calendar .e-footer-container {
+    background: #1a1f37;
+}
+
+
+.e-calendar .e-header.e-month, 
+.e-bigger.e-small .e-calendar .e-header.e-month {
+    background: #1a1f37;
+}
+
+.e-calendar .e-header.e-year, .e-calendar .e-header.e-decade, 
+.e-bigger.e-small .e-calendar .e-header.e-year, 
+.e-bigger.e-small .e-calendar .e-header.e-decade {
+    background: #1a1f37;
+}

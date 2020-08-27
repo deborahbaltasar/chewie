@@ -49,12 +49,12 @@ class MeetingController {
   }  
   
   async index(req, res) {
-    const { page = 1 } = req.query;
+    // const { page = 1 } = req.query;
     const allMeetings = await Meeting.findAll({
       where: { canceled_at: null},
       order: ['start'],
-      limit: 20,
-      offset: (page - 1) * 20,
+      // limit: 20,
+      // offset: (page - 1) * 20,
       attributes: [ 'id', 'name', 'start', 'end'],
       include: [
         {
