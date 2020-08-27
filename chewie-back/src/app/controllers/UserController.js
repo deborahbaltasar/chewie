@@ -87,7 +87,6 @@ class UserController {
     const { email, oldPassword, password } = req.body;
 
     const user = await User.findByPk(req.userId)
-
     if(user.fisrt_logged_in === true) {
       user.fisrt_logged_in = false;
     }

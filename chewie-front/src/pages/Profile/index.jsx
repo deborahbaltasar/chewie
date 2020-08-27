@@ -64,8 +64,12 @@ class Profile extends React.Component {
             return;
         }
 
-        await API.put("/users",  { email, oldPass, newPass, confirmPass })
-            .then(async _ => {
+        await API.put("/users",  { 
+            email, 
+            oldPassword: oldPass, 
+            password: newPass, 
+            confirmPassword: confirmPass 
+        }).then(async _ => {
                 toast.success("Perfil atualizado com sucesso");
                 await this.fetchData();
                 
