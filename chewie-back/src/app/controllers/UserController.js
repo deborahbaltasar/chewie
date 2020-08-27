@@ -8,7 +8,7 @@ import MeetingRoom from '../models/MeetingRoom';
 class UserController {
 
   async show(req, res) {
-    const { id, email, name, avatar, room, fisrt_logged_in } = await User.findByPk(req.userId, {
+    const { id, email, name, admin, avatar, room, fisrt_logged_in } = await User.findByPk(req.userId, {
       include: [
         {
           model: File,
@@ -27,6 +27,7 @@ class UserController {
       id,
       name,
       email,
+      admin,
       avatar,
       room,
       fisrt_logged_in,
