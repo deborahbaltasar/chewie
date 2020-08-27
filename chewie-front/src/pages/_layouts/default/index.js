@@ -5,11 +5,11 @@ import { Container } from './styles';
 import Sidebar from '../../../components/Sidebar';
 
 
-export default function DefaultLayout({ children }) {
+export default function DefaultLayout({ children, location }) {
   return (
     
     <Container>
-    <Sidebar />     
+    <Sidebar pathSideBar={location.pathname} />     
      {children}
     </Container>
   );
