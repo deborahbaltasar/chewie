@@ -469,7 +469,7 @@ class MeetingRoom extends Component {
                                 </div>
                                 <div className="items-body-flex">
                                 {!items[0] ? 
-                                    <p className="no-items">Ainda não foram cadastrados items nessa sala!</p>
+                                    <p className="no-items">Ainda não foram cadastrados items nessa sala.</p>
                                     :          
                                     items.map(item => (
                                         <>
