@@ -52,12 +52,12 @@ class UserController {
 
         const {id, name, email, admin, fisrt_logged_in } = await User.create(req.body);
 
-        return res.json({
-            id,
-            name,
-            email,
-            admin,
-            fisrt_logged_in
+        return res.status(201).json({
+          id,
+          name,
+          email,
+          admin,
+          fisrt_logged_in
         });
   }
 
@@ -78,25 +78,26 @@ class UserController {
         ),
       room: Yup.number(),
     });
-      
+
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails' });
     }
       
-    const { email, oldPassword} = req.body;
-      
-    const user = await User.findByPk(req.userId);
+    const { email, oldPassword, password } = req.body;
+
+    const user = await User.findByPk(req.userId)
 
     if(user.fisrt_logged_in === true) {
       user.fisrt_logged_in = false;
     }
-     
+  
     if (email !== user.email) {
       const userExists = await User.findOne({
         where: {
           email,
         },
       });
+
       if (userExists) {
         return res.status(400).json({
           error: 'User already exists',
@@ -110,16 +111,16 @@ class UserController {
       });
     }
 
-    if(user.confirmPassword) {
-      user.password_hash = await bcrypt.hash(user.confirmPassword, 8);
+    if (password) {
+      user.password_hash = await bcrypt.hash(password, 8);
     }
 
-    user.email = req.body.email;
+    user.email = email;
     user.updatedAt = new Date();
 
     user.save();
 
-    const { id, name, avatar, room, fisrt_logged_in } = await User.findByPk(req.userId, {
+    const { id, name, avatar, room, fisrt_logged_in } = await User.findOne({ where: { email }}, {
       include: [
         {
           model: File,

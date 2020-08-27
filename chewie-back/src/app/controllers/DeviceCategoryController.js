@@ -18,7 +18,7 @@ class DeviceCategoryController {
             where: {id: req.userId, admin: true},
         });
 
-        if(!checkUserAdmin) {
+        if (!checkUserAdmin) {
             return res.status(401).json({error: "Only admins can create a device category."})
         }
 

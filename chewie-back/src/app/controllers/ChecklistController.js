@@ -1,21 +1,19 @@
 import Checklist from "../models/Checklist";
 import Task from "../models/Task";
 
-
-
 class ChecklistController {
 
   async show(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     const taskExists = await Task.findOne({ 
-      where: { id: id},
+      where: { id },
     });
 
     if (!taskExists) {
-      return res
-      .status(401)
-      .json({ error: 'Task does not exists' });
+      return res.status(401).json({
+        error: 'Task does not exists'
+      });
     }
 
     const checklist = await Checklist.findAll({
@@ -26,8 +24,8 @@ class ChecklistController {
         'done',   
       ],
     });
-    return res.json(checklist);
 
+    return res.json(checklist);
   }  
   
   async store(req, res) { 
@@ -37,31 +35,28 @@ class ChecklistController {
       });
 
       if (checklistExists) {
-        return res
-        .status(401)
-        .json({ error: 'Checklist already exists' });
+        return res.status(401).json({
+          error: 'Checklist already exists' 
+        });
       }
-      
 
-        const taskExists = await Task.findOne({ 
+      const taskExists = await Task.findOne({ 
         where: { id: req.body.fk_task },
       });
 
       if (!taskExists) {
-        return res
-        .status(401)
-        .json({ error: 'Task does not exist' });
+        return res.status(401).json({
+          error: 'Task does not exist'
+        });
       }
-
-
   
       const { id, name, fk_task, done } = await Checklist.create(req.body);
 
       return res.json({
-          id,
-          name,
-          fk_task,
-          done,
+        id,
+        name,
+        fk_task,
+        done,
       });
     }
   }
