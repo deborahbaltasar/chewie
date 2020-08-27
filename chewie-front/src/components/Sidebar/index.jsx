@@ -2,12 +2,10 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
-import Auth from '../../utils/auth'
+import Auth from '../../utils/auth';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser, faAngleLeft, faAngleRight, faAngleDoubleRight, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import {
   HomeRounded,
   DevicesRounded,
@@ -24,9 +22,6 @@ import {
 import './styles.scss';
 
 import $ from "jquery";
-
-
-library.add(faUser, faAngleLeft, faAngleRight, faAngleDoubleRight, faLongArrowAltLeft);
 
 class Sidebar extends React.Component {
   constructor(props, context){
@@ -103,7 +98,12 @@ class Sidebar extends React.Component {
                     <div className = 'ImgUsuario'>
                     <FontAwesomeIcon icon = 'user' size = '2x' className = 'user' />
                     </div>
-                    <Link to="/profile" className={pathSideBar === '/profile' ? 'Nome_usuario link-active' : 'Nome_usuario'}>{userName}</Link>
+                    <Link 
+                        to="/profile" 
+                        className={pathSideBar === '/profile' ? 'Nome_usuario link-active' : 'Nome_usuario'}
+                    >
+                        {userName}
+                    </Link>
               
 
 
@@ -117,8 +117,8 @@ class Sidebar extends React.Component {
 
                 <div>
                   <div className = 'Busca'>
-                  <HomeRounded className = 'DashboardIcon'></HomeRounded>
-                  <Link to="/dashboard" className = 'Dashboard'>Dashboard</Link> 
+                  <HomeRounded className={pathSideBar === '/dashboard' ? 'DashboardIcon link-active' : 'DashboardIcon'}></HomeRounded>
+                  <Link to="/dashboard" className={pathSideBar === '/dashboard' ? 'Dashboard link-active' : 'Dashboard'}>Dashboard</Link> 
                   </div>
 
                   <div className = 'Busca'>
@@ -127,13 +127,13 @@ class Sidebar extends React.Component {
                   </div>
 
                   <div className = 'Busca'>
-                  <LaptopChromebookRounded className = 'ProjetosIcon'></LaptopChromebookRounded>
-                  <Link to="/projects" className = 'Projetos'>Projetos</Link> 
+                  <LaptopChromebookRounded className={pathSideBar === '/projects' ? 'DashboardIcon link-active' : 'DashboardIcon'}></LaptopChromebookRounded>
+                  <Link to="/projects" className={pathSideBar === '/projects' ? 'Projetos link-active' : 'Projetos'}>Projetos</Link> 
                   </div>
 
                   <div className = 'Busca'>
-                  <MeetingRoomRounded className = 'Salas_reunioesIcon'></MeetingRoomRounded>
-                  <Link to="/meetingRooms" className = 'Salas_reunioes'>Salas de reuniões</Link> 
+                  <MeetingRoomRounded className={pathSideBar === '/meetingRooms' ? 'DashboardIcon link-active' : 'DashboardIcon'}></MeetingRoomRounded>
+                  <Link to="/meetingRooms" className={pathSideBar === '/meetingRooms' ? 'Dashboard link-active' : 'Dashboard'}>Salas de reuniões</Link> 
                   </div>
                 </div>
 
@@ -148,8 +148,8 @@ class Sidebar extends React.Component {
                   </div>
 
                   <div className = 'Busca'>
-                  <DeveloperModeRounded className = 'Meus_projetosIcon'></DeveloperModeRounded>
-                  <Link to="/myProjects" className = 'Meus_projetos'>Meus projetos</Link> 
+                  <DeveloperModeRounded className={pathSideBar === '/myProjects' ? 'DashboardIcon link-active' : 'DashboardIcon'}></DeveloperModeRounded>
+                  <Link to="/myProjects" className={pathSideBar === '/myProjects' ? 'Dashboard link-active' : 'Dashboard'}>Meus projetos</Link> 
                   </div>
 
                   <div className = 'Busca'>
@@ -172,8 +172,8 @@ class Sidebar extends React.Component {
                   </div>
 
                   <div className = 'Busca'>
-                  <EventRounded className = 'Agendar_reuniaoIcon'></EventRounded>
-                  <Link to="/meetings" className = 'Dashboard'>Agendar Reunião</Link>
+                  <EventRounded className={pathSideBar === '/meetings' ? 'DashboardIcon link-active' : 'DashboardIcon'}></EventRounded>
+                  <Link to="/meetings" className={pathSideBar === '/meetings' ? 'Dashboard link-active' : 'Dashboard'}>Agendar Reunião</Link>
 
                   </div>
                 </div>
@@ -186,7 +186,7 @@ class Sidebar extends React.Component {
                   
                   <div className = 'Busca'>
                   <InfoOutlined className = 'Sobre_sistemaIcon'></InfoOutlined>
-                  <Link to="/profile" className = 'Sobre_sistema'>Sobre o sistema</Link> 
+                  <span className = 'Sobre_sistema'>Sobre o sistema</span> 
                   </div>
 
                 </div>
@@ -236,7 +236,7 @@ class Sidebar extends React.Component {
                 <div className = 'divSetores'>
                   <div>
                     <div className = 'Busca2'>
-                    <HomeRounded className = 'DashboardIcon'></HomeRounded>
+                    <HomeRounded className={pathSideBar === '/dashboard' ? 'DashboardIcon link-active' : 'DashboardIcon'}></HomeRounded>
                     </div>
 
                     <div className = 'Busca2'>
@@ -244,11 +244,11 @@ class Sidebar extends React.Component {
                     </div>
 
                     <div className = 'Busca2'>
-                    <LaptopChromebookRounded className = 'ProjetosIcon'></LaptopChromebookRounded> 
+                    <LaptopChromebookRounded className={pathSideBar === '/projects' ? 'DashboardIcon link-active' : 'DashboardIcon'}></LaptopChromebookRounded> 
                     </div>
 
                     <div className = 'Busca2'>
-                    <MeetingRoomRounded className = 'Salas_reunioesIcon'></MeetingRoomRounded> 
+                    <MeetingRoomRounded className={pathSideBar === '/meetingRooms' ? 'DashboardIcon link-active' : 'DashboardIcon'}></MeetingRoomRounded> 
                     </div>
                   </div>
                 </div>
@@ -264,7 +264,7 @@ class Sidebar extends React.Component {
                   </div>
 
                   <div className = 'Busca2'>
-                  <DeveloperModeRounded className = 'Meus_projetosIcon'></DeveloperModeRounded>
+                  <DeveloperModeRounded className={pathSideBar === '/myProjects' ? 'DashboardIcon link-active' : 'DashboardIcon'}></DeveloperModeRounded>
                   </div>
 
                   <div className = 'Busca2'>
@@ -287,7 +287,7 @@ class Sidebar extends React.Component {
                   </div>
 
                   <div className = 'Busca2'>
-                  <EventRounded className = 'Agendar_reuniaoIcon'></EventRounded>
+                  <EventRounded className={pathSideBar === '/meetings' ? 'DashboardIcon link-active' : 'DashboardIcon'}></EventRounded>
                   </div>
                 </div>
 
