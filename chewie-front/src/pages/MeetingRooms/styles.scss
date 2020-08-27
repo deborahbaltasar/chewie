@@ -1,4 +1,3 @@
-
 .meeting-rooms-container {
     display: grid;
     background-color: #25294a;
@@ -154,6 +153,16 @@
     display: flex;
 }
 
+.initial-message {
+    display: flex;
+    justify-content: center;
+
+    p {
+        font-size: 30px;
+        color: #fff;
+    }
+}
+
 .room-body {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -175,12 +184,41 @@
     margin-right: auto;
 }
 
+.room-body-tittle  {
+    margin: 20px 0px 0px 60px;
+    height: 40%;
+}
+
 .room-body-tittle h1 {
     color: #4c7bff;
     font-family: 'Bebas Neue', cursive;
     font-size: 60px;
-    margin: 40px 0px 0px 60px;
-    height: 40%;
+}
+
+
+
+.edit-room-bnt{
+    background: none;
+    border: 0;
+    margin-top: -10px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #4c7bff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    text-align: center;
+}
+
+.edit-room-bnt img{
+    margin-top: -5px;
+    margin-left: 20px;
+    height: 40px;
+    width: 40px;
+}
+
+.edit-room-bnt:hover{
+    opacity: 0.6;
 }
 
 .room-body-buttons {  
@@ -334,12 +372,17 @@
     width: 85%;
 }
 
-.items-body p {
+.items-body p:not(.no-items) {
     color: #fff;
     font-family: 'Bebas Neue', cursive;
     font-size: 30px;
     margin-bottom: 1px;
     
+}
+
+.no-items {
+    color: #fff;
+    font-size: 24px;
 }
 
 .items-body hr{

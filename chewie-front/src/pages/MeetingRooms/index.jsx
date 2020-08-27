@@ -20,11 +20,14 @@ import { parseISO, format } from 'date-fns';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
+import edit from '../../assets/images/Editar_Nome.png'
+
 import CreateMeetings from '../../components/CreateMeeting';
 
 import API from '../../services/api';
 
 import './styles.scss';
+import { TheatersOutlined } from '@material-ui/icons';
 
 class MeetingRoom extends Component {
     constructor(props, context) {
@@ -43,6 +46,7 @@ class MeetingRoom extends Component {
             rooms: [],
             meetings: [],
             items: [],
+            user: '',
             id: 0,
             name: '',
             room: '',
@@ -57,8 +61,10 @@ class MeetingRoom extends Component {
     }
 
     componentDidMount() {
+        this.fetchUser();
         this.fetchData();
         this.fetchMeetings();
+        
     };
 
     handleDelete = async id => {
@@ -91,6 +97,20 @@ class MeetingRoom extends Component {
             });
     };
 
+    fetchUser = async () => {
+        await API.get('/users', {})
+            .then(res => {
+                console.log("DADOS", res)
+                this.setState({
+                    user: res.data,
+                });
+            })
+            .catch(error => {
+                toast.error("Não foi possível carregar dados do usuário");
+                console.log("Error", error);
+            });
+    };
+
     fetchMeetings = async (data) => {
         await API.get(`/meetings`)
             .then(res => {
@@ -99,8 +119,8 @@ class MeetingRoom extends Component {
                 this.setState({
                     meetings: res.data,
                     meetingDay: res.data.filter((item) => {
-                        return format(parseISO(item.start), "dd'/'MM'/'yyyy")  === this.state.day;
-                     }).map((item) => {
+                        return format(parseISO(item.start), "dd'/'MM'/'yyyy") === this.state.day;
+                    }).map((item) => {
                         return item;
                     })
                 });
@@ -179,8 +199,8 @@ class MeetingRoom extends Component {
     };
 
     handleItems = () => {
-        const { showItems} = this.state;
-        this.setState({ 
+        const { showItems } = this.state;
+        this.setState({
             showItems: !showItems,
             showCalendar: false,
             createMeetings: false,
@@ -190,8 +210,8 @@ class MeetingRoom extends Component {
 
     showCalendar = () => {
         const { showCalendar } = this.state;
-        this.setState({ 
-            showCalendar: (!showCalendar), 
+        this.setState({
+            showCalendar: (!showCalendar),
             showItems: false,
             createMeetings: false,
 
@@ -201,20 +221,26 @@ class MeetingRoom extends Component {
 
     createMeetings = () => {
         const { createMeetings } = this.state;
-        this.setState({ 
+        this.setState({
             createMeetings: (!createMeetings),
             showItems: false,
             showCalendar: false,
-  
+
         })
     };
 
     handleShowView = (room) => {
-        const { showBody } = this.state;
+        const { showBody, id } = this.state;
+        
+        let toggleBody = true;
+        
+        if (id === room.id) {
+            toggleBody = false;
+        }
 
         this.setState({
-            showBody: !showBody,
-            id: room.id,
+            showBody: toggleBody,
+            id: !toggleBody ? 0 : room.id,
             name: room.name,
             room: room.room,
             responsable: room.admin,
@@ -231,24 +257,30 @@ class MeetingRoom extends Component {
 
     render() {
 
-        const { 
-            rooms, 
-            showItems, 
-            showCalendar, 
-            createMeetings, 
-            meetings, 
-            items, 
-            showBody 
+        const {
+            rooms,
+            showItems,
+            showCalendar,
+            createMeetings,
+            meetings,
+            items,
+            showBody,
+            user,
+            id
         } = this.state;
 
         return (
             <div className="meeting-rooms-container">
                 <div className="meeting-room-header">
                     <div className="meeting-room-header-left">
-                        <h1>SALA DE REUNIÕES</h1>
-                        <button onClick={this.handleShowCreate.bind(this)} type="button">
-                            <AddCircleOutlineIcon />
-                        </button>
+                    <h1>Sala de reuniões</h1>
+                        {user.admin &&
+                            <button onClick={this.handleShowCreate.bind(this)} type="button">
+                                <AddCircleOutlineIcon />
+                            </button>
+                       
+                        }
+
                     </div>
 
                     <div className="all-rooms">
@@ -256,13 +288,13 @@ class MeetingRoom extends Component {
                             <button
                                 key={`room${room.id}`}
                                 className="room-bnt"
-                                style={showBody === true ? {color: '#4c7bff'} : {}} 
+                                style={room.id === id ? { color: '#4c7bff' } : {}}
                                 onClick={() => this.handleShowView(room)}
                             >
                                 {`${room.name} - ${room.room}`}
                             </button>
                         ))}
-                    </div> 
+                    </div>
                 </div>
 
                 <div className="modal">
@@ -285,8 +317,6 @@ class MeetingRoom extends Component {
                                 <input placeholder="Responsável pela sala" onChange={e => this.setState({ responsable: e.target.value })} />
                                 <br />
                                 <textarea placeholder="Descrição" onChange={e => this.setState({ description: e.target.value })} />
-                   
-
                             </Modal.Body>
                             <Modal.Footer>
                                 <button className="cadastro" type="submit" onClick={this.handleMeetingRoom}>
@@ -305,18 +335,19 @@ class MeetingRoom extends Component {
                             </Modal.Header>
                             <Modal.Body>
                                 <MeetingRoomIcon />
-                                <input value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
+                                <input onChange={e => this.setState({ name: e.target.value })} />
                                 <br />
                                 <LocationOnIcon />
-                                <input value={this.state.room} onChange={e => this.setState({ room: e.target.value })} />
+                                <input onChange={e => this.setState({ room: e.target.value })} />
                                 <br />
                                 <PersonIcon />
-                                <input value={this.state.responsable} onChange={e => this.setState({ responsable: e.target.value })} />
+                                <input  onChange={e => this.setState({ responsable: e.target.value })} />
                                 <br />
 
-                                <DescriptionIcon />
-                                <input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
-                                {/* <textarea placeholder="Descrição"></textarea> */}
+                                <textarea
+                                    onChange={e => this.setState({ description: e.target.value })}
+                                    placeholder="Descrição"
+                                />
 
                             </Modal.Body>
                             <Modal.Footer>
@@ -327,58 +358,66 @@ class MeetingRoom extends Component {
                         </Modal>
                     </form>
                 </div>
-                {showBody && 
+                {showBody === true ?
                     <div className="room-cards">
                         <div className="room-body">
                             <div className="room-header">
                                 <div className="room-body-tittle">
-                                    <h1>{`Sala  ${this.state.room}`}</h1>
+                                    {user.admin === true ?
+                                        <button className="edit-room-bnt" onClick={() => {}}>
+                                            {`Sala  ${this.state.room}`}
+                                            <img src={edit} style={{color: '#fff'}}alt=""/>
+                                        </button>
+                                    : 
+                                        <h1>{`Sala  ${this.state.room}`}</h1>
+                                    }
+                                    
                                 </div>
                                 {showItems === true || showCalendar === true || createMeetings === true ?
                                     <div className="room-body-buttons">
-                                        <button 
-                                            className="item-bnt" 
+                                        <button
+                                            className="item-bnt"
                                             onClick={this.handleItems}
-                                            style={showItems === true ? {color: '#4c7bff'} : {}} 
+                                            style={showItems === true ? { color: '#4c7bff' } : {}}
                                         >
                                             <EventSeatRoundedIcon style={{ width: '40px', height: '40px', padding: '-10px' }} />
                                         </button>
 
-                                        <button 
-                                            className="calendar-bnt" 
+                                        <button
+                                            className="calendar-bnt"
                                             onClick={this.showCalendar}
-                                            style={showCalendar === true ? {color: '#4c7bff'} : {}} 
+                                            style={showCalendar === true ? { color: '#4c7bff' } : {}}
                                         >
                                             <EventRoundedIcon style={{ width: '40px', height: '40px' }} />
                                         </button>
 
-                                        <button 
-                                        className="meeting-bnt" 
-                                        onClick={this.createMeetings}
-                                        style={createMeetings === true ? {color: '#4c7bff'} : {}} 
+                                        <button
+                                            className="meeting-bnt"
+                                            onClick={this.createMeetings}
+                                            style={createMeetings === true ? { color: '#4c7bff' } : {}}
                                         >
                                             <AccessTimeRoundedIcon style={{ width: '40px', height: '40px' }} />
                                         </button>
                                     </div>
 
-                                    : 
+                                    :
 
                                     <div className="room-body-buttons">
-                                        <button 
-                                            className="item-bnt" 
+                                        <button
+                                            className="item-bnt"
                                             onClick={this.handleItems}
                                         >
                                             <EventSeatRoundedIcon style={{ marginRight: '8px' }} />
                                             itens de sala
                                         </button>
-                                        <button 
-                                            className="calendar-bnt" 
+                                        <button
+                                            className="calendar-bnt"
                                             onClick={this.showCalendar}
                                         >
                                             <EventRoundedIcon style={{ marginRight: '8px' }} />
                                             calendário
                                         </button>
-                                        <button 
+                                        <button
                                             className="meeting-bnt"
                                             onClick={this.createMeetings}
                                         >
@@ -386,15 +425,13 @@ class MeetingRoom extends Component {
                                             agendar reunião
                                         </button>
                                     </div>
+                                    
                                 }
                             </div>
-                            {/* <div className="info-room-card">
-                                <header>Informações Gerais</header>
 
-                            </div> */}
-                    
+
                             <div className="range-body">
-                                <h2>{this.state.day}</h2>
+                                <h2>{`Reuniões do dia: ${this.state.day}`}</h2>
                                 {meetings.map(meeting => (
                                     format(parseISO(meeting.start), "dd'/'MM'/'yyyy") === this.state.day ?
                                         meeting.MeetingRoom.id === this.state.id ?
@@ -407,17 +444,17 @@ class MeetingRoom extends Component {
                                                     </p>
                                                     <span>{`* Reunião referente ao projeto '${meeting.Project.name}'`}</span>
                                                 </div>
-                                            :
+                                                :
                                                 <div key={meeting.id} className="meetings-of-a-day">
                                                     <h1>{meeting.name}</h1>
                                                     <p>
                                                         {`${format(parseISO(meeting.start), "HH':'mm")} - 
-                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}      
+                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}
                                                     </p>
                                                 </div>
-                                        : ''
+                                            : ''
 
-                                    : ''
+                                        : ''
                                 ))}
 
                             </div>
@@ -430,9 +467,12 @@ class MeetingRoom extends Component {
                                     <h1>Nome do item</h1>
                                     <h1>QUantidade</h1>
                                 </div>
-                                <div  className="items-body-flex">
-                                    {items.map(item => (
-                                    <>
+                                <div className="items-body-flex">
+                                {!items[0] ? 
+                                    <p className="no-items">Ainda não foram cadastrados items nessa sala!</p>
+                                    :          
+                                    items.map(item => (
+                                        <>
                                             <div key={item.info.name} className="items-body-row">
                                                 <p>{item.info.name}</p>
                                                 <p>{item.quantity}</p>
@@ -440,6 +480,7 @@ class MeetingRoom extends Component {
                                             <hr />
                                         </>
                                     ))}
+                               
                                 </div>
                             </div>
                         }
@@ -461,6 +502,11 @@ class MeetingRoom extends Component {
                         }
 
                     </div>
+                :
+                 
+                <div className="initial-message">
+                    <p>Selecione uma sala no canto superior direito.</p>
+                </div> 
                 }
             </div>
 
