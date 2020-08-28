@@ -1,27 +1,26 @@
 import * as Yup from 'yup';
 
-import MeetingRoom from '../models/MeetingRoom';
-import User from '../models/User';
 import Meeting from '../models/Meeting';
+import MeetingRoom from '../models/MeetingRoom';
 import Project from '../models/Project';
-
+import User from '../models/User';
 
 class MeetingController {
   async show(req, res) {
-    const {date} = req.params;
+    const { date } = req.params;
 
     const meetingExists = await Meeting.findOne({ 
-      where: { start: date},
+      where: { start: date },
     });
 
     if (!meetingExists) {
-      return res
-      .status(401)
-      .json({ error: 'There is no meentings in this day' });
+      return res.status(401).json({
+        error: 'There is no meentings in this day'
+      });
     }
 
     const meetings = await Meeting.findAll({
-      where: {  start: date },
+      where: { start: date },
       attributes: [ 
         'id',
         'name', 
@@ -31,11 +30,11 @@ class MeetingController {
       include: [
         {
           model: User,
-          attributes: [ 'name'],
+          attributes: [ 'name' ],
         },
         {
           model: Project,
-          attributes: [ 'name'],
+          attributes: [ 'name' ],
         },
         {
           model: MeetingRoom,
@@ -45,7 +44,6 @@ class MeetingController {
     });
     
     return res.json(meetings);
-
   }  
   
   async index(req, res) {
@@ -59,11 +57,11 @@ class MeetingController {
       include: [
         {
           model: User,
-          attributes: [ 'name'],
+          attributes: [ 'name' ],
         },
         {
           model: Project,
-          attributes: [ 'name'],
+          attributes: [ 'name' ],
         },
         {
           model: MeetingRoom,
@@ -71,47 +69,57 @@ class MeetingController {
         },   
       ],
     });
+
     return res.json(allMeetings);
   }
 
   async store(req, res) {
     const schema = Yup.object().shape({
-        name: Yup.string().required(),
-        meeting_room_id: Yup.number().required(),
-        start: Yup.date().required(),
-        end: Yup.date().required(),
-        project_id: Yup.number(),
+      name: Yup.string().required(),
+      meeting_room_id: Yup.number().required(),
+      start: Yup.date().required(),
+      end: Yup.date().required(),
+      project_id: Yup.number(),
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation Fails.' });
+      return res.status(400).json({
+        error: 'Validation Fails.'
+      });
     }
 
-    const { name, meeting_room_id, start, end, project_id} = req.body;
+    const {
+      name,
+      meeting_room_id,
+      start,
+      end,
+      project_id
+    } = req.body;
     
     const roomExists = await MeetingRoom.findOne({ 
-      where: { id: meeting_room_id},
+      where: { id: meeting_room_id },
     });
 
     
     if (!roomExists) {
-      return res
-      .status(401)
-      .json({ error: 'Meeting room does not exists' });
+      return res.status(401).json({
+        error: 'Meeting room does not exists'
+      });
     }
+
     const { id } = req.body;
     
     const meeting = await Meeting.create({
-        id,
-        name,
-        user_id: req.userId,
-        meeting_room_id,
-        start,
-        end,
-        fk_project: project_id
+      id,
+      name,
+      user_id: req.userId,
+      meeting_room_id,
+      start,
+      end,
+      fk_project: project_id
     });
 
-    return res.json(meeting);
+    return res.status(201).json(meeting);
   }
 
   async delete(req, res) {
@@ -129,8 +137,7 @@ class MeetingController {
     await meeting.save();
     
     return res.json(meeting);
-
-  }  
-
+  }
 }
+
 export default new MeetingController();

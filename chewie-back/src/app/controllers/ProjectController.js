@@ -9,12 +9,10 @@ import Task from '../models/Task';
 import Checklist from '../models/Checklist';
 import Member from '../models/Member';
 
-
-
 class ProjectController {
   async index(req, res) {
     const { page = 1 } = req.query;
-
+    
     const projects = await Project.findAll({
       where: { canceled_at: null },
       limit: 20,
@@ -35,89 +33,101 @@ class ProjectController {
       include: [
         {
           model: User,
-          attributes: [ 'name'],
+          attributes: ['name'],
         },
-
-       {
-        model: MeetingRoom,
-        attributes: [ 'id', 'name', 'room'],
-       },
-       {
-        model: ProjectStatu,
-        include: [{
-          model: Statu,
-          attributes: ['id', 'name']
-        }]
- 
-       },
-       {
-         model: Task,
-         attributes: ['title', 'description', 'deliver_date', 'note'],
-         include: [{
-           model: Checklist,
-           attributes: ['name', 'done']
-         }]
-       },
-       {
-        model: Member,
-        attributes: ['fk_user'],   
-        include: [{
-          model: User,
-          attributes: ['name', 'email', 'meeting_room_id']
-        }]
-      },
+        {
+          model: MeetingRoom,
+          attributes: ['id', 'name', 'room'],
+        },
+        {
+          model: ProjectStatu,
+          include: [{
+            model: Statu,
+            attributes: ['id', 'name']
+          }]
+        },
+        {
+          model: Task,
+          attributes: [
+            'title',
+            'description',
+            'deliver_date',
+            'note'
+          ],
+          include: [{
+            model: Checklist,
+            attributes: ['name', 'done']
+          }]
+        },
+        {
+          model: Member,
+          attributes: ['fk_user'],   
+          include: [{
+            model: User,
+            attributes: ['name', 'email', 'meeting_room_id']
+          }]
+        },
       ]
     });
+
     return res.json(projects);
   }
   
   async store(req, res) {
     const schema = Yup.object().shape({
-        name: Yup.string().required(),
-        description: Yup.string().required(),
-        client_name: Yup.string().required(),
-        type: Yup.string().required(),
-        start: Yup.date().required(),
-        end: Yup.date().required(),
-        value: Yup.string().required(),
-        meeting_room_id: Yup.number().required(),
-        responsible: Yup.number().required(),
-        plots: Yup.number().required(),
-        comments: Yup.string(),
-
+      name: Yup.string().required(),
+      description: Yup.string().required(),
+      client_name: Yup.string().required(),
+      type: Yup.string().required(),
+      start: Yup.date().required(),
+      end: Yup.date().required(),
+      value: Yup.string().required(),
+      meeting_room_id: Yup.number().required(),
+      responsible: Yup.number().required(),
+      plots: Yup.number().required(),
+      comments: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation Fails.' });
+      return res.status(400).json({
+        error: 'Validation Fails.'
+      });
     }
 
     const checkUserAdmin = await User.findOne({
-      where: {id: req.userId, admin: true},
+      where: {
+        id: req.userId,
+        admin: true
+      },
     });
     
-    if(!checkUserAdmin) {
-      return res.status(401).json({error: "Only admins can create projects"})
+    if (!checkUserAdmin) {
+      return res.status(401).json({
+        error: "Only admins can create projects"
+      })
     }
 
     const responsibleExists = await User.findOne({
-      where: {id: req.body.responsible},
+      where: {
+        id: req.body.responsible
+      },
     });
     
-    if(!responsibleExists) {
-      return res.status(401).json({error: "User does not exists"})
+    if (!responsibleExists) {
+      return res.status(401).json({
+        error: "User does not exists"
+      })
     }
 
-
-  
-        //Check if prpoject exists 
+    //Check if prpoject exists 
     const projectExists = await Project.findOne({ 
       where: { name: req.body.name },
     });
 
-    if (projectExists  && canceled_at == null) {
-      return res
-        .status(401)
-        .json({ error: 'Project already exists' });
+    if (projectExists && canceled_at == null) {
+      return res.status(401).json({
+        error: 'Project already exists'
+      });
     }
     
     const { 
@@ -132,22 +142,18 @@ class ProjectController {
       meeting_room_id,
       responsible,
       comments, 
-          } 
-      = req.body;
+    } = req.body;
 
     //Check if meetingRoom exists 
     const roomExists = await MeetingRoom.findOne({ 
-      where: { id: meeting_room_id},
+      where: { id: meeting_room_id },
     });
-
     
     if (!roomExists) {
-      return res
-      .status(401)
-      .json({ error: 'Meeting room does not exists' });
+      return res.status(401).json({
+        error: 'Meeting room does not exists'
+      });
     }
-
-
 
     const project = await Project.create({
       name,
@@ -160,20 +166,24 @@ class ProjectController {
       plots,
       meeting_room_id,
       responsible,
-      comments, 
-  });
+      comments
+    });
 
-
-    return res.json(project);
+    return res.status(201).json(project);
   }
 
   async delete(req, res) {
     const checkUserAdmin = await User.findOne({
-      where: {id: req.userId, admin: true},
+      where: {
+        id: req.userId,
+        admin: true
+      },
     });
     // console.log('admin', checkUserAdmin)
-    if(!checkUserAdmin) {
-      return res.status(401).json({error: "Only admins can delete a project"})
+    if (!checkUserAdmin) {
+      return res.status(401).json({
+        error: "Only admins can delete a project"
+      })
     }
     
     const { id } = req.params;
@@ -181,7 +191,9 @@ class ProjectController {
     const projectExists = await Project.findByPk(id);
 
     if (!projectExists) {
-      return res.status(400).json({ error: 'Project does not exist.' });
+      return res.status(400).json({
+        error: 'Project does not exist.'
+      });
     }
 
     const project = await Project.findByPk(req.params.id);
@@ -191,16 +203,20 @@ class ProjectController {
     await project.save();
     
     return res.json(project);
-
   }
 
   async update(req, res) {
     const checkUserAdmin = await User.findOne({
-      where: {id: req.userId, admin: true},
+      where: {
+        id: req.userId,
+        admin: true
+      },
     });
     // console.log('admin', checkUserAdmin)
-    if(!checkUserAdmin) {
-      return res.status(401).json({error: "Only admins can update a project"})
+    if (!checkUserAdmin) {
+      return res.status(401).json({
+        error: "Only admins can update a project"
+      })
     }
     
     const { id } = req.params;
@@ -208,12 +224,12 @@ class ProjectController {
     const projectExists = await Project.findByPk(id);
 
     if (!projectExists) {
-      return res.status(400).json({ error: 'Project does not exist.' });
+      return res.status(400).json({
+        error: 'Project does not exist.'
+      });
     }
 
     const project = await Project.findByPk(req.params.id);
-
-    
 
     project.name = req.body.name;
     project.description = req.body.description;
@@ -234,4 +250,5 @@ class ProjectController {
     return res.json(project);
   }
 }
+
 export default new ProjectController();

@@ -1,24 +1,23 @@
 import Sequelize, { Model } from 'sequelize';
 
 class MeetingRoom extends Model {
-    static init(sequelize) {
-        super.init({
-            name: Sequelize.STRING,
-            room: Sequelize.STRING,
-            description: Sequelize.TEXT,
-            admin: Sequelize.STRING,
-            deleted_at: Sequelize.DATE,
-        },
-        {
-            sequelize,
-        });
+  static init(sequelize) {
+    super.init({
+      name: Sequelize.STRING,
+      room: Sequelize.STRING,
+      description: Sequelize.TEXT,
+      admin: Sequelize.STRING,
+      deleted_at: Sequelize.DATE,
+    }, {
+      sequelize,
+    });
 
-        return this;
-   }
+    return this;
+  }
 
-   static associate(models) {
+  static associate(models) {
     this.hasMany(models.RoomItem, {foreignKey: 'fk_meeting_room', sourceKey: 'id'});
-    }
+  }
 }
-    
+  
 export default MeetingRoom;

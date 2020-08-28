@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
+
 import multerConfig from './config/multer';
 import authMiddleware from './app/middlewares/auth';
 
@@ -34,7 +35,6 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
-
 routes.get('/users', UserController.show);
 
 routes.get('/sessions', SessionController.index);
@@ -44,21 +44,15 @@ routes.post('/files', upload.single('file'), FileController.store);
 //MEETINGS
 
 routes.post('/meetings', MeetingController.store);
-
 routes.get('/meetings', MeetingController.index);
-
 routes.get('/meetings/:date', MeetingController.show);
-
 routes.delete('/meetings/:id', MeetingController.delete);
 
 //MEETING ROOM
 
 routes.post('/meetingRoom', MeetingRoomController.store);
-
 routes.get('/meetingRoom', MeetingRoomController.index);
-
 routes.delete('/meetingRoom/:id', MeetingRoomController.delete);
-
 routes.put('/meetingRoom/:id', MeetingRoomController.update)
 
 routes.post('/item', ItemController.store);
@@ -68,17 +62,13 @@ routes.post('/roomItens', RoomItemController.store);
 //PROJECTS
 
 routes.post('/projects', ProjectController.store);
-
 routes.delete('/projects/:id', ProjectController.delete);
-
 routes.get('/projects', ProjectController.index);
-
 routes.put('/projects/:id', ProjectController.update);
 
 //STATUS
 
 routes.post('/status', StatuController.store);
-
 routes.get('/status', StatuController.index);
 
 routes.post('/projectStatus', ProjectStatuController.store);
@@ -86,27 +76,21 @@ routes.post('/projectStatus', ProjectStatuController.store);
 //PARTNERS
 
 routes.post('/partners', PartnerController.store);
-
 routes.put('/partners', PartnerController.update);
 
 routes.post('/partners-projects', PartnerProjectController.store);
-
 routes.get('/partners-projects', PartnerProjectController.index);
 
 //MEMBERS
 
 routes.post('/members', MemberController.store);
-
 routes.get('/members/:id', MemberController.show);
 
 //TASKS
 
 routes.post('/tasks', TaskController.store);
-
 routes.get('/tasks', TaskController.index);
-
 routes.put('/tasks/:id', TaskController.update);
-
 routes.get('/tasks/:id', TaskController.show);
 
 routes.post('/tasksMember', TaskMemberController.store);
@@ -114,13 +98,11 @@ routes.post('/tasksMember', TaskMemberController.store);
 //CHECKLISTS
 
 routes.post('/checklist', ChecklistController.store);
-
 routes.get('/checklist/:id', ChecklistController.show);
 
 //EXPENSES
 
 routes.post('/expenses', ExpenseController.store);
-
 routes.get('/expenses/:id', ExpenseController.show);
 
 //EMMITERS
@@ -134,18 +116,13 @@ routes.post('/invoices', InvoiceController.store);
 //DEVICE CATEGORIES
 
 routes.post('/deviceCategory', DeviceCategoryController.store)
-
 routes.get('/deviceCategory', DeviceCategoryController.show)
-
 routes.delete('/deviceCategory', DeviceCategoryController.delete)
 
 //DEVICES
 
 routes.post('/device', DeviceController.store)
-
 routes.get('/device', DeviceController.show)
-
 routes.delete('/device', DeviceController.delete)
-
 
 export default routes;

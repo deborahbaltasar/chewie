@@ -25,7 +25,7 @@ class TaskController {
       include: [
         {
           model: Project,
-          attributes: [ 'name'],
+          attributes: ['name'],
         },
         {
           model: TaskMember,
@@ -41,20 +41,21 @@ class TaskController {
         },
       ]
     });
+
     return res.json(tasks);
   }
 
   async show(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     const projectExists = await Project.findOne({ 
-      where: { id: id},
+      where: { id },
     });
 
     if (!projectExists) {
-      return res
-      .status(401)
-      .json({ error: 'Project does not exists' });
+      return res.status(401).json({
+        error: 'Project does not exists'
+      });
     }
 
     const tasks = await Task.findAll({
@@ -68,8 +69,8 @@ class TaskController {
         'note',  
       ],
     });
-    return res.json(tasks);
 
+    return res.json(tasks);
   }
     
   
@@ -86,24 +87,30 @@ class TaskController {
       // }
 
       const taskExists = await Task.findOne({ 
-        where: { title: req.body.title, fk_project: req.body.fk_project },
+        where: {
+          title: req.body.title,
+          fk_project: req.body.fk_project
+        },
       });
 
       if (taskExists) {
-        return res
-        .status(401)
-        .json({ error: 'Task already exists' });
+        return res.status(401).json({
+          error: 'Task already exists'
+        });
       }
 
       const projectExists = await Project.findOne({ 
-        where: { id: req.body.fk_project},
+        where: {
+          id: req.body.fk_project
+        },
       });
 
       if (!projectExists) {
-        return res
-        .status(401)
-        .json({ error: 'Project does not exists' });
+        return res.status(401).json({
+          error: 'Project does not exists'
+        });
       }
+
       const { title, description, note, deliver_date, fk_project } = req.body;
   
       const task = await Task.create({
@@ -114,7 +121,7 @@ class TaskController {
         note,  
       });
   
-      return res.json(task);
+      return res.status(201).json(task);
     }
 
     async update(req, res) {
@@ -124,7 +131,9 @@ class TaskController {
       const taskExists = await Task.findByPk(id);
   
       if (!taskExists) {
-        return res.status(400).json({ error: 'Task does not exist.' });
+        return res.status(400).json({
+          error: 'Task does not exist.'
+        });
       }
   
       const task = await Task.findByPk(req.params.id);

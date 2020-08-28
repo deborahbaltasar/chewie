@@ -2,14 +2,11 @@ import Sequelize, { Model } from 'sequelize';
 
 class ProjectStatu extends Model {
   static init(sequelize) {
-    super.init(
-      {
+    super.init({
        
-      },
-      {
-        sequelize,
-      }
-    );
+    }, {
+      sequelize,
+    });
 
     return this;
   }
@@ -18,4 +15,5 @@ class ProjectStatu extends Model {
     this.belongsTo(models.Statu, {foreignKey: 'fk_status'});
   }
 }
+
 export default ProjectStatu;
