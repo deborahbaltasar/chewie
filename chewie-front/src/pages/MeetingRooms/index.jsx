@@ -17,7 +17,8 @@ import { toast } from 'react-toastify';
 import { Modal } from 'react-bootstrap'
 
 import { parseISO, format } from 'date-fns';
-import moment from 'moment';
+import moment from 'moment-timezone';
+// import moment from 'mo'
 import 'moment/locale/pt-br';
 
 import edit from '../../assets/images/Editar_Nome.png'
@@ -27,7 +28,6 @@ import CreateMeetings from '../../components/CreateMeeting';
 import API from '../../services/api';
 
 import './styles.scss';
-import { TheatersOutlined } from '@material-ui/icons';
 
 class MeetingRoom extends Component {
     constructor(props, context) {
@@ -46,6 +46,7 @@ class MeetingRoom extends Component {
             rooms: [],
             meetings: [],
             items: [],
+            meetingA: [],
             user: '',
             id: 0,
             name: '',
@@ -55,6 +56,7 @@ class MeetingRoom extends Component {
             startHour: '',
             endHour: '',
             day: moment().locale('pt-br').format('L'),
+            daytest: moment().tz("Europe/London").locale('pt-br').utc().format(),
             meetingDay: [],
         }
 
@@ -64,7 +66,6 @@ class MeetingRoom extends Component {
         this.fetchUser();
         this.fetchData();
         this.fetchMeetings();
-        
     };
 
     handleDelete = async id => {
@@ -123,6 +124,21 @@ class MeetingRoom extends Component {
                     }).map((item) => {
                         return item;
                     })
+                });
+            })
+            .catch(error => {
+                toast.error("Não foi possível carregar as reuniões");
+                console.log("Error", error);
+            });
+    };
+
+    fetchMeetingsOfADay = async (date) => {
+        await API.get(`/meetings-of-a-day`, {params: {date}})
+            .then(res => {
+                console.log("Reuniões do dias", res.data)
+
+                this.setState({
+                    meetingA: res.data,
                 });
             })
             .catch(error => {
@@ -230,6 +246,7 @@ class MeetingRoom extends Component {
     };
 
     handleShowView = (room) => {
+        this.fetchMeetingsOfADay(this.state.daytest);
         const { showBody, id } = this.state;
         
         let toggleBody = true;
@@ -251,8 +268,11 @@ class MeetingRoom extends Component {
 
     handleDay = (date) => {
         this.setState({
-            day: format(date, "dd'/'MM'/'yyyy")
+            day: format(date, "dd'/'MM'/'yyyy"),
+            daytest: moment.tz(date, "Europe/London").locale('pt-br').utc().format(),
         });
+      
+        this.fetchMeetingsOfADay(this.state.daytest);
     };
 
     render() {
@@ -266,7 +286,8 @@ class MeetingRoom extends Component {
             items,
             showBody,
             user,
-            id
+            id,
+            meetingA
         } = this.state;
 
         return (
@@ -429,10 +450,9 @@ class MeetingRoom extends Component {
                                 }
                             </div>
 
-
                             <div className="range-body">
                                 <h2>{`Reuniões do dia: ${this.state.day}`}</h2>
-                                {meetings.map(meeting => (
+                                {/* {meetings.map(meeting => (
                                     format(parseISO(meeting.start), "dd'/'MM'/'yyyy") === this.state.day ?
                                         meeting.MeetingRoom.id === this.state.id ?
                                             meeting.Project !== null ?
@@ -455,7 +475,33 @@ class MeetingRoom extends Component {
                                             : ''
 
                                         : ''
-                                ))}
+                                ))} */}
+
+                                {!meetingA[0] ?
+                                    <p>Não há reuniões marcadas para esse dia!</p> 
+                                : 
+                                meetingA.map(meeting => (
+                                        meeting.MeetingRoom.id === this.state.id ?
+                                            meeting.Project !== null ?
+                                                <div key={meeting.id} className="meetings-of-a-day">
+                                                    <h1>{meeting.name}</h1>
+                                                    <p>
+                                                        {`${format(parseISO(meeting.start), "HH':'mm")} - 
+                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}
+                                                    </p>
+                                                    <span>{`* Reunião referente ao projeto '${meeting.Project.name}'`}</span>
+                                                </div>
+                                                :
+                                                <div key={meeting.id} className="meetings-of-a-day">
+                                                    <h1>{meeting.name}</h1>
+                                                    <p>
+                                                        {`${format(parseISO(meeting.start), "HH':'mm")} - 
+                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}
+                                                    </p>
+                                                </div>
+                                            : null
+                                ))
+                            }
 
                             </div>
                         </div>
@@ -469,7 +515,13 @@ class MeetingRoom extends Component {
                                 </div>
                                 <div className="items-body-flex">
                                 {!items[0] ? 
-                                    <p className="no-items">Ainda não foram cadastrados items nessa sala!</p>
+                                    user.admin === true ?
+                                        <>
+                                            <p className="no-items">Ainda não foram cadastrados items nessa sala!</p>
+                                            <button>Adicionar novo item</button>
+                                        </>
+                                        :
+                                        <p className="no-items">Ainda não foram cadastrados items nessa sala!</p>
                                     :          
                                     items.map(item => (
                                         <>

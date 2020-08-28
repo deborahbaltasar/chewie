@@ -1,5 +1,9 @@
 import * as Yup from 'yup';
 
+import { Op } from 'sequelize'
+
+import {startOfDay, endOfDay, parseISO} from 'date-fns';
+
 import MeetingRoom from '../models/MeetingRoom';
 import User from '../models/User';
 import Meeting from '../models/Meeting';
@@ -8,11 +12,15 @@ import Project from '../models/Project';
 
 class MeetingController {
   async show(req, res) {
-    const {date} = req.params;
+
+    const { date } = req.query;
+    const parsedDate = parseISO(date);
 
     const meetingExists = await Meeting.findOne({ 
-      where: { start: date},
-    });
+      where: { 
+        start: {[Op.between]: [startOfDay(parsedDate), endOfDay(parsedDate)]},
+      },
+  });
 
     if (!meetingExists) {
       return res
@@ -21,7 +29,13 @@ class MeetingController {
     }
 
     const meetings = await Meeting.findAll({
-      where: {  start: date },
+      where: {
+        canceled_at: null,
+        start: {
+          [Op.between]: [startOfDay(parsedDate), endOfDay(parsedDate)]
+        }
+      },
+      order: ['start'],
       attributes: [ 
         'id',
         'name', 

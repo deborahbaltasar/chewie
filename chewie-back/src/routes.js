@@ -47,7 +47,7 @@ routes.post('/meetings', MeetingController.store);
 
 routes.get('/meetings', MeetingController.index);
 
-routes.get('/meetings/:date', MeetingController.show);
+routes.get('/meetings-of-a-day', MeetingController.show);
 
 routes.delete('/meetings/:id', MeetingController.delete);
 
