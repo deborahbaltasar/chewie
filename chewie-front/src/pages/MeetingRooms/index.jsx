@@ -454,35 +454,10 @@ class MeetingRoom extends Component {
 
                             <div className="range-body">
                                 <h2>{`Reuniões do dia: ${this.state.day}`}</h2>
-                                {/* {meetings.map(meeting => (
-                                    format(parseISO(meeting.start), "dd'/'MM'/'yyyy") === this.state.day ?
-                                        meeting.MeetingRoom.id === this.state.id ?
-                                            meeting.Project !== null ?
-                                                <div key={meeting.id} className="meetings-of-a-day">
-                                                    <h1>{meeting.name}</h1>
-                                                    <p>
-                                                        {`${format(parseISO(meeting.start), "HH':'mm")} - 
-                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}
-                                                    </p>
-                                                    <span>{`* Reunião referente ao projeto '${meeting.Project.name}'`}</span>
-                                                </div>
-                                                :
-                                                <div key={meeting.id} className="meetings-of-a-day">
-                                                    <h1>{meeting.name}</h1>
-                                                    <p>
-                                                        {`${format(parseISO(meeting.start), "HH':'mm")} - 
-                                                        ${format(parseISO(meeting.end), "HH':'mm'h'")}`}
-                                                    </p>
-                                                </div>
-                                            : ''
-
-                                        : ''
-                                ))} */}
-
                                 {!meetingA[0] ?
-                                    <p>Não há reuniões marcadas para esse dia!</p> 
-                                : 
-                                meetingA.map(meeting => (
+                                    <p className="no-meetings">Não há reuniões marcadas para esse dia!</p> 
+                                    : 
+                                    meetingA.map(meeting => (
                                         meeting.MeetingRoom.id === this.state.id ?
                                             meeting.Project !== null ?
                                                 <div key={meeting.id} className="meetings-of-a-day">
@@ -502,8 +477,8 @@ class MeetingRoom extends Component {
                                                     </p>
                                                 </div>
                                             : null
-                                ))
-                            }
+                                    ))
+                                }
 
                             </div>
                         </div>
@@ -518,23 +493,26 @@ class MeetingRoom extends Component {
                                 <div className="items-body-flex">
                                 {!items[0] ? 
                                     user.admin === true ?
-                                        <>
+                                        <div className="no-items-body">
                                             <p className="no-items">Ainda não foram cadastrados items nessa sala!</p>
                                             <button>Adicionar novo item</button>
-                                        </>
+                                        </div>
                                         :
                                         <p className="no-items">Ainda não foram cadastrados items nessa sala!</p>
-                                    :          
-                                    items.map(item => (
-                                        <>
-                                            <div key={item.info.name} className="items-body-row">
-                                                <p>{item.info.name}</p>
-                                                <p>{item.quantity}</p>
-                                            </div>
-                                            <hr />
-                                        </>
-                                    ))}
-                               
+                                    :
+                                    <div>          
+                                        {items.map(item => (
+                                            <>
+                                                <div key={item.info.name} className="items-body-row">
+                                                    <p>{item.info.name}</p>
+                                                    <p>{item.quantity}</p>
+                                                </div>
+                                                <hr />
+                                            </>
+                                        ))}
+                                        <button>Adicionar novo item</button>
+                                    </div>
+                                }
                                 </div>
                             </div>
                         }

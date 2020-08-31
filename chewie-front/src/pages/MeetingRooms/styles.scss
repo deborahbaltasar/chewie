@@ -314,6 +314,13 @@
     width: 178%;
 }
 
+.range-body .no-meetings {
+    color: #FFF;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 60px;
+}
+
 .information-body {
     display: flex;
     background: #313860;
@@ -380,9 +387,33 @@
     
 }
 
+.no-items-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.no-items-body button,
+.items-body-flex button {
+    border: 0;
+    border-radius: 8px;
+    font-size: 20px;
+    color: #fff;
+    background: #25294a;
+    padding: 10px;
+    font-family: 'Bebas Neue', cursive;
+    transition: 0.2s;
+}
+
+.no-items-body button:hover,
+.items-body-flex button:hover {
+    color: #4c7bff;
+}
+
 .no-items {
     color: #fff;
-    font-size: 24px;
+    font-size: 20px;
+    margin-left: -40px;
 }
 
 .items-body hr{
