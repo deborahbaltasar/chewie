@@ -267,12 +267,14 @@ class MeetingRoom extends Component {
     };
 
     handleDay = (date) => {
+        const newDay = moment.tz(date, "Europe/London").locale('pt-br').utc().format();
+
         this.setState({
             day: format(date, "dd'/'MM'/'yyyy"),
-            daytest: moment.tz(date, "Europe/London").locale('pt-br').utc().format(),
+            daytest: newDay,
         });
       
-        this.fetchMeetingsOfADay(this.state.daytest);
+        this.fetchMeetingsOfADay(newDay);
     };
 
     render() {

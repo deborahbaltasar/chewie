@@ -16,18 +16,6 @@ class MeetingController {
     const { date } = req.query;
     const parsedDate = parseISO(date);
 
-    const meetingExists = await Meeting.findOne({ 
-      where: { 
-        start: {[Op.between]: [startOfDay(parsedDate), endOfDay(parsedDate)]},
-      },
-  });
-
-    if (!meetingExists) {
-      return res
-      .status(401)
-      .json({ error: 'There is no meentings in this day' });
-    }
-
     const meetings = await Meeting.findAll({
       where: {
         canceled_at: null,
@@ -59,7 +47,6 @@ class MeetingController {
     });
     
     return res.json(meetings);
-
   }  
   
   async index(req, res) {
@@ -85,6 +72,7 @@ class MeetingController {
         },   
       ],
     });
+    
     return res.json(allMeetings);
   }
 
