@@ -43,8 +43,8 @@ class SignIn extends React.Component {
   handleSubmit = (data) => {
     const { history } = this.props;
     
-    AccountService.login(data).then( result => {
-      if (result.success) {
+    AccountService.login(data).then(result => {
+        if (result.success) {
         toast.success('Acesso permitido', {
           position: toast.POSITION.TOP_RIGHT
         });

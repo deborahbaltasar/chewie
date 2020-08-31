@@ -4,8 +4,7 @@ import Auth from '../utils/auth';
 export const login = async (data) => {
     return API.post('/sessions', data)
         .then(response => {
-
-            if (response.status!==200 || !response.data.token){
+            if (response.status !== 201 || !response.data.token){
                 throw new Error("Invalid result")
             }
             // Store 
