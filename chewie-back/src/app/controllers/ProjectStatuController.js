@@ -4,11 +4,11 @@ import Project from "../models/Project";
 
 class StatuController {
   async store(req, res) { 
+    const { fk_project, fk_status } = req.body;
 
     const projStatusExists = await ProjectStatu.findOne({ 
       where: {
-        fk_project:
-        req.body.fk_project
+        fk_project
       },
     });
 
@@ -18,8 +18,6 @@ class StatuController {
       });
     }
     
-    const { fk_project, fk_status } = req.body;
-
     const statusExists = await Statu.findOne({
       where: { id: fk_status },
     });

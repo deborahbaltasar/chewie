@@ -74,7 +74,15 @@ class TaskController {
   }
     
   
-  async store(req, res) { 
+  async store(req, res) {
+    const { 
+      title,
+      description,
+      note,
+      deliver_date,
+      fk_project
+    } = req.body;
+
       // const schema = Yup.object().shape({
       //   title: Yup.string().required(),
       //   fk_project: Yup.number().required(),
@@ -86,68 +94,73 @@ class TaskController {
       //   return res.status(400).json({ error: 'Validation fails' });
       // }
 
-      const taskExists = await Task.findOne({ 
-        where: {
-          title: req.body.title,
-          fk_project: req.body.fk_project
-        },
+    const taskExists = await Task.findOne({ 
+      where: {
+        title: title,
+        fk_project: fk_project
+      },
+    });
+
+    if (taskExists) {
+      return res.status(401).json({
+        error: 'Task already exists'
       });
-
-      if (taskExists) {
-        return res.status(401).json({
-          error: 'Task already exists'
-        });
-      }
-
-      const projectExists = await Project.findOne({ 
-        where: {
-          id: req.body.fk_project
-        },
-      });
-
-      if (!projectExists) {
-        return res.status(401).json({
-          error: 'Project does not exists'
-        });
-      }
-
-      const { title, description, note, deliver_date, fk_project } = req.body;
-  
-      const task = await Task.create({
-        title,
-        fk_project,
-        description,
-        deliver_date,
-        note,  
-      });
-  
-      return res.status(201).json(task);
     }
 
-    async update(req, res) {
+    const projectExists = await Project.findOne({ 
+      where: {
+        id: fk_project
+      },
+    });
 
-      const { id } = req.params;
-
-      const taskExists = await Task.findByPk(id);
-  
-      if (!taskExists) {
-        return res.status(400).json({
-          error: 'Task does not exist.'
-        });
-      }
-  
-      const task = await Task.findByPk(req.params.id);
-
-      task.title = req.body.title;
-      task.description = req.body.description;
-      task.deliver_date = req.body.deliver_date;
-      task.note = req.body.note;
-      task.updatedAt = new Date();
-
-      await task.save();
-      
-      return res.json(task);
+    if (!projectExists) {
+      return res.status(401).json({
+        error: 'Project does not exists'
+      });
     }
+  
+    const task = await Task.create({
+      title,
+      fk_project,
+      description,
+      deliver_date,
+      note,  
+    });
+  
+    return res.status(201).json(task);
   }
+
+  async update(req, res) {
+
+    const { id } = req.params;
+
+    const taskExists = await Task.findByPk(id);
+
+    if (!taskExists) {
+      return res.status(400).json({
+        error: 'Task does not exist.'
+      });
+    }
+
+    const task = await Task.findByPk(id);
+
+    const {
+      title,
+      description,
+      deliver_date,
+      note
+    } = req.body;
+
+    task.title = title;
+    task.description = description;
+    task.deliver_date = deliver_date;
+    task.note = note;
+    task.updatedAt = new Date();
+
+    await task.save();
+    
+    return res.json(task);
+  }
+}
   
-  export default new TaskController();
+export default new TaskController();

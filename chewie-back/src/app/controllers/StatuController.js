@@ -27,7 +27,7 @@ class StatuController {
 
     const { id, name } = await Status.create(req.body);
 
-    return res.json({
+    return res.status(201).json({
       id,
       name,
     });

@@ -2,7 +2,7 @@ import DeviceCategory from "../models/DeviceCategory";
 import User from "../models/User";
 
 class DeviceCategoryController {
-  async show(req, res){
+  async show(req, res) {
     const categories = await DeviceCategory.findAll({
       attributes: [
         'id',
@@ -22,7 +22,9 @@ class DeviceCategoryController {
     });
 
     if (!checkUserAdmin) {
-      return res.status(401).json({error: "Only admins can create a device category."})
+      return res.status(401).json({
+        error: "Only admins can create a device category."
+      });
     }
 
     const { name } = req.body;
@@ -35,7 +37,7 @@ class DeviceCategoryController {
       where: { name }
     });
 
-    if (categoryExists){
+    if (categoryExists) {
       return res.status(400).json({
         error: 'Device Category already exists.'
       });
@@ -46,7 +48,7 @@ class DeviceCategoryController {
     return res.status(201).json(category);
   }
 
-  async delete(req, res){
+  async delete(req, res) {
     const checkUserAdmin = await User.findOne({
       where: {
         id: req.userId,
@@ -54,7 +56,7 @@ class DeviceCategoryController {
       },
     });
 
-    if(!checkUserAdmin) {
+    if (!checkUserAdmin) {
       return res.status(401).json({
         error: "Only admins can delete a device category."
       })
@@ -64,7 +66,7 @@ class DeviceCategoryController {
 
     const deviceCategory = await DeviceCategory.findByPk(id);
 
-    if (!deviceCategory){
+    if (!deviceCategory) {
       return res.status(400).json({
         error: 'Device category does not exist.'
       });

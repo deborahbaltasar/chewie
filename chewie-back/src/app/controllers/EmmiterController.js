@@ -17,13 +17,9 @@ class EmmiterController {
       })
     }
 
-    const { id, name, cnpj } = await Emmiter.create(req.body);
+    const newEmmiter = await Emmiter.create(req.body);
 
-    return res.json({
-      id,
-      name,
-      cnpj,     
-    });
+    return res.store(201).json(newEmmiter);
   }
 }
 

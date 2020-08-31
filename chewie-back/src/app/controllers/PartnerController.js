@@ -51,7 +51,6 @@ class PartnerController {
       });
     }
 
-
     const { id, name, email, number } = await Partner.update(req.body);
     
     return res.json({

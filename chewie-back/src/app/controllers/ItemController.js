@@ -21,7 +21,6 @@ class ItemController {
       name,
     });
   }
-
 }
 
 export default new ItemController();

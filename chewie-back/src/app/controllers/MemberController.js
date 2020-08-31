@@ -22,11 +22,11 @@ class MemberController {
       include: [
         {
           model: Project,
-          attributes: [ 'id', 'name'],
+          attributes: ['id', 'name'],
         },
         {
           model: User,
-          attributes: [ 'id', 'name', 'email', 'avatar_id'],
+          attributes: ['id', 'name', 'email', 'avatar_id'],
         }
       ]
     });
@@ -35,9 +35,11 @@ class MemberController {
   }
 
   async store(req, res) { 
+    const { fk_project, fk_user } = req.body
+
     const userExists = await User.findOne({ 
       where: {
-        id: req.body.fk_user
+        id: fk_user
       },
     });
 
@@ -49,7 +51,7 @@ class MemberController {
 
     const projectExists = await Project.findOne({ 
       where: {
-        id: req.body.fk_project
+        id: fk_project
       },
     });
 
@@ -59,12 +61,10 @@ class MemberController {
       });
     }
 
-    const { fk_project, fk_user } = req.body
-
     const memberExists = await Member.findOne({ 
       where: {
-        fk_user: req.body.fk_user,
-        fk_project: req.body.fk_project
+        fk_user,
+        fk_project
       },
     });
 

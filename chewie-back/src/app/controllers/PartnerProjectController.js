@@ -4,7 +4,9 @@ import Project from '../models/Project';
 
 class PartnerProjectController {
   async index(req, res) {
-    const partnerproj = await PartnerProject.findByPk(req.params.id, {
+    const { id } = req.params;
+
+    const partnerproj = await PartnerProject.findByPk(id, {
       include: [
         {
           model: Partner,
@@ -21,10 +23,11 @@ class PartnerProjectController {
   }
   
   async store(req, res) { 
+    const { partner_id, project_id } = req.body;
 
     const partnerExists = await Partner.findOne({ 
       where: {
-        id: req.body.partner_id
+        id: partner_id
       },
     });
 
@@ -36,7 +39,7 @@ class PartnerProjectController {
 
     const projectExists = await Project.findOne({ 
       where: {
-        id: req.body.project_id
+        id: project_id
       },
     });
 
@@ -46,14 +49,13 @@ class PartnerProjectController {
       });
     }
     
-    const { partner_id, project_id } = req.body
 
     const partproj = await PartnerProject.create({
       project_id,
       partner_id,
     });
    
-    return res.json(partproj);
+    return res.status(201).json(partproj);
   }
 }
   

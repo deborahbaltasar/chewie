@@ -63,7 +63,9 @@ class ExpenseController {
     const projectExists = await Project.findByPk(fk_project);
   
     if (!projectExists) {
-      return res.status(400).json({ error: 'Project does not exist.' });
+      return res.status(400).json({
+        error: 'Project does not exist.'
+      });
     }
   
     const { id, price, reason, date } = await Expense.create(req.body);
@@ -73,8 +75,7 @@ class ExpenseController {
       fk_project,
       price,
       reason,
-      date,
-      
+      date
     });
   }
 }

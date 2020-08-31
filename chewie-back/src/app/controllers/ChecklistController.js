@@ -28,10 +28,11 @@ class ChecklistController {
     return res.json(checklist);
   }  
   
-  async store(req, res) { 
+  async store(req, res) {
+    const { name, fk_task } = req.body;
 
     const checklistExists = await Checklist.findOne({ 
-      where: { name: req.body.name, fk_task: req.body.fk_task },
+      where: { name: name, fk_task: fk_task },
     });
 
     if (checklistExists) {
@@ -41,7 +42,7 @@ class ChecklistController {
     }
 
     const taskExists = await Task.findOne({ 
-      where: { id: req.body.fk_task },
+      where: { id: fk_task },
     });
 
     if (!taskExists) {
@@ -50,14 +51,9 @@ class ChecklistController {
       });
     }
   
-    const { id, name, fk_task, done } = await Checklist.create(req.body);
+    const newChecklist = await Checklist.create(req.body);
 
-    return res.json({
-      id,
-      name,
-      fk_task,
-      done,
-    });
+    return res.status(201).json(newChecklist);
   }
 }
   

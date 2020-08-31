@@ -41,7 +41,9 @@ class DeviceController {
     })
 
     if (!meeting_room) {
-      return res.status(400).json({error: "Meeting Room does not exist"})
+      return res.status(400).json({
+        error: "Meeting Room does not exist"
+      });
     }
 
     const category = await DeviceCategory.findOne({

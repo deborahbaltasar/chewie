@@ -107,29 +107,6 @@ class ProjectController {
       })
     }
 
-    const responsibleExists = await User.findOne({
-      where: {
-        id: req.body.responsible
-      },
-    });
-    
-    if (!responsibleExists) {
-      return res.status(401).json({
-        error: "User does not exists"
-      })
-    }
-
-    //Check if prpoject exists 
-    const projectExists = await Project.findOne({ 
-      where: { name: req.body.name },
-    });
-
-    if (projectExists && canceled_at == null) {
-      return res.status(401).json({
-        error: 'Project already exists'
-      });
-    }
-    
     const { 
       name, 
       description,
@@ -144,6 +121,29 @@ class ProjectController {
       comments, 
     } = req.body;
 
+    const responsibleExists = await User.findOne({
+      where: {
+        id: responsible
+      },
+    });
+    
+    if (!responsibleExists) {
+      return res.status(401).json({
+        error: "User does not exists"
+      })
+    }
+
+    //Check if prpoject exists 
+    const projectExists = await Project.findOne({ 
+      where: { name },
+    });
+
+    if (projectExists && canceled_at == null) {
+      return res.status(401).json({
+        error: 'Project already exists'
+      });
+    }
+    
     //Check if meetingRoom exists 
     const roomExists = await MeetingRoom.findOne({ 
       where: { id: meeting_room_id },
@@ -196,7 +196,7 @@ class ProjectController {
       });
     }
 
-    const project = await Project.findByPk(req.params.id);
+    const project = await Project.findByPk(id);
     
     project.canceled_at = new Date();
 
@@ -229,20 +229,34 @@ class ProjectController {
       });
     }
 
-    const project = await Project.findByPk(req.params.id);
+    const project = await Project.findByPk(id);
 
-    project.name = req.body.name;
-    project.description = req.body.description;
-    project.client_name = req.body.client_name;
-    project.type = req.body.type;
-    project.start = req.body.start;
-    project.end = req.body.end;
-    project.value = req.body.value;
-    project.plots = req.body.value;
-    project.meeting_room_id = req.body.meeting_room_id;
-    project.responsible = req.body.responsible;
-    project.comments = req.body.comments;
-    project.status_id = req.body.status_id;
+    const {
+      name,
+      description,
+      client_name,
+      type,
+      start,
+      end,
+      value,
+      meeting_room_id,
+      responsible,
+      comments,
+      status_id
+    } = req.body;
+
+    project.name = name;
+    project.description = description;
+    project.client_name = client_name;
+    project.type = type;
+    project.start = start;
+    project.end = end;
+    project.value = value;
+    project.plots = value;
+    project.meeting_room_id = meeting_room_id;
+    project.responsible = responsible;
+    project.comments = comments;
+    project.status_id = status_id;
     project.updatedAt = new Date();
 
     await project.save();
