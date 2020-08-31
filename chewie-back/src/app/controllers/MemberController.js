@@ -32,8 +32,6 @@ class MemberController {
     });
 
     return res.json(members);
-    
-    return res.json({point: serializedPoint, items});
   }
 
   async store(req, res) { 
