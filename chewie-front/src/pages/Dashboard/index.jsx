@@ -74,9 +74,6 @@ class Dashboard extends React.Component {
                 console.log("Error", error);
             });
     };
-    
-
-
 
   render() {
     const { history } = this.props;
