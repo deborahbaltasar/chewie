@@ -1,20 +1,17 @@
 import Sequelize, { Model } from 'sequelize';
 
-
 class Partner extends Model {
-    static init(sequelize) {
-        super.init({
-            name: Sequelize.STRING,
-            email: Sequelize.STRING,
-            number: Sequelize.STRING,
-        },
-        {
-            sequelize,
-        });
+  static init(sequelize) {
+    super.init({
+      name: Sequelize.STRING,
+      email: Sequelize.STRING,
+      number: Sequelize.STRING,
+    }, {
+      sequelize,
+    });
 
-        return this;
-    }
-
+    return this;
+  }
 }
 
 export default Partner;

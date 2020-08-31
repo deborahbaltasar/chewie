@@ -8,7 +8,15 @@ import MeetingRoom from '../models/MeetingRoom';
 class UserController {
 
   async show(req, res) {
-    const { id, email, name, admin, avatar, room, fisrt_logged_in } = await User.findByPk(req.userId, {
+    const { 
+      id, 
+      email,
+      name,
+      admin,
+      avatar,
+      room,
+      fisrt_logged_in
+    } = await User.findByPk(req.userId, {
       include: [
         {
           model: File,
@@ -35,31 +43,45 @@ class UserController {
   }
 
   async store(req, res) {
-        const schema = Yup.object().shape({
-            name: Yup.string().required(),
-            email: Yup.string().email().required(),
-            password: Yup.string().required().min(8),
-        });
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      email: Yup.string().email().required(),
+      password: Yup.string().required().min(8),
+    });
 
-        if(!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: 'Validation fail'});
-        }
+    if(!(await schema.isValid(req.body))) {
+      return res.status(400).json({
+        error: 'Validation fail'
+      });
+    }
 
-        const userExists = await User.findOne({ where: {email: req.body.email} });
+    const userExists = await User.findOne({
+      where: {
+        email: req.body.email
+      }
+    });
 
-        if(userExists) {
-            return res.status(400).json({ error: 'User already exists.' });
-        }
+    if (userExists) {
+      return res.status(400).json({
+        error: 'User already exists.'
+      });
+    }
 
-        const {id, name, email, admin, fisrt_logged_in } = await User.create(req.body);
+    const { 
+      id, 
+      name,
+      email, 
+      admin, 
+      fisrt_logged_in
+    } = await User.create(req.body);
 
-        return res.status(201).json({
-          id,
-          name,
-          email,
-          admin,
-          fisrt_logged_in
-        });
+    return res.status(201).json({
+      id,
+      name,
+      email,
+      admin,
+      fisrt_logged_in
+    });
   }
 
   async update(req, res) {
@@ -81,7 +103,9 @@ class UserController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
+      return res.status(400).json({
+        error: 'Validation fails'
+      });
     }
       
     const { email, oldPassword, password } = req.body;
@@ -147,4 +171,3 @@ class UserController {
 }
 
 export default new UserController();
-

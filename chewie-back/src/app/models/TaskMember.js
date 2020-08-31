@@ -1,23 +1,20 @@
 import Sequelize, { Model } from 'sequelize';
 
 class TaskMember extends Model {
-    static init(sequelize) {
-        super.init({
+  static init(sequelize) {
+    super.init({
 
+    }, {
+      sequelize,
+    });
 
-        },
-        {
-            sequelize,
-        }
-        );
+    return this;
+  }
 
-        return this;
-    }
-
-    static associate(models) {
-        this.belongsTo(models.Member, {foreignKey: 'fk_member' });
-        this.belongsTo(models.Task, {foreignKey: 'fk_task'});
-    }
+  static associate(models) {
+    this.belongsTo(models.Member, {foreignKey: 'fk_member' });
+    this.belongsTo(models.Task, {foreignKey: 'fk_task'});
+  }
 }
 
 export default TaskMember;
