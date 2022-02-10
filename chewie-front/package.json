@@ -28,7 +28,7 @@
     "material-table": "^1.64.0",
     "mdbreact": "^4.27.0",
     "moment": "^2.27.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "particles": "^0.3.1",
     "polished": "^3.4.4",
     "prop-types": "^15.7.2",
